@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AquaHeySeller</string>
+    <string name="key_shared_prefs">key_shared_prefs</string>
+    <string name="key_logged_in">key_logged_in</string>
+    <string name="dialog_log_out_btn_yes_text">YES</string>
+    <string name="dialog_log_out_btn_no_text">NO</string>
+</resources>
