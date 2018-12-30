@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#48C8B9</color>
+    <color name="colorPrimaryDark">#48C8B9</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="color_app_theme">@color/colorPrimary</color>
@@ -14,9 +14,9 @@
     <color name="dialog_text_color">#041e41</color>
     <color name="dialog_bg_color">#D1D3D3</color>
     <color name="dialog_log_out_separator_color">#646569</color>
-    <color name="dialog_log_out_btn_text_color">#009ABF</color>
+    <color name="dialog_log_out_btn_text_color">#48C8B9</color>
     <color name="dialog_separator_color">#646569</color>
-    <color name="dialog_btn_text_color">#009ABF</color>
+    <color name="dialog_btn_text_color">#48C8B9</color>
 
     <color name="color_button_signin">#FFD600</color>
     <color name="color_button_signup">#03A9F4</color>
