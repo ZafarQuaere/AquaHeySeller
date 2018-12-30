@@ -4,4 +4,6 @@
     <string name="key_logged_in">key_logged_in</string>
     <string name="dialog_log_out_btn_yes_text">YES</string>
     <string name="dialog_log_out_btn_no_text">NO</string>
+    <string name="login_label">Login</string>
+    <string name="signup_label">Sign Up</string>
 </resources>

@@ -6,6 +6,8 @@
 
     <color name="color_app_theme">@color/colorPrimary</color>
     <color name="color_white">#ffffff</color>
+    <color name="color_black">#000000</color>
+
     <color name="transparent">#00000000</color>
 
     <!-- Dialog single button colors -->
@@ -15,5 +17,8 @@
     <color name="dialog_log_out_btn_text_color">#009ABF</color>
     <color name="dialog_separator_color">#646569</color>
     <color name="dialog_btn_text_color">#009ABF</color>
+
+    <color name="color_button_signin">#FFD600</color>
+    <color name="color_button_signup">#03A9F4</color>
 
 </resources>
