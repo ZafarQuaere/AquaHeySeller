@@ -12,10 +12,11 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.aquaheyseller.R;
+import com.aquaheyseller.ui.presenters.BasePresenter;
 import com.aquaheyseller.utils.Utils;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private EditText editUserName;
     private EditText editPassword;
@@ -26,6 +27,11 @@ public class LoginActivity extends AppCompatActivity {
     private String password;
     private Context mContext;
 
+
+    @Override
+    protected BasePresenter initPresenter() {
+        return null;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

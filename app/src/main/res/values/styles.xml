@@ -32,5 +32,17 @@
         <item name="android:topBright">@color/transparent</item>
         <item name="android:topDark">@color/transparent</item>
     </style>
+    <!--Alert Dialog Theme-->
+    <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">#de000000</item>
+        <item name="android:textColorPrimary">#8a000000</item>
+        <item name="buttonBarPositiveButtonStyle">@style/positive</item>
 
+    </style>
+
+    <style name="positive">
+        <item name="android:textColor">#336ce6</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 </resources>

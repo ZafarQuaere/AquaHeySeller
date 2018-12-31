@@ -14,4 +14,5 @@
     <string name="mobile_no">Mobile No.</string>
     <string name="email_id">Email ID</string>
     <string name="confirm_pswd">Confirm Password</string>
+    <string name="error_network_unavailable">Please check your network connection</string>
 </resources>
