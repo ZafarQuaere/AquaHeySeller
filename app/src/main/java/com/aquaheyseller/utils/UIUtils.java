@@ -25,9 +25,7 @@ import com.aquaheyseller.R;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by lding on 28/04/2016.
- */
+
 public class UIUtils {
 
     public static void setupSpinnerContent(Spinner spinner, String[] content) {

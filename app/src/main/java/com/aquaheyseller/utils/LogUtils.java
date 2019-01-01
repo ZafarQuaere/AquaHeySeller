@@ -1,7 +1,5 @@
 package com.aquaheyseller.utils;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -21,7 +19,6 @@ import com.aquaheyseller.R;
 
 
 public class LogUtils {
-
 
     public static void showToast(Context context, String message) {
         if (context != null) {
@@ -53,11 +50,30 @@ public class LogUtils {
         Log.e(AppConstant.TAG, " >> " + message);
     }
 
-   public static void showSnackBar(Context context, ViewGroup layout, String msg) {
+    public static void showSnackBar(Context context, ViewGroup layout, String msg) {
         Snackbar snackbar = Snackbar.make(layout, msg, Snackbar.LENGTH_LONG);
         View snackView = snackbar.getView();
         snackView.setBackgroundColor(ContextCompat.getColor(context, R.color.color_app_theme));
         snackbar.show();
+    }
+
+    public static void showErrorDialog(Context ctx, String btnText, String message) {
+        final Dialog dialog = new Dialog(ctx);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_single_button);
+        Button dialogButton = (Button) dialog.findViewById(R.id.btn_ok);
+        TextView textMessage = (TextView) dialog.findViewById(R.id.text_message);
+        textMessage.setText(message);
+        dialogButton.setText(btnText);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     private void showSuccessDialog(Context ctx, String btnText, String message) {
@@ -75,25 +91,6 @@ public class LogUtils {
             public void onClick(View v) {
                 dialog.dismiss();
 
-            }
-        });
-        dialog.show();
-    }
-
-    public static void showErrorDialog(Context ctx, String btnText, String message) {
-        final Dialog dialog = new Dialog(ctx);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.setContentView(R.layout.dialog_single_button);
-        Button dialogButton = (Button) dialog.findViewById(R.id.btn_ok);
-        TextView textMessage = (TextView) dialog.findViewById(R.id.text_message);
-        textMessage.setText(message);
-        dialogButton.setText(btnText);
-        dialogButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
             }
         });
         dialog.show();

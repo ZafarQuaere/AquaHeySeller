@@ -1,26 +1,15 @@
 package com.aquaheyseller.utils;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.utils.storage.AppSharedPrefs;
-
-import java.io.Serializable;
 
 
 public class Utils {
@@ -258,7 +247,7 @@ public class Utils {
            *//* textBottomHomeIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
             textIconOrders.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
             textBottomVegIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));*//*
-            *//*textBottomHistoryIcon.setBackgroundDrawable(activity.getResources().getDrawable(R.drawable.icon_history_colored));
+     *//*textBottomHistoryIcon.setBackgroundDrawable(activity.getResources().getDrawable(R.drawable.icon_history_colored));
             textBottomNonVegIcon.setBackgroundDrawable(activity.getResources().getDrawable(R.drawable.icon_nonveg));*//*
 
             textHomeLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
@@ -354,14 +343,14 @@ public class Utils {
         if (mContext == null)
             return;
         AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
-        prefs.put(mContext.getString(R.string.key_logged_in),b);
+        prefs.put(mContext.getString(R.string.key_logged_in), b);
     }
 
     public static boolean isLoggedIn(Context context) {
         AppSharedPrefs prefs = AppSharedPrefs.getInstance(context);
         boolean isLogIn = false;
         try {
-            isLogIn = (boolean)prefs.get(context.getString(R.string.key_logged_in));
+            isLogIn = (boolean) prefs.get(context.getString(R.string.key_logged_in));
         } catch (Exception e) {
             e.printStackTrace();
             return isLogIn;
