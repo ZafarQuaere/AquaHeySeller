@@ -12,10 +12,12 @@ import android.widget.Toast;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.presenters.BasePresenter;
+import com.aquaheyseller.ui.presenters.LoginPresenter;
+import com.aquaheyseller.ui.presenters.operations.ILogin;
 import com.aquaheyseller.utils.Utils;
 
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogin {
 
     private EditText editUserName;
     private EditText editPassword;
@@ -29,8 +31,8 @@ public class LoginActivity extends BaseActivity {
 
 
     @Override
-    protected BasePresenter initPresenter() {
-        return null;
+    protected LoginPresenter initPresenter() {
+        return new LoginPresenter(this,this);
     }
 
     @Override
@@ -53,6 +55,7 @@ public class LoginActivity extends BaseActivity {
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
         lytParent = (RelativeLayout) findViewById(R.id.lytParent);
         lytTop = (LinearLayout) findViewById(R.id.lytTop);
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +82,8 @@ public class LoginActivity extends BaseActivity {
 
         userId = editUserName.getText().toString();
         password = editPassword.getText().toString();
+        getPresenter().validateUsername(userId);
+        getPresenter().validatePassword(password);
 
         if (userId.equals("") || userId.equals(null)) {
             Toast.makeText(LoginActivity.this, "please enter username", Toast.LENGTH_SHORT).show();
@@ -92,4 +97,18 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void doLogin() {
+
+    }
+
+    @Override
+    public boolean validateUserName() {
+        return false;
+    }
+
+    @Override
+    public boolean validatePassword() {
+        return false;
+    }
 }
