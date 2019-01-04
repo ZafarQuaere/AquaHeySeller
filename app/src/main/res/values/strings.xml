@@ -15,4 +15,7 @@
     <string name="email_id">Email ID</string>
     <string name="confirm_pswd">Confirm Password</string>
     <string name="error_network_unavailable">Please check your network connection</string>
+    <string name="please_enter_username">Please enter  username</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="password_must_have_atleast_6_character">Password must have atleast 6 character</string>
 </resources>

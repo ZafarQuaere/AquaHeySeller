@@ -8,16 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.ui.presenters.BasePresenter;
 import com.aquaheyseller.ui.presenters.LoginPresenter;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
+import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.Utils;
 
 
-public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogin {
+public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogin,View.OnClickListener {
 
     private EditText editUserName;
     private EditText editPassword;
@@ -55,7 +54,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         btnSignUp = (Button) findViewById(R.id.btnSignUp);
         lytParent = (RelativeLayout) findViewById(R.id.lytParent);
         lytTop = (LinearLayout) findViewById(R.id.lytTop);
-
+        btnLogin.setOnClickListener(this);
+        btnSignUp.setOnClickListener(this);
+        lytParent.setOnClickListener(this);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,36 +80,25 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     }
 
     private void validationField() {
-
-        userId = editUserName.getText().toString();
-        password = editPassword.getText().toString();
-        getPresenter().validateUsername(userId);
-        getPresenter().validatePassword(password);
-
-        if (userId.equals("") || userId.equals(null)) {
-            Toast.makeText(LoginActivity.this, "please enter username", Toast.LENGTH_SHORT).show();
-        } else if (password.equals("") || password.equals(null)) {
-            Toast.makeText(LoginActivity.this, "please enter password", Toast.LENGTH_SHORT).show();
-        } else {
-            Utils.setLoggedIn(mContext,true);
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            finish();
-        }
-
+        userId = editUserName.getText().toString().trim();
+        password = editPassword.getText().toString().trim();
+        getPresenter().validateUsernamePassword(userId, password);
     }
 
     @Override
     public void doLogin() {
-
+        Utils.setLoggedIn(mContext, true);
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        finish();
     }
 
     @Override
-    public boolean validateUserName() {
-        return false;
+    public void onValidationError(String msg) {
+        LogUtils.showToast(mContext,msg);
     }
 
     @Override
-    public boolean validatePassword() {
-        return false;
+    public void onClick(View v) {
+
     }
 }
