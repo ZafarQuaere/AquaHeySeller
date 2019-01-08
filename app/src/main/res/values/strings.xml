@@ -18,4 +18,8 @@
     <string name="please_enter_username">Please enter  username</string>
     <string name="please_enter_password">Please enter password</string>
     <string name="password_must_have_atleast_6_character">Password must have atleast 6 character</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_photos">Photos</string>
+    <string name="nav_about_us">About Us</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>
