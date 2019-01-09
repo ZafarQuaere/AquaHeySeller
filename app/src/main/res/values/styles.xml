@@ -10,6 +10,20 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="MyToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Used to for the title of the Toolbar -->
+        <item name="android:textColorPrimary">#fff</item>
+        <!-- Used to for the title of the Toolbar when parent is Theme.AppCompat.Light -->
+        <item name="android:textColorPrimaryInverse">#fff</item>
+        <!-- Used to color the text of the action menu icons -->
+        <item name="android:textColorSecondary">#fff</item>
+        <!-- Used to color the overflow menu icon -->
+        <item name="actionMenuTextColor">#fff</item>
+        <!-- Color of the Toolbar -->
+        <item name="android:background">#455a64</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
     <style name="ProgressDialogTheme" parent="android:Theme.Holo.Dialog">
         <item name="android:alertDialogStyle">@style/CustomProgressDialogStyle</item>
