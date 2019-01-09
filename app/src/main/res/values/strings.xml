@@ -22,4 +22,10 @@
     <string name="nav_photos">Photos</string>
     <string name="nav_about_us">About Us</string>
     <string name="privacy_policy">Privacy Policy</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+    <string name="nav_header_desc">Nav Header</string>
+    <string name="nav_header_title">Aqua Hey</string>
+    <string name="nav_header_subtitle">AquaHeyIndia</string>
+    <string name="action_settings">settings</string>
 </resources>
