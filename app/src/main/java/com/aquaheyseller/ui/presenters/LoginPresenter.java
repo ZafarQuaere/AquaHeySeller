@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
+import com.aquaheyseller.utils.Utils;
 
 public class LoginPresenter extends BasePresenter {
     Context mContext;
@@ -23,6 +24,7 @@ public class LoginPresenter extends BasePresenter {
         } else if (password.length() < 6) {
             mLogin.onValidationError(mContext.getString(R.string.password_must_have_atleast_6_character));
         } else {
+            Utils.setLoggedIn(mContext, true);
             mLogin.doLogin();
         }
     }

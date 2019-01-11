@@ -1,8 +1,10 @@
 package com.aquaheyseller.ui.presenters;
 
 import android.content.Context;
+import android.view.View;
 
 import com.aquaheyseller.ui.presenters.operations.IMain;
+import com.aquaheyseller.utils.LogUtils;
 
 public class MainPresenter extends BasePresenter {
     Context mContext;
@@ -15,4 +17,9 @@ public class MainPresenter extends BasePresenter {
     }
 
 
+    public void moveToFragment(String view) {
+      /*  String tag = view.getTag().toString();
+
+        LogUtils.showToast(mContext,tag);*/
+    }
 }

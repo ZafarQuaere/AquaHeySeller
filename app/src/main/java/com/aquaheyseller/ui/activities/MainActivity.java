@@ -11,8 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.aquaheyseller.R;
+import com.aquaheyseller.ui.fragments.HomeFragment;
+import com.aquaheyseller.ui.fragments.ListingsFragment;
+import com.aquaheyseller.ui.fragments.OrdersFragment;
 import com.aquaheyseller.ui.presenters.MainPresenter;
 import com.aquaheyseller.ui.presenters.operations.IMain;
+import com.aquaheyseller.utils.Utils;
 
 public class MainActivity extends BaseActivity<MainPresenter>
         implements NavigationView.OnNavigationItemSelectedListener, IMain {
@@ -61,15 +65,19 @@ public class MainActivity extends BaseActivity<MainPresenter>
         }
     }
 
-    public void item1Click(View view) {
+    public void onHomeClick(View view) {
+        Utils.moveToFragment(this,new HomeFragment(), HomeFragment.class.getSimpleName(),null);
         closeDrawer();
+
     }
 
     public void item2Click(View view) {
+        Utils.moveToFragment(this,new OrdersFragment(), HomeFragment.class.getSimpleName(),null);
         closeDrawer();
     }
 
     public void item3Click(View view) {
+        Utils.moveToFragment(this,new ListingsFragment(), HomeFragment.class.getSimpleName(),null);
         closeDrawer();
     }
 
@@ -117,5 +125,25 @@ public class MainActivity extends BaseActivity<MainPresenter>
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
         }
+    }
+
+    @Override
+    public void moveToHomeFragment() {
+
+    }
+
+    @Override
+    public void moveToOrderFragment() {
+
+    }
+
+    @Override
+    public void moveToListingFragment() {
+
+    }
+
+    @Override
+    public void moveToPaymentFragment() {
+
     }
 }

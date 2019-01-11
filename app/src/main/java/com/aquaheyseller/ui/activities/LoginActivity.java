@@ -39,12 +39,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mContext = this;
-        /*if (Utils.isLoggedIn(mContext)){
+        if (Utils.isLoggedIn(mContext)){
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
-        }else {*/
+        }else {
             initUI();
-       // }
+        }
     }
 
     private void initUI() {
@@ -87,7 +87,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     @Override
     public void doLogin() {
-        Utils.setLoggedIn(mContext, true);
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         finish();
     }

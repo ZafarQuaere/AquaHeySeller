@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.provider.Settings;
+import android.support.v4.app.Fragment;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -125,6 +126,10 @@ public class Utils {
         }
         return isLogIn;
 
+    }
+
+    public static void moveToFragment(Context mContext,Fragment fragment,String fragName,Object data) {
+        LogUtils.DEBUG("MoveToFragment : "+fragName);
     }
 /*
     @SuppressLint("ResourceType")

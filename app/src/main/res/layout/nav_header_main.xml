@@ -54,7 +54,7 @@
                 android:drawableLeft="@mipmap/ic_launcher"
                 android:drawablePadding="@dimen/_5dp"
                 android:gravity="center_vertical"
-                android:onClick="item1Click"
+                android:onClick="onHomeClick"
                 android:paddingVertical="@dimen/nav_header_vertical_spacing"
                 android:text="Item1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
