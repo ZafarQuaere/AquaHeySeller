@@ -22,15 +22,13 @@ public class LogUtils {
 
     public static void showToast(Context context, String message) {
         if (context != null) {
-            final Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
+            final Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-
         }
     }
 
     public static void DEBUG(String sb) {
-
         if (sb.length() > 4000) {
             int chunkCount = sb.length() / 4000;
             for (int i = 0; i <= chunkCount; i++) {
