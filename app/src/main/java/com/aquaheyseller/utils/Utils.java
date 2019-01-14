@@ -2,7 +2,6 @@ package com.aquaheyseller.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
@@ -13,16 +12,14 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.fragments.HomeFragment;
-import com.aquaheyseller.ui.fragments.ListingsFragment;
-import com.aquaheyseller.ui.fragments.OrdersFragment;
 import com.aquaheyseller.utils.storage.AppSharedPrefs;
 
 import java.io.Serializable;
@@ -58,27 +55,7 @@ public class Utils {
 
     }
 
-    //navigating to fragment
-  /*  public static void moveToFragment(Context context, Fragment fragment, Object data) {
-        LogUtils.DEBUG("moveToFragment() called : " + fragment.getClass().getSimpleName());
-        if (context == null || fragment == null)
-            return;
 
-        FragmentManager manager = ((Activity) context).getFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.lytMain, fragment, fragment.getClass().getSimpleName());
-
-        //if data is also transferring
-        Bundle bundle = new Bundle();
-        if (data != null) {
-            bundle.putSerializable(context.getString(R.string.key_serializable), (Serializable) data);
-        }
-        fragment.setArguments(bundle);
-
-        transaction.addToBackStack(fragment.getClass().getSimpleName());
-        transaction.commit();
-    }
-*/
     public static boolean isValidMobileNumber(String mobileNo) {
         return Patterns.PHONE.matcher(mobileNo)
                 .matches();
@@ -137,14 +114,15 @@ public class Utils {
 
     }
 
-    public static void moveToFragment(Context context,Fragment fragment,String fragName,Object data) {
+    public static void moveToFragment(Context context, Fragment fragment, String fragName, Object data) {
         LogUtils.DEBUG("moveToFragment() called : " + fragment.getClass().getSimpleName());
         if (context == null || fragment == null)
             return;
 
-        android.app.FragmentManager manager = ((Activity) context).getFragmentManager();
+        FragmentManager manager = ((AppCompatActivity) context).getSupportFragmentManager();
+       // ((Activity)context).getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        //transaction.add(R.id.lytMain, fragment, fragment.getClass().getSimpleName());
+        transaction.add(R.id.lytMain, fragment, fragment.getClass().getSimpleName());
 
         //if data is also transferring
         Bundle bundle = new Bundle();
@@ -210,7 +188,7 @@ public class Utils {
         }
         android.app.FragmentManager fm = ((Activity) activity).getFragmentManager();
 
-        for (int i = fm.getBackStackEntryCount()-1 ; i > 0; i--) {
+        for (int i = fm.getBackStackEntryCount() - 1; i > 0; i--) {
             String fragmentName = (fm.getBackStackEntryAt(i)).getName();
             if (!fragmentName.equals(new HomeFragment().getClass().getName())) {
                 fm.popBackStack();
@@ -220,7 +198,7 @@ public class Utils {
             }
         }
         // updateActionBar(activity, new HomeFragment().getClass().getSimpleName(), activity.getString(R.string.reddy_ice), null, null, null);
-       // updateBottomBar(activity, new HomeFragment().getClass().getSimpleName());
+        // updateBottomBar(activity, new HomeFragment().getClass().getSimpleName());
     }
 /*
     @SuppressLint("ResourceType")
