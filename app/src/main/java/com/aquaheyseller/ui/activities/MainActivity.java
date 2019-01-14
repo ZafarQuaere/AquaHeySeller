@@ -19,7 +19,7 @@ import com.aquaheyseller.ui.presenters.operations.IMain;
 import com.aquaheyseller.utils.Utils;
 
 public class MainActivity extends BaseActivity<MainPresenter>
-        implements NavigationView.OnNavigationItemSelectedListener, IMain {
+        implements  IMain {
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -50,9 +50,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -66,18 +64,18 @@ public class MainActivity extends BaseActivity<MainPresenter>
     }
 
     public void onHomeClick(View view) {
-        Utils.moveToFragment(this,new HomeFragment(), HomeFragment.class.getSimpleName(),null);
+        getPresenter().moveToFragment(HomeFragment.class.getSimpleName());
         closeDrawer();
 
     }
 
     public void item2Click(View view) {
-        Utils.moveToFragment(this,new OrdersFragment(), HomeFragment.class.getSimpleName(),null);
+        getPresenter().moveToFragment(OrdersFragment.class.getSimpleName());
         closeDrawer();
     }
 
     public void item3Click(View view) {
-        Utils.moveToFragment(this,new ListingsFragment(), HomeFragment.class.getSimpleName(),null);
+        getPresenter().moveToFragment(ListingsFragment.class.getSimpleName());
         closeDrawer();
     }
 
@@ -85,7 +83,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        return false;
     }
 
     @Override
@@ -103,20 +101,6 @@ public class MainActivity extends BaseActivity<MainPresenter>
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            closeDrawer();
-        } else if (id == R.id.nav_photos) {
-            closeDrawer();
-        }
-
-        return true;
-    }
 
     public void closeDrawer() {
         if (drawer != null) {
@@ -127,23 +111,5 @@ public class MainActivity extends BaseActivity<MainPresenter>
         }
     }
 
-    @Override
-    public void moveToHomeFragment() {
 
-    }
-
-    @Override
-    public void moveToOrderFragment() {
-
-    }
-
-    @Override
-    public void moveToListingFragment() {
-
-    }
-
-    @Override
-    public void moveToPaymentFragment() {
-
-    }
 }
