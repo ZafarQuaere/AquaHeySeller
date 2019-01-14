@@ -2,21 +2,30 @@ package com.aquaheyseller.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.aquaheyseller.R;
+import com.aquaheyseller.ui.fragments.HomeFragment;
+import com.aquaheyseller.ui.fragments.ListingsFragment;
+import com.aquaheyseller.ui.fragments.OrdersFragment;
 import com.aquaheyseller.utils.storage.AppSharedPrefs;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -128,8 +137,90 @@ public class Utils {
 
     }
 
-    public static void moveToFragment(Context mContext,Fragment fragment,String fragName,Object data) {
-        LogUtils.DEBUG("MoveToFragment : "+fragName);
+    public static void moveToFragment(Context context,Fragment fragment,String fragName,Object data) {
+        LogUtils.DEBUG("moveToFragment() called : " + fragment.getClass().getSimpleName());
+        if (context == null || fragment == null)
+            return;
+
+        android.app.FragmentManager manager = ((Activity) context).getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        //transaction.add(R.id.lytMain, fragment, fragment.getClass().getSimpleName());
+
+        //if data is also transferring
+        Bundle bundle = new Bundle();
+        if (data != null) {
+            bundle.putSerializable(context.getString(R.string.key_serializable), (Serializable) data);
+        }
+        fragment.setArguments(bundle);
+
+        transaction.addToBackStack(fragment.getClass().getSimpleName());
+        transaction.commit();
+
+    }
+
+   /* public static void updateActionBar(final Activity activity, final String className,
+                                       String dynamicTitle, Object customHeaderData,  final ActionBarItemClickListener actionBarItemClickListener) {
+
+        if (activity == null)
+            return;
+
+        LogUtils.DEBUG(AppConstant.TAG + " Utils >> updateActionBar() called : " + className + "/" + dynamicTitle);
+
+        RelativeLayout toolbarLayout = (RelativeLayout) activity.findViewById(R.id.toolbar);
+        TextView textTitle = (TextView) toolbarLayout.findViewById(R.id.textTitle);
+        TextView textBack = (TextView) toolbarLayout.findViewById(R.id.textBack);
+        textTitle.setText(dynamicTitle);
+        textBack.setVisibility(View.GONE);
+
+        if (className.equals(new HomeFragment().getClass().getSimpleName())) {
+            textBack.setVisibility(View.GONE);
+            textBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //activity.startActivity(new Intent(activity, LoginActivity.class));
+
+                }
+            });
+        } else if (className.equals(new OrdersFragment().getClass().getSimpleName())) {
+            textBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.onBackPressed();
+                }
+            });
+        }
+
+        else if (className.equals(new ListingsFragment().getClass().getSimpleName())) {
+            textBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activity.onBackPressed();
+                }
+            });
+        }
+
+
+    }*/
+
+    public static void clearBackStackTillHomeFragment(Activity activity) {
+
+        LogUtils.DEBUG("Utils >> clearBackStackTillHomeFragment() >> activity : " + activity);
+        if (activity == null) {
+            return;
+        }
+        android.app.FragmentManager fm = ((Activity) activity).getFragmentManager();
+
+        for (int i = fm.getBackStackEntryCount()-1 ; i > 0; i--) {
+            String fragmentName = (fm.getBackStackEntryAt(i)).getName();
+            if (!fragmentName.equals(new HomeFragment().getClass().getName())) {
+                fm.popBackStack();
+                LogUtils.DEBUG("Utils >> clearBackStackTillHomeFragment() >> removed fragment : " + fragmentName);
+            } else {
+                break;
+            }
+        }
+        // updateActionBar(activity, new HomeFragment().getClass().getSimpleName(), activity.getString(R.string.reddy_ice), null, null, null);
+       // updateBottomBar(activity, new HomeFragment().getClass().getSimpleName());
     }
 /*
     @SuppressLint("ResourceType")

@@ -28,4 +28,5 @@
     <string name="nav_header_title">Aqua Hey</string>
     <string name="nav_header_subtitle">AquaHeyIndia</string>
     <string name="action_settings">settings</string>
+    <string name="key_serializable">key_serializable</string>
 </resources>
