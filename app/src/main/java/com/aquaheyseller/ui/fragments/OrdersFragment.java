@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import com.aquaheyseller.R;
 import com.aquaheyseller.utils.Utils;
 
-public class OrdersFragment extends Fragment {
+public class OrdersFragment extends BaseFragment {
 
-private ProgressFragment progressDialog ;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,18 +25,17 @@ private ProgressFragment progressDialog ;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_orders, container, false);
-        progressDialog = new ProgressFragment();
-        progressDialog.setCancelable(false);
+
 
 
         view.findViewById(R.id.textView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.showNow(getFragmentManager(),"Progress");
+                    openDialog();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        progressDialog.dismiss();
+                       hideDialog();
                     }
                 },5000);
             }
