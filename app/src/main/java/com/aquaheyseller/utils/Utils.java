@@ -22,10 +22,16 @@ import com.aquaheyseller.R;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.utils.storage.AppSharedPrefs;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.zip.GZIPInputStream;
 
 
 public class Utils {
@@ -134,6 +140,20 @@ public class Utils {
         transaction.addToBackStack(fragment.getClass().getSimpleName());
         transaction.commit();
 
+    }
+
+    public static byte[] decompress(byte[] str) throws IOException, UnsupportedEncodingException {
+        if (str == null || str.length == 0) {
+            return str;
+        }
+        GZIPInputStream gis = new GZIPInputStream(new ByteArrayInputStream(str));
+        BufferedReader bf = new BufferedReader(new InputStreamReader(gis, "UTF-8"));
+        StringBuilder outStr = new StringBuilder();
+        String line;
+        while ((line = bf.readLine()) != null) {
+            outStr.append(line);
+        }
+        return new String(outStr).getBytes();
     }
 
    /* public static void updateActionBar(final Activity activity, final String className,
