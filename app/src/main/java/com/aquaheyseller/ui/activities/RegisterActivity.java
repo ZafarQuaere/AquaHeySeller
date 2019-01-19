@@ -34,7 +34,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         findViewById(R.id.btnRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateFields();
+                startActivity(new Intent(RegisterActivity.this, EnterOTPActivity.class));
+                //validateFields();
             }
         });
 
