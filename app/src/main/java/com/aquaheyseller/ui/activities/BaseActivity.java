@@ -1,5 +1,7 @@
 package com.aquaheyseller.ui.activities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 
+import com.aquaheyseller.ui.fragments.ProgressFragment;
 import com.aquaheyseller.ui.interfaces.BackPressHandler;
 import com.aquaheyseller.ui.presenters.BasePresenter;
 
@@ -14,16 +17,18 @@ import com.aquaheyseller.ui.presenters.BasePresenter;
 public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity  {
 
     private P mPresenter;
-   // private Unbinder mUnbinder;
+    private ProgressFragment progressDialog;
+    // private Unbinder mUnbinder;
 
     protected abstract P initPresenter();
-
+    private Context mContext;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter = initPresenter();
+        mContext = this;
 
     }
 
@@ -59,6 +64,15 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
 
+    public void openDialog(){
+        progressDialog = new ProgressFragment();
+        progressDialog.setCancelable(false);
+        progressDialog.showNow(((AppCompatActivity) mContext).getSupportFragmentManager(),"Progress");
+    }
+
+    public void hideDialog(){
+        progressDialog.dismiss();
+    }
 
 
     /**
