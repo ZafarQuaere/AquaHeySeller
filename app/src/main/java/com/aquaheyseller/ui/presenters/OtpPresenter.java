@@ -6,11 +6,11 @@ import com.aquaheyseller.R;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
 import com.aquaheyseller.utils.Utils;
 
-public class LoginPresenter extends BasePresenter {
+public class OtpPresenter extends BasePresenter {
     private Context mContext;
     private ILogin mLogin;
 
-    public LoginPresenter(Context context, ILogin iLogin) {
+    public OtpPresenter(Context context, ILogin iLogin) {
         super(context);
         mLogin = iLogin;
         mContext = context;

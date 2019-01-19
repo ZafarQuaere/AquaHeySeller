@@ -8,7 +8,7 @@
             android:title="@string/nav_home" />
         <item
             android:id="@+id/nav_photos"
-            android:icon="@drawable/drops"
+            android:icon="@drawable/icon_drops"
             android:title="@string/nav_photos" />
 
     </group>

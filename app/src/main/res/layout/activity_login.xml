@@ -21,7 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/_40dp"
         android:elevation="@dimen/_10dp"
-        android:src="@drawable/drops" />
+        android:src="@drawable/icon_drops" />
 
 
     <LinearLayout
