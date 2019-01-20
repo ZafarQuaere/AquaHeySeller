@@ -69,7 +69,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
     }
 
-    public void item2Click(View view) {
+    public void ordersClick(View view) {
         getPresenter().moveToFragment(OrdersFragment.class.getSimpleName());
         closeDrawer();
     }
