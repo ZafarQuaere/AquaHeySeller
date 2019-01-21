@@ -5,20 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.ui.presenters.BasePresenter;
+import com.aquaheyseller.network_call.request.Register;
 import com.aquaheyseller.ui.presenters.RegisterPresenter;
 import com.aquaheyseller.ui.presenters.operations.IRegister;
+import com.aquaheyseller.utils.LogUtils;
 
 
 public class RegisterActivity extends BaseActivity<RegisterPresenter> implements IRegister {
 
-
-
     private Context mContext;
-
 
     @Override
     protected RegisterPresenter initPresenter() {
@@ -34,8 +31,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         findViewById(R.id.btnRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, EnterOTPActivity.class));
-                //validateFields();
+               // startActivity(new Intent(RegisterActivity.this, EnterOTPActivity.class));
+                validateFields();
             }
         });
 
@@ -56,13 +53,21 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     }
 
     @Override
+    public void callApi(Register register) {
+        openProgressDialog();
+        getPresenter().callRegisterApi(register);
+
+    }
+
+    @Override
     public void doRegister() {
+        hideProgressDialog();
         startActivity(new Intent(RegisterActivity.this, EnterOTPActivity.class));
         finish();
     }
 
     @Override
     public void onValidationError(String msg) {
-
+        LogUtils.showErrorDialog(mContext,getString(R.string.ok),msg);
     }
 }

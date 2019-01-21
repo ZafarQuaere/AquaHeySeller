@@ -64,13 +64,13 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     }
 
 
-    public void openDialog(){
+    public void openProgressDialog(){
         progressDialog = new ProgressFragment();
         progressDialog.setCancelable(false);
         progressDialog.showNow(((AppCompatActivity) mContext).getSupportFragmentManager(),"Progress");
     }
 
-    public void hideDialog(){
+    public void hideProgressDialog(){
         progressDialog.dismiss();
     }
 
