@@ -48,6 +48,7 @@ public class RegisterPresenter extends BasePresenter {
     }
 
     public void callRegisterApi(final Register register) {
+        showDialog("Registering....","Register");
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("dname", register.getName());
@@ -60,19 +61,22 @@ public class RegisterPresenter extends BasePresenter {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        LogUtils.DEBUG("URL : "+AppConstant.REGISTER_URL+"\nRequest Body ::"+requestObject.toString());
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, AppConstant.REGISTER_URL, requestObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("Register Response ::" + response.toString());
+                dismissDialog();
                 mRegister.doRegister();
+
 
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                dismissDialog();
+                LogUtils.DEBUG("Register Error ::" + error.getMessage());
             }
         });
         AppController.getInstance().addToRequestQueue(objectRequest, "Register");
