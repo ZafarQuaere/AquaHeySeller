@@ -70,7 +70,6 @@ public abstract class BasePresenter {
     }
 
     // Dialog
-
     public Dialog showDialog(int messageRes, int titleRes) {
         return showDialog(messageRes, titleRes, null);
     }

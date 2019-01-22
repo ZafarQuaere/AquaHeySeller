@@ -2,9 +2,20 @@ package com.aquaheyseller.ui.presenters;
 
 import android.content.Context;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
+import com.aquaheyseller.network_call.MyJsonObjectRequest;
+import com.aquaheyseller.network_call.request.Register;
 import com.aquaheyseller.ui.presenters.operations.IRegister;
+import com.aquaheyseller.utils.AppConstant;
+import com.aquaheyseller.utils.AppController;
+import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.Utils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class RegisterPresenter extends BasePresenter {
     private Context mContext;
@@ -16,21 +27,54 @@ public class RegisterPresenter extends BasePresenter {
         mContext = context;
     }
 
-    public void validateFields(String name, String mobileNo,String email,String pswd,String confmPswd) {
+    public void validateFields(String name, String mobileNo, String email, String pswd, String confmPswd) {
         if (name.equals("") || name.isEmpty()) {
             mRegister.onValidationError(mContext.getString(R.string.please_enter_username));
         } else if (mobileNo.equals("") || mobileNo.isEmpty() || mobileNo.length() < 10) {
             mRegister.onValidationError(mContext.getString(R.string.please_enter_valid_mobile_number));
         } else if (!Utils.isValidEmail(email)) {
             mRegister.onValidationError(mContext.getString(R.string.please_enter_valid_email));
-        } else if (pswd.equals("") || pswd.isEmpty() ) {
+        } else if (pswd.equals("") || pswd.isEmpty()) {
             mRegister.onValidationError(mContext.getString(R.string.please_enter_password));
         } else if (pswd.length() < 6) {
             mRegister.onValidationError(mContext.getString(R.string.password_must_have_atleast_6_character));
-        } else if (!confmPswd.equals(pswd) ) {
+        } else if (!confmPswd.equals(pswd)) {
             mRegister.onValidationError(mContext.getString(R.string.please_enter_same_pswd));
         } else {
-            mRegister.doRegister();
+            Register register = new Register(name, pswd, mobileNo, email, 0, 0);
+            mRegister.callApi(register);
+
         }
+    }
+
+    public void callRegisterApi(final Register register) {
+        JSONObject requestObject = new JSONObject();
+        try {
+            requestObject.put("dname", register.getName());
+            requestObject.put("password", register.getPassword());
+            requestObject.put("mobile", register.getMobile());
+            requestObject.put("email", register.getEmail());
+            requestObject.put("userType", register.getUserType());
+            requestObject.put("dealerId", register.getDealerId());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, AppConstant.REGISTER_URL, requestObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                LogUtils.DEBUG("Register Response ::" + response.toString());
+                mRegister.doRegister();
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        AppController.getInstance().addToRequestQueue(objectRequest, "Register");
     }
 }
