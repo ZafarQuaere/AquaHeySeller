@@ -20,12 +20,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     private EditText editUserName;
     private EditText editPassword;
-    private RelativeLayout lytParent;
     private LinearLayout lytTop;
-    private Button btnLogin;
-    private Button btnSignUp;
-    private String userId;
-    private String password;
     private Context mContext;
 
 
@@ -50,9 +45,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     private void initUI() {
         editUserName = (EditText) findViewById(R.id.editUserName);
         editPassword = (EditText) findViewById(R.id.editPassword);
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        lytParent = (RelativeLayout) findViewById(R.id.lytParent);
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        Button btnSignUp = (Button) findViewById(R.id.btnSignUp);
+        RelativeLayout lytParent = (RelativeLayout) findViewById(R.id.lytParent);
         lytTop = (LinearLayout) findViewById(R.id.lytTop);
         btnLogin.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
@@ -80,8 +75,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     }
 
     private void validationField() {
-        userId = editUserName.getText().toString().trim();
-        password = editPassword.getText().toString().trim();
+        String userId = editUserName.getText().toString().trim();
+        String password = editPassword.getText().toString().trim();
         getPresenter().validateUsernamePassword(userId, password);
     }
 
@@ -93,7 +88,12 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     @Override
     public void onValidationError(String msg) {
-        LogUtils.showToast(mContext,msg);
+        LogUtils.showErrorDialog(mContext,getString(R.string.ok),msg);
+    }
+
+    @Override
+    public void callLoginApi(String userId,String password) {
+        getPresenter().callApi(userId,password);
     }
 
     @Override

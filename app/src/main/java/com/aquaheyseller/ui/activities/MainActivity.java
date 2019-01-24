@@ -36,7 +36,12 @@ public class MainActivity extends BaseActivity<MainPresenter>
         setContentView(R.layout.activity_main);
         setUpToolbar();
         initUI();
+        moveToHome();
 
+    }
+
+    private void moveToHome() {
+        getPresenter().moveToFragment(HomeFragment.class.getSimpleName());
     }
 
     private void setUpToolbar() {

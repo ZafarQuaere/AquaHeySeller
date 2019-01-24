@@ -2,9 +2,19 @@ package com.aquaheyseller.ui.presenters;
 
 import android.content.Context;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
+import com.aquaheyseller.network_call.MyJsonObjectRequest;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
+import com.aquaheyseller.utils.AppConstant;
+import com.aquaheyseller.utils.AppController;
+import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.Utils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginPresenter extends BasePresenter {
     private Context mContext;
@@ -25,7 +35,40 @@ public class LoginPresenter extends BasePresenter {
             mLogin.onValidationError(mContext.getString(R.string.password_must_have_atleast_6_character));
         } else {
             Utils.setLoggedIn(mContext, true);
-            mLogin.doLogin();
+            mLogin.callLoginApi(userId,password);
         }
+    }
+
+    public void callApi(String userId, String password) {
+        showDialog("Login Please wait....","Login");
+        JSONObject requestObject = new JSONObject();
+        try {
+            requestObject.put("userId", userId);
+            requestObject.put("password", password);
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        LogUtils.DEBUG("URL : "+ AppConstant.LOGIN_URL+"\nRequest Body ::"+requestObject.toString());
+        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, AppConstant.LOGIN_URL, requestObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                LogUtils.DEBUG("Login Response ::" + response.toString());
+                dismissDialog();
+                mLogin.doLogin();
+
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                dismissDialog();
+                LogUtils.DEBUG("Login Error ::" + error.getMessage());
+            }
+        });
+        AppController.getInstance().addToRequestQueue(objectRequest, "Login");
     }
 }
