@@ -54,14 +54,14 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
 
     @Override
     public void callApi(Register register) {
-        openProgressDialog();
+        //openProgressDialog();
         getPresenter().callRegisterApi(register);
 
     }
 
     @Override
     public void doRegister() {
-        hideProgressDialog();
+       // hideProgressDialog();
         startActivity(new Intent(RegisterActivity.this, EnterOTPActivity.class));
         finish();
     }

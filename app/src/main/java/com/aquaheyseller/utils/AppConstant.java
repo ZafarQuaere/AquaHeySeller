@@ -9,4 +9,5 @@ public class AppConstant {
 
 
     public static final String REGISTER_URL = "http://www.aquahey.com/signup";
+    public static final String LOGIN_URL = "http://www.aquahey.com/login";
 }
