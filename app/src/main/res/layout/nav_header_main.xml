@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/nav_header_desc"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
-            app:srcCompat="@mipmap/icon_man" />
+            app:srcCompat="@drawable/icon_man" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -149,7 +149,7 @@
                 android:drawableLeft="@drawable/ic_logout"
                 android:drawablePadding="@dimen/drawable_padding"
                 android:gravity="center_vertical"
-                android:onClick="item3Click"
+                android:onClick="onLogoutClick"
                 android:paddingVertical="@dimen/nav_header_vertical_spacing"
                 android:text="@string/logout"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"

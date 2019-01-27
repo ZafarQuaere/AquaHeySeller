@@ -17,9 +17,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.fragments.HomeFragment;
+import com.aquaheyseller.ui.fragments.ListingsFragment;
+import com.aquaheyseller.ui.fragments.OrdersFragment;
+import com.aquaheyseller.ui.interfaces.DialogButtonClick;
 import com.aquaheyseller.utils.storage.AppSharedPrefs;
 
 import java.io.BufferedReader;
@@ -156,15 +161,15 @@ public class Utils {
         return new String(outStr).getBytes();
     }
 
-   /* public static void updateActionBar(final Activity activity, final String className,
-                                       String dynamicTitle, Object customHeaderData,  final ActionBarItemClickListener actionBarItemClickListener) {
+   public static void updateActionBar(final Context activity, final String className,
+                                       String dynamicTitle, Object customHeaderData,  final DialogButtonClick actionBarItemClickListener) {
 
         if (activity == null)
             return;
 
         LogUtils.DEBUG(AppConstant.TAG + " Utils >> updateActionBar() called : " + className + "/" + dynamicTitle);
 
-        RelativeLayout toolbarLayout = (RelativeLayout) activity.findViewById(R.id.toolbar);
+        RelativeLayout toolbarLayout = (RelativeLayout) ((Activity)activity).findViewById(R.id.lytToolbar);
         TextView textTitle = (TextView) toolbarLayout.findViewById(R.id.textTitle);
         TextView textBack = (TextView) toolbarLayout.findViewById(R.id.textBack);
         textTitle.setText(dynamicTitle);
@@ -183,7 +188,7 @@ public class Utils {
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    activity.onBackPressed();
+                    ((Activity)activity).onBackPressed();
                 }
             });
         }
@@ -192,13 +197,13 @@ public class Utils {
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    activity.onBackPressed();
+                    ((Activity)activity).onBackPressed();
                 }
             });
         }
 
 
-    }*/
+    }
 
     public static void clearBackStackTillHomeFragment(Activity activity) {
 
@@ -404,7 +409,7 @@ public class Utils {
 
 
     public static void updateActionBar(final Activity activity, final String className,
-                                       String dynamicTitle, Object customHeaderData, final ActionBarItemClickListener actionBarItemClickListener) {
+                                       String dynamicTitle, Object customHeaderData, final DialogButtonClick actionBarItemClickListener) {
 
         if (activity == null)
             return;

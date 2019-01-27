@@ -40,13 +40,12 @@ public class LoginPresenter extends BasePresenter {
     }
 
     public void callApi(String userId, String password) {
-        showDialog("Login Please wait....","Login");
+        mLogin.doLogin();
+        /*showDialog("Login Please wait....","Login");
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("userId", userId);
             requestObject.put("password", password);
-
-
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -69,6 +68,6 @@ public class LoginPresenter extends BasePresenter {
                 LogUtils.DEBUG("Login Error ::" + error.getMessage());
             }
         });
-        AppController.getInstance().addToRequestQueue(objectRequest, "Login");
+        AppController.getInstance().addToRequestQueue(objectRequest, "Login");*/
     }
 }

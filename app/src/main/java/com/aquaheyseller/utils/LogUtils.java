@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aquaheyseller.R;
+import com.aquaheyseller.ui.interfaces.DialogButtonClick;
 
 
 public class LogUtils {
@@ -74,23 +75,34 @@ public class LogUtils {
         dialog.show();
     }
 
-    private void showSuccessDialog(Context ctx, String btnText, String message) {
+    public static void showDialogDoubleButton(Context ctx, String btnCancelTxt, String btnOkTxt, String message, final DialogButtonClick listener) {
         final Dialog dialog = new Dialog(ctx);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.setContentView(R.layout.dialog_single_button);
-        Button dialogButton = (Button) dialog.findViewById(R.id.btn_ok);
+        dialog.setContentView(R.layout.dialog_double_button);
+        Button btnOk = (Button) dialog.findViewById(R.id.btn_ok);
+        Button btnCancel = (Button) dialog.findViewById(R.id.btnCancel);
         TextView textMessage = (TextView) dialog.findViewById(R.id.text_message);
         textMessage.setText(message);
-        dialogButton.setText(btnText);
-        dialogButton.setOnClickListener(new View.OnClickListener() {
+        btnCancel.setText(btnCancelTxt);
+        btnOk.setText(btnOkTxt);
+        btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-
+                if (listener != null){
+                    listener.onOkClick();
+                }
             }
         });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
         dialog.show();
     }
 

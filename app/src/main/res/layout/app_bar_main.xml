@@ -11,10 +11,53 @@
         android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
+            android:visibility="gone"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary" />
+        <RelativeLayout
+            android:id="@+id/lytToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgActionBarDrawerIcon"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/_5dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/ic_menu_24dp" />
+            <TextView
+                android:id="@+id/textBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/color_white"
+                android:paddingVertical="@dimen/_10dp"
+                android:paddingLeft="@dimen/_10dp"
+                android:layout_alignParentLeft="true"
+                android:gravity="center"
+                android:textSize="@dimen/font_20sp"
+                android:text="back"
+                android:textStyle="bold"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/color_white"
+                android:paddingVertical="@dimen/_10dp"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="@dimen/font_20sp"
+                android:text="Title"
+                android:textStyle="bold"
+                android:visibility="visible" />
+
+        </RelativeLayout>
 
     </android.support.design.widget.AppBarLayout>
 

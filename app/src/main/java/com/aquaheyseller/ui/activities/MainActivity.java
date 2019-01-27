@@ -6,9 +6,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.fragments.HomeFragment;
@@ -16,10 +15,9 @@ import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
 import com.aquaheyseller.ui.presenters.MainPresenter;
 import com.aquaheyseller.ui.presenters.operations.IMain;
-import com.aquaheyseller.utils.Utils;
 
 public class MainActivity extends BaseActivity<MainPresenter>
-        implements  IMain {
+        implements IMain {
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -56,6 +54,17 @@ public class MainActivity extends BaseActivity<MainPresenter>
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        ImageView imgDrawerIcon = (ImageView) findViewById(R.id.imgActionBarDrawerIcon);
+        imgDrawerIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDrawer();
+            }
+        });
+    }
+
+    private void openDrawer() {
+        drawer.openDrawer(GravityCompat.START);
     }
 
     @Override
@@ -84,28 +93,10 @@ public class MainActivity extends BaseActivity<MainPresenter>
         closeDrawer();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return false;
+    public void onLogoutClick(View view) {
+        getPresenter().logoutUser();
+        closeDrawer();
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 
     public void closeDrawer() {
         if (drawer != null) {
@@ -115,6 +106,4 @@ public class MainActivity extends BaseActivity<MainPresenter>
             drawer.closeDrawer(GravityCompat.START);
         }
     }
-
-
 }
