@@ -25,6 +25,7 @@
             android:theme="@style/AppTheme"
             />
         <activity android:name=".ui.activities.EnterOTPActivity" />
+        <activity android:name=".ui.activities.ForgetPswdActivity" />
     </application>
 
 </manifest>
