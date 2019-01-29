@@ -4,28 +4,26 @@ import android.content.Context;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
+import com.aquaheyseller.ui.presenters.operations.IOtp;
 import com.aquaheyseller.utils.Utils;
 
 public class OtpPresenter extends BasePresenter {
     private Context mContext;
-    private ILogin mLogin;
+    private IOtp iOtp;
 
-    public OtpPresenter(Context context, ILogin iLogin) {
+    public OtpPresenter(Context context, IOtp iOtp) {
         super(context);
-        mLogin = iLogin;
+        this.iOtp = iOtp;
         mContext = context;
     }
 
-    public void validateUsernamePassword(String userId, String password) {
-        if (userId.equals("") || userId.isEmpty()) {
-            mLogin.onValidationError(mContext.getString(R.string.please_enter_username));
-        } else if (password.equals("") || password.isEmpty()) {
-            mLogin.onValidationError(mContext.getString(R.string.please_enter_password));
-        } else if (password.length() < 6) {
-            mLogin.onValidationError(mContext.getString(R.string.password_must_have_atleast_6_character));
+    public void validateOtp(String otp) {
+        if (otp.equals("") || otp.isEmpty()) {
+            iOtp.onValidationError(mContext.getString(R.string.please_enter_otp));
+        } else if (otp.length() < 4) {
+            iOtp.onValidationError(mContext.getString(R.string.enter_valid_otp));
         } else {
-            Utils.setLoggedIn(mContext, true);
-            mLogin.doLogin();
+            iOtp.submitOtp();
         }
     }
 }

@@ -4,26 +4,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.EditText;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.ui.presenters.BasePresenter;
 import com.aquaheyseller.ui.presenters.OtpPresenter;
 import com.aquaheyseller.ui.presenters.operations.IOtp;
+import com.aquaheyseller.utils.LogUtils;
 
 
 public class EnterOTPActivity extends BaseActivity<OtpPresenter> implements IOtp {
 
-
-    private LinearLayout lytTop;
-    private String userId;
-    private String password;
     private Context mContext;
-
 
     @Override
     protected OtpPresenter initPresenter() {
-        return null;
+        return new OtpPresenter(this, this);
     }
 
     @Override
@@ -32,32 +27,37 @@ public class EnterOTPActivity extends BaseActivity<OtpPresenter> implements IOtp
         setContentView(R.layout.activity_otp);
         mContext = this;
 
-        initUI();
         findViewById(R.id.btnSubmit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EnterOTPActivity.this,MainActivity.class));
-                finish();
+                validationField();
             }
         });
 
     }
 
-    private void initUI() {
-
-    }
 
     private void validationField() {
-
+        EditText editOTP = (EditText) findViewById(R.id.editOTP);
+        getPresenter().validateOtp(editOTP.getText().toString().trim());
     }
 
     @Override
     public void submitOtp() {
-
+        startActivity(new Intent(EnterOTPActivity.this, LoginActivity.class));
+        finishAffinity();
     }
 
     @Override
     public void onValidationError(String msg) {
+        LogUtils.showErrorDialog(mContext, getString(R.string.ok), msg);
+    }
+
+    public void resendOTP(View view) {
+
+    }
+
+    public void editNumber(View view) {
 
     }
 }

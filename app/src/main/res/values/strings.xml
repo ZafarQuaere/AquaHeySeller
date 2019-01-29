@@ -52,4 +52,6 @@
     <string name="cancel">Cancel</string>
     <string name="do_you_really_want_to_logout">Do you really wants to Logout ?</string>
     <string name="enter_registered_mobile_no">Enter registered mobile no.</string>
+    <string name="please_enter_otp">Please enter otp which is sent to your mobile number</string>
+    <string name="enter_valid_otp">Enter valid otp</string>
 </resources>
