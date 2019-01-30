@@ -40,21 +40,22 @@ public class LoginPresenter extends BasePresenter {
     }
 
     public void callApi(String userId, String password) {
-        mLogin.doLogin();
-        /*showDialog("Login Please wait....","Login");
+        //mLogin.doLogin();
+        showDialog("Login Please wait....","Login");
         JSONObject requestObject = new JSONObject();
         try {
-            requestObject.put("userId", userId);
+            requestObject.put("email", userId);
             requestObject.put("password", password);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        LogUtils.DEBUG("URL : "+ AppConstant.LOGIN_URL+"\nRequest Body ::"+requestObject.toString());
-        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, AppConstant.LOGIN_URL, requestObject, new Response.Listener<JSONObject>() {
+        String url = AppConstant.baseUrl+AppConstant.loginUrl;
+        LogUtils.DEBUG("URL : "+url+"\nRequest Body ::"+requestObject.toString());
+        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST,url, requestObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                LogUtils.DEBUG("Login Response ::" + response.toString());
+                LogUtils.DEBUG("Login Response ::" + response);
                 dismissDialog();
                 mLogin.doLogin();
 
@@ -68,6 +69,6 @@ public class LoginPresenter extends BasePresenter {
                 LogUtils.DEBUG("Login Error ::" + error.getMessage());
             }
         });
-        AppController.getInstance().addToRequestQueue(objectRequest, "Login");*/
+        AppController.getInstance().addToRequestQueue(objectRequest, "Login");
     }
 }

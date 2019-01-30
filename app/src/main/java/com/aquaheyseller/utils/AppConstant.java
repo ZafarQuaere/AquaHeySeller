@@ -10,4 +10,11 @@ public class AppConstant {
 
     public static final String REGISTER_URL = "http://www.aquahey.com/signup";
     public static final String LOGIN_URL = "http://www.aquahey.com/login";
+
+    public static final String baseUrl = "https://reqres.in";
+    public static final String listUrl = "/api/users?page=2";
+    public static final String userByIdUrl = "/api/users/2";
+    public static final String registerUrl = "/api/register";
+    public static final String loginUrl = "/api/login";
+
 }
