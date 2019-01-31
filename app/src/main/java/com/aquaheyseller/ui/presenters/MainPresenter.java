@@ -35,11 +35,11 @@ public class MainPresenter extends BasePresenter {
                 break;
             case "OrdersFragment":
                 Utils.moveToFragment(mContext, new OrdersFragment(), OrdersFragment.class.getSimpleName(), null);
-                Utils.updateActionBar(mContext,HomeFragment.class.getSimpleName(),"Orders",null,null);
+                Utils.updateActionBar(mContext,OrdersFragment.class.getSimpleName(),"Orders",null,null);
                 break;
             case "ListingsFragment":
                 Utils.moveToFragment(mContext, new ListingsFragment(), ListingsFragment.class.getSimpleName(), null);
-                Utils.updateActionBar(mContext,HomeFragment.class.getSimpleName(),"Order List",null,null);
+                Utils.updateActionBar(mContext,ListingsFragment.class.getSimpleName(),"Order List",null,null);
                 break;
             case "PaymentsFragment":
                 Utils.moveToFragment(mContext, new PaymentsFragment(), PaymentsFragment.class.getSimpleName(), null);

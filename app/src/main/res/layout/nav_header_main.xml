@@ -83,7 +83,7 @@
                 android:drawableLeft="@drawable/ic_listings"
                 android:drawablePadding="@dimen/drawable_padding"
                 android:gravity="center_vertical"
-                android:onClick="item3Click"
+                android:onClick="onListingClick"
                 android:paddingVertical="@dimen/nav_header_vertical_spacing"
                 android:text="@string/listings"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"

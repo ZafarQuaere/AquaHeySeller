@@ -72,15 +72,6 @@ public class MainActivity extends BaseActivity<MainPresenter>
         drawer.openDrawer(GravityCompat.START);
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
 
     public void onHomeClick(View view) {
         getPresenter().moveToFragment(HomeFragment.class.getSimpleName());
@@ -95,6 +86,11 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
     public void onPaymentsClick(View view) {
         getPresenter().moveToFragment(PaymentsFragment.class.getSimpleName());
+        closeDrawer();
+    }
+
+    public void onListingClick(View view) {
+        getPresenter().moveToFragment(ListingsFragment.class.getSimpleName());
         closeDrawer();
     }
 
@@ -114,6 +110,17 @@ public class MainActivity extends BaseActivity<MainPresenter>
         } else {
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
+        }
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
         }
     }
 }
