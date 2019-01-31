@@ -1,5 +1,6 @@
 package com.aquaheyseller.ui.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,8 +14,10 @@ import com.aquaheyseller.R;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
+import com.aquaheyseller.ui.fragments.PaymentsFragment;
 import com.aquaheyseller.ui.presenters.MainPresenter;
 import com.aquaheyseller.ui.presenters.operations.IMain;
+import com.aquaheyseller.utils.LogUtils;
 
 public class MainActivity extends BaseActivity<MainPresenter>
         implements IMain {
@@ -22,6 +25,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
+    private Context mContext;
 
     @Override
     protected MainPresenter initPresenter() {
@@ -32,6 +36,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mContext = this;
         setUpToolbar();
         initUI();
         moveToHome();
@@ -88,8 +93,13 @@ public class MainActivity extends BaseActivity<MainPresenter>
         closeDrawer();
     }
 
+    public void onPaymentsClick(View view) {
+        getPresenter().moveToFragment(PaymentsFragment.class.getSimpleName());
+        closeDrawer();
+    }
+
     public void item3Click(View view) {
-        getPresenter().moveToFragment(ListingsFragment.class.getSimpleName());
+        LogUtils.showToast(mContext,"Development under progress");
         closeDrawer();
     }
 

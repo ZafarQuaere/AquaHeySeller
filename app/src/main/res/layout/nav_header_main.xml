@@ -96,7 +96,7 @@
                 android:drawableLeft="@drawable/ic_rupee"
                 android:drawablePadding="@dimen/drawable_padding"
                 android:gravity="center_vertical"
-                android:onClick="item3Click"
+                android:onClick="onPaymentsClick"
                 android:paddingVertical="@dimen/nav_header_vertical_spacing"
                 android:text="@string/payments"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"

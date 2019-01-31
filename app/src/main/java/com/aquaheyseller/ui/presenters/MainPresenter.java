@@ -9,6 +9,7 @@ import com.aquaheyseller.ui.activities.LoginActivity;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
+import com.aquaheyseller.ui.fragments.PaymentsFragment;
 import com.aquaheyseller.ui.interfaces.DialogButtonClick;
 import com.aquaheyseller.ui.presenters.operations.IMain;
 import com.aquaheyseller.utils.LogUtils;
@@ -40,8 +41,12 @@ public class MainPresenter extends BasePresenter {
                 Utils.moveToFragment(mContext, new ListingsFragment(), ListingsFragment.class.getSimpleName(), null);
                 Utils.updateActionBar(mContext,HomeFragment.class.getSimpleName(),"Order List",null,null);
                 break;
+            case "PaymentsFragment":
+                Utils.moveToFragment(mContext, new PaymentsFragment(), PaymentsFragment.class.getSimpleName(), null);
+                Utils.updateActionBar(mContext,PaymentsFragment.class.getSimpleName(),"Payments",null,null);
+                break;
         }
-        LogUtils.showToast(mContext, fragName);
+        //LogUtils.showToast(mContext, fragName);
     }
 
     public void logoutUser() {
