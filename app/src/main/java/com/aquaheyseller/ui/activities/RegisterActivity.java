@@ -62,7 +62,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
     @Override
     public void doRegister() {
        // hideProgressDialog();
-        startActivity(new Intent(RegisterActivity.this, EnterOTPActivity.class));
+        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
         finish();
     }
 

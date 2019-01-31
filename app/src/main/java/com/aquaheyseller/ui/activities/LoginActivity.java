@@ -97,7 +97,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
                 break;
 
             case R.id.lytParent:
-                Utils.hideKeyboard(LoginActivity.this, lytTop);
+                Utils.hideKeyboard(mContext);
                 break;
         }
     }

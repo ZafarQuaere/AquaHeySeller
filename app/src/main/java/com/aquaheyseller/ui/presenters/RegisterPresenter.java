@@ -51,25 +51,24 @@ public class RegisterPresenter extends BasePresenter {
         showDialog("Registering....","Register");
         JSONObject requestObject = new JSONObject();
         try {
-            requestObject.put("dname", register.getName());
-            requestObject.put("password", register.getPassword());
-            requestObject.put("mobile", register.getMobile());
+           // requestObject.put("dname", register.getName());
             requestObject.put("email", register.getEmail());
+            requestObject.put("password", register.getPassword());
+           /* requestObject.put("mobile", register.getMobile());
             requestObject.put("userType", register.getUserType());
-            requestObject.put("dealerId", register.getDealerId());
+            requestObject.put("dealerId", register.getDealerId());*/
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        LogUtils.DEBUG("URL : "+AppConstant.REGISTER_URL+"\nRequest Body ::"+requestObject.toString());
-        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, AppConstant.REGISTER_URL, requestObject, new Response.Listener<JSONObject>() {
+        String url = AppConstant.baseUrl+AppConstant.registerUrl;
+        LogUtils.DEBUG("URL : "+url+"\nRequest Body ::"+requestObject.toString());
+        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("Register Response ::" + response.toString());
                 dismissDialog();
                 mRegister.doRegister();
-
-
             }
 
         }, new Response.ErrorListener() {

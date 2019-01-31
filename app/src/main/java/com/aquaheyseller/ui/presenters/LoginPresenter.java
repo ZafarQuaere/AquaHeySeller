@@ -35,13 +35,12 @@ public class LoginPresenter extends BasePresenter {
             mLogin.onValidationError(mContext.getString(R.string.password_must_have_atleast_6_character));
         } else {
             Utils.setLoggedIn(mContext, true);
-            mLogin.callLoginApi(userId,password);
+            mLogin.callLoginApi(userId, password);
         }
     }
 
     public void callApi(String userId, String password) {
-        //mLogin.doLogin();
-        showDialog("Login Please wait....","Login");
+        showDialog("Login Please wait....", "Login");
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("email", userId);
@@ -50,16 +49,16 @@ public class LoginPresenter extends BasePresenter {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        String url = AppConstant.baseUrl+AppConstant.loginUrl;
-        LogUtils.DEBUG("URL : "+url+"\nRequest Body ::"+requestObject.toString());
-        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST,url, requestObject, new Response.Listener<JSONObject>() {
+        String url = AppConstant.baseUrl + AppConstant.loginUrl;
+        LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
+        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                LogUtils.DEBUG("Login Response ::" + response);
+               /* Gson gson = new GsonBuilder().create();
+                String string = gson.toJson(response);*/
+                LogUtils.DEBUG("Login Response ::" + response.toString());
                 dismissDialog();
                 mLogin.doLogin();
-
-
             }
 
         }, new Response.ErrorListener() {

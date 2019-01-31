@@ -35,4 +35,5 @@ dependencies {
     api 'com.squareup.okhttp3:logging-interceptor:3.9.1'
 
     implementation 'com.mcxiaoke.volley:library:1.0.19'
+    compile project(path: ':JavaPractice')
 }

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -30,6 +31,7 @@ import com.aquaheyseller.utils.storage.AppSharedPrefs;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -41,31 +43,32 @@ import java.util.zip.GZIPInputStream;
 
 public class Utils {
 
-    public static boolean isNetConnected(Context context) {
-        if (context == null) {
-            return false;
-        }
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        //should check null because in airplane mode it will be null
-        return (netInfo != null && netInfo.isConnected());
 
+    public static void hideKeyboard(Context context) {
+        showKeyboard(context, false);
     }
 
+    public static void showKeyboard(Context context) {
+        showKeyboard(context, true);
+    }
 
-    public static void hideKeyboard(Context context, View view) {
-        if (context == null || view == null) {
+    private static void showKeyboard(Context context, boolean show) {
+        if (!(context instanceof Activity)) {
             return;
         }
-        try {
-            InputMethodManager inputManager = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
-            inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        } catch (Exception e) {
-            LogUtils.ERROR("Error in hideKeyboard() : " + e.toString());
+        InputMethodManager inputManager = (InputMethodManager) context.getSystemService(Context
+                .INPUT_METHOD_SERVICE);
+        View currentFocus = ((Activity) context).getCurrentFocus();
+        if (currentFocus == null) {
+            return;
         }
-
+        if (show) {
+            inputManager.showSoftInput(currentFocus, InputMethodManager.SHOW_IMPLICIT);
+        } else {
+            inputManager.hideSoftInputFromWindow(currentFocus.getWindowToken(),
+                    InputMethodManager.HIDE_NOT_ALWAYS);
+        }
     }
-
 
     public static boolean isValidMobileNumber(String mobileNo) {
         return Patterns.PHONE.matcher(mobileNo)
@@ -225,268 +228,41 @@ public class Utils {
         // updateActionBar(activity, new HomeFragment().getClass().getSimpleName(), activity.getString(R.string.reddy_ice), null, null, null);
         // updateBottomBar(activity, new HomeFragment().getClass().getSimpleName());
     }
-/*
-    @SuppressLint("ResourceType")
-    public static void updateBottomBar(final Activity activity, final String className) {
 
-        LinearLayout lytBottomBar = (LinearLayout) activity.findViewById(R.id.lytBottomBar);
+    public static String loadJSONFromAsset(Context context, String jsonFileName)
+            throws IOException {
 
-        LinearLayout lytHomeBar = (LinearLayout) activity.findViewById(R.id.lytHomeBar);
-        LinearLayout lytOrders = (LinearLayout) activity.findViewById(R.id.lytOrders);
-        LinearLayout lytVegOrder = (LinearLayout) activity.findViewById(R.id.lytVegOrder);
-        LinearLayout lytNonvegOrders = (LinearLayout) activity.findViewById(R.id.lytNonvegOrders);
-        LinearLayout lytHistoryBar = (LinearLayout) activity.findViewById(R.id.lytHistoryBar);
+        AssetManager manager = context.getAssets();
+        InputStream is = manager.open(jsonFileName);
 
+        int size = is.available();
+        byte[] buffer = new byte[size];
+        is.read(buffer);
+        is.close();
 
-        TextView textBottomHomeIcon = (TextView) lytBottomBar.findViewById(R.id.textBottomHomeIcon);
-        TextView textIconOrders = (TextView) lytBottomBar.findViewById(R.id.textIconOrders);
-        TextView textBottomHistoryIcon = (TextView) lytBottomBar.findViewById(R.id.textBottomHistoryIcon);
-        TextView textBottomNonVegIcon = (TextView) lytBottomBar.findViewById(R.id.textBottomNonVegIcon);
-        TextView textBottomVegIcon = (TextView) lytBottomBar.findViewById(R.id.textBottomVegIcon);
-
-        TextView textHomeLable = (TextView) lytBottomBar.findViewById(R.id.textHomeLable);
-        TextView textOrderLable = (TextView) lytBottomBar.findViewById(R.id.textOrderLable);
-        TextView textVegLable = (TextView) lytBottomBar.findViewById(R.id.textVegLable);
-        TextView textNonVegLable = (TextView) lytBottomBar.findViewById(R.id.textNonVegLable);
-        TextView textHistoryLable = (TextView) lytBottomBar.findViewById(R.id.textHistoryLable);
-
-        lytBottomBar.setVisibility(View.VISIBLE);
-
-        lytHomeBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try {
-                    if (!AppDialogLoader.getLoader(activity).CheckLoaderStatus()) {
-                        if (className.equalsIgnoreCase(new HomeFragment().getClass().getSimpleName())){
-
-                        }else {
-
-                            Utils.moveToFragment(activity, new HomeFragment(), null);
-                            updateBottomBar(activity, new HomeFragment().getClass().getSimpleName());
-                        }
-
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        lytOrders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (className.equalsIgnoreCase(new OrdersFragment().getClass().getSimpleName())){
-
-                }else {
-                    if (isNetConnected(activity)) {
-                        if (!AppDialogLoader.getLoader(activity).CheckLoaderStatus()) {
-                            clearBackStackTillHomeFragment(activity);
-                            Utils.moveToFragment(activity, new OrdersFragment(), null);
-                            updateBottomBar(activity, new OrdersFragment().getClass().getSimpleName());
-
-                        }
-                    } else {
-                        LogUtils.showToast(activity, activity.getString(R.string.please_check_network_connection));
-                    }
-                }
-            }
-        });
-
-        lytHistoryBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (className.equalsIgnoreCase(new HistoryFragment().getClass().getSimpleName())){
-
-                }else {
-                    if (Utils.isNetConnected(activity)) {
-                        clearBackStackTillHomeFragment(activity);
-                        Utils.moveToFragment(activity, new HistoryFragment(), null);
-                        updateBottomBar(activity, new HistoryFragment().getClass().getSimpleName());
-                    } else {
-                        LogUtils.showToast(activity, activity.getString(R.string.please_check_network_connection));
-                    }
-                }
-            }
-        });
-
-        lytVegOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if (!AppDialogLoader.getLoader(activity).CheckLoaderStatus()) {
-                    if (className.equalsIgnoreCase(new VegOrdersFragment().getClass().getSimpleName())){
-
-                    }else {
-                        clearBackStackTillHomeFragment(activity);
-                        Utils.moveToFragment(activity, new VegOrdersFragment(), null);
-                    }
-                }
-
-            }
-        });
-
-        lytNonvegOrders.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (className.equalsIgnoreCase(new NonVegOrdersFragment().getClass().getSimpleName())){
-
-                }else {
-                    clearBackStackTillHomeFragment(activity);
-                    Utils.moveToFragment(activity, new NonVegOrdersFragment(), null);
-                    updateBottomBar(activity, new NonVegOrdersFragment().getClass().getSimpleName());
-                }
-
-            }
-        });
-
-
-        if (className.equals(new HomeFragment().getClass().getSimpleName())) {
-
-           *//* textBottomHomeIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_app_theme)));
-            textIconOrders.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textBottomHistoryIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textBottomNonVegIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textBottomVegIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));*//*
-
-            textHomeLable.setTextColor(Color.parseColor(activity.getString(R.color.color_app_theme)));
-            textOrderLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textVegLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textNonVegLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textHistoryLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-        } else if (className.equals(new OrdersFragment().getClass().getSimpleName())) {
-           *//* textBottomHomeIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textIconOrders.setTextColor(Color.parseColor(activity.getString(R.color.color_app_theme)));
-            textBottomHistoryIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textBottomNonVegIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textBottomVegIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));*//*
-
-            textHomeLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textOrderLable.setTextColor(Color.parseColor(activity.getString(R.color.color_app_theme)));
-            textVegLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textNonVegLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textHistoryLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-        } else if (className.equals(new VegOrdersFragment().getClass().getSimpleName()) ) {
-           *//*textBottomHomeIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textIconOrders.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textBottomHistoryIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textBottomNonVegIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textBottomVegIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_app_theme)));*//*
-
-            textHomeLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textOrderLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textVegLable.setTextColor(Color.parseColor(activity.getString(R.color.color_app_theme)));
-            textNonVegLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textHistoryLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-
-        } else if (className.equals(new NonVegOrdersFragment().getClass().getSimpleName())) {
-            //textBottomHomeIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            //textIconOrders.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            //textBottomVegIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-          *//*  textBottomHistoryIcon.setBackgroundDrawable(activity.getResources().getDrawable(R.drawable.icon_history));
-            textBottomNonVegIcon.setBackgroundDrawable(activity.getResources().getDrawable(R.drawable.icon_nonveg_colored));*//*
-
-
-            textHomeLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textOrderLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textHistoryLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textNonVegLable.setTextColor(Color.parseColor(activity.getString(R.color.color_app_theme)));
-            textVegLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-
-        } else if (className.equals(new HistoryFragment().getClass().getSimpleName())) {
-           *//* textBottomHomeIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textIconOrders.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));
-            textBottomVegIcon.setTextColor(Color.parseColor(activity.getString(R.color.color_dark_grey)));*//*
-     *//*textBottomHistoryIcon.setBackgroundDrawable(activity.getResources().getDrawable(R.drawable.icon_history_colored));
-            textBottomNonVegIcon.setBackgroundDrawable(activity.getResources().getDrawable(R.drawable.icon_nonveg));*//*
-
-            textHomeLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textOrderLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textVegLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textNonVegLable.setTextColor(Color.parseColor(activity.getString(R.color.color_black)));
-            textHistoryLable.setTextColor(Color.parseColor(activity.getString(R.color.color_app_theme)));
-        }
+        return new String(buffer, "UTF-8");
     }
 
+    public static boolean isNetworkEnabled(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 
-    public static void updateActionBar(final Activity activity, final String className,
-                                       String dynamicTitle, Object customHeaderData, final DialogButtonClick actionBarItemClickListener) {
-
-        if (activity == null)
-            return;
-
-        LogUtils.DEBUG(AppConstant.TAG + " Utils >> updateActionBar() called : " + className + "/" + dynamicTitle);
-
-        RelativeLayout toolbarLayout = (RelativeLayout) activity.findViewById(R.id.toolbar);
-        TextView textTitle = (TextView) toolbarLayout.findViewById(R.id.textTitle);
-        TextView textBack = (TextView) toolbarLayout.findViewById(R.id.textBack);
-        textTitle.setText(dynamicTitle);
-        textBack.setVisibility(View.GONE);
-
-        if (className.equals(new HomeFragment().getClass().getSimpleName())) {
-            textBack.setVisibility(View.GONE);
-            textBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //activity.startActivity(new Intent(activity, LoginActivity.class));
-
-                }
-            });
-        } else if (className.equals(new OrdersFragment().getClass().getSimpleName())) {
-            textBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    activity.onBackPressed();
-                }
-            });
+        NetworkInfo wifiNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        if (wifiNetwork != null && wifiNetwork.isConnected()) {
+            return true;
         }
 
-        else if (className.equals(new VegOrdersFragment().getClass().getSimpleName())) {
-            textBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    activity.onBackPressed();
-                }
-            });
+        NetworkInfo mobileNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (mobileNetwork != null && mobileNetwork.isConnected()) {
+            return true;
         }
 
-        else if (className.equals(new NonVegOrdersFragment().getClass().getSimpleName())) {
-            textBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    activity.onBackPressed();
-                }
-            });
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (activeNetwork != null && activeNetwork.isConnected()) {
+            return true;
         }
-        else if (className.equals(new HistoryFragment().getClass().getSimpleName())) {
-            textBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    activity.onBackPressed();
-                }
-            });
-        }
+
+        return false;
     }
-
-    public static void clearBackStackTillHomeFragment(Activity activity) {
-
-        LogUtils.DEBUG("Utils >> clearBackStackTillHomeFragment() >> activity : " + activity);
-        if (activity == null) {
-            return;
-        }
-        FragmentManager fm = ((Activity) activity).getFragmentManager();
-
-        for (int i = fm.getBackStackEntryCount()-1 ; i > 0; i--) {
-            String fragmentName = (fm.getBackStackEntryAt(i)).getName();
-            if (!fragmentName.equals(new HomeFragment().getClass().getName())) {
-                fm.popBackStack();
-                LogUtils.DEBUG("Utils >> clearBackStackTillHomeFragment() >> removed fragment : " + fragmentName);
-            } else {
-                break;
-            }
-        }
-       // updateActionBar(activity, new HomeFragment().getClass().getSimpleName(), activity.getString(R.string.reddy_ice), null, null, null);
-        updateBottomBar(activity, new HomeFragment().getClass().getSimpleName());
-    }*/
 
 
 }

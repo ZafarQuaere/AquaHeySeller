@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <bool name="bool_read_from_local">true</bool>
+    <bool name="read_from_local">false</bool>
 </resources>
