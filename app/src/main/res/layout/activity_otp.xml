@@ -49,6 +49,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
+            android:maxLength="6"
             android:background="@drawable/rectangle_bg"
             android:ems="10"
             android:hint="@string/enter_otp"
