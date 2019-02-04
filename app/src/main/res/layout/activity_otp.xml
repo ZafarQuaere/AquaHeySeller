@@ -9,7 +9,7 @@
         <Button
             android:id="@+id/btnContd2"
             android:layout_width="180dp"
-            android:layout_height="55dp"
+            android:layout_height="@dimen/resend_otp_button_height"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
@@ -27,7 +27,7 @@
         <Button
             android:id="@+id/cancel"
             android:layout_width="0dp"
-            android:layout_height="55dp"
+            android:layout_height="@dimen/edit_no_button_height"
             android:layout_marginTop="8dp"
             android:background="@drawable/btnedit"
             android:text="@string/edit_number"
@@ -42,7 +42,7 @@
         <EditText
             android:id="@+id/editOTP"
             android:layout_width="270dp"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/edit_field_height"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
@@ -103,7 +103,7 @@
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="270dp"
-            android:layout_height="45dp"
+            android:layout_height="@dimen/button_height"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"

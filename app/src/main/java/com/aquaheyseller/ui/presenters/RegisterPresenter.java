@@ -1,7 +1,6 @@
 package com.aquaheyseller.ui.presenters;
 
 import android.content.Context;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -12,6 +11,7 @@ import com.aquaheyseller.ui.presenters.operations.IRegister;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.NetworkUtils;
 import com.aquaheyseller.utils.Utils;
 
 import org.json.JSONException;
@@ -41,8 +41,12 @@ public class RegisterPresenter extends BasePresenter {
         } else if (!confmPswd.equals(pswd)) {
             mRegister.onValidationError(mContext.getString(R.string.please_enter_same_pswd));
         } else {
-            Register register = new Register(name, pswd, mobileNo, email, 0, 0);
-            mRegister.callApi(register);
+            if (NetworkUtils.isNetworkEnabled(mContext)) {
+                Register register = new Register(name, pswd, mobileNo, email, 0, 0);
+                mRegister.callApi(register);
+            }else {
+                mRegister.onValidationError(mContext.getString(R.string.please_check_your_network_connection));
+            }
 
         }
     }

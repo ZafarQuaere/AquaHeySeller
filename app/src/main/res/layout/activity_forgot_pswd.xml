@@ -9,7 +9,7 @@
     <EditText
         android:id="@+id/editMobile"
         android:layout_width="310dp"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/edit_field_height"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -70,7 +70,7 @@
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="171dp"
-        android:layout_height="45dp"
+        android:layout_height="@dimen/button_height"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"

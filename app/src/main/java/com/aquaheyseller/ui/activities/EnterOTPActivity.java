@@ -53,6 +53,11 @@ public class EnterOTPActivity extends BaseActivity<OtpPresenter> implements IOtp
         LogUtils.showErrorDialog(mContext, getString(R.string.ok), msg);
     }
 
+    @Override
+    public void callSubmitOtpApi(String otp) {
+        getPresenter().callSubmitOtpApi(otp);
+    }
+
     public void resendOTP(View view) {
 
     }

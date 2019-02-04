@@ -44,31 +44,7 @@ import java.util.zip.GZIPInputStream;
 public class Utils {
 
 
-    public static void hideKeyboard(Context context) {
-        showKeyboard(context, false);
-    }
 
-    public static void showKeyboard(Context context) {
-        showKeyboard(context, true);
-    }
-
-    private static void showKeyboard(Context context, boolean show) {
-        if (!(context instanceof Activity)) {
-            return;
-        }
-        InputMethodManager inputManager = (InputMethodManager) context.getSystemService(Context
-                .INPUT_METHOD_SERVICE);
-        View currentFocus = ((Activity) context).getCurrentFocus();
-        if (currentFocus == null) {
-            return;
-        }
-        if (show) {
-            inputManager.showSoftInput(currentFocus, InputMethodManager.SHOW_IMPLICIT);
-        } else {
-            inputManager.hideSoftInputFromWindow(currentFocus.getWindowToken(),
-                    InputMethodManager.HIDE_NOT_ALWAYS);
-        }
-    }
 
     public static boolean isValidMobileNumber(String mobileNo) {
         return Patterns.PHONE.matcher(mobileNo)
@@ -229,40 +205,6 @@ public class Utils {
         // updateBottomBar(activity, new HomeFragment().getClass().getSimpleName());
     }
 
-    public static String loadJSONFromAsset(Context context, String jsonFileName)
-            throws IOException {
-
-        AssetManager manager = context.getAssets();
-        InputStream is = manager.open(jsonFileName);
-
-        int size = is.available();
-        byte[] buffer = new byte[size];
-        is.read(buffer);
-        is.close();
-
-        return new String(buffer, "UTF-8");
-    }
-
-    public static boolean isNetworkEnabled(Context context) {
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo wifiNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        if (wifiNetwork != null && wifiNetwork.isConnected()) {
-            return true;
-        }
-
-        NetworkInfo mobileNetwork = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        if (mobileNetwork != null && mobileNetwork.isConnected()) {
-            return true;
-        }
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        if (activeNetwork != null && activeNetwork.isConnected()) {
-            return true;
-        }
-
-        return false;
-    }
 
 
 }

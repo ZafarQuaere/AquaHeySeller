@@ -56,4 +56,9 @@ public class ForgetPswdActivity extends BaseActivity<ForgotPswdPresenter> implem
     public void onValidationError(String msg) {
         LogUtils.showErrorDialog(mContext, getString(R.string.ok), msg);
     }
+
+    @Override
+    public void callSubmitMobileApi(String mobile) {
+       // getPresenter().callSubmitMobileApi(mobile);
+    }
 }

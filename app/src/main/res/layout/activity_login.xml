@@ -15,8 +15,8 @@
          android:layout_height="wrap_content"/>-->
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/lytTop"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/_40dp"
@@ -43,7 +43,7 @@
             <EditText
                 android:id="@+id/editUserName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/edit_field_height"
                 android:background="@drawable/rectangle_bg"
                 android:elevation="@dimen/_10dp"
                 android:gravity="center_horizontal"
@@ -61,7 +61,7 @@
             <EditText
                 android:id="@+id/editPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/edit_field_height"
                 android:layout_marginTop="@dimen/_20dp"
                 android:background="@drawable/rectangle_bg"
                 android:elevation="@dimen/_10dp"
@@ -80,7 +80,7 @@
             <Button
                 android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginHorizontal="@dimen/_20dp"
                 android:layout_marginTop="@dimen/_30dp"
                 android:background="@drawable/btnsignin"
@@ -97,6 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_10dp"
                 android:padding="@dimen/_10dp"
                 android:text="@string/forgot_pswd"
                 android:textAlignment="center"
@@ -104,9 +105,10 @@
                 android:textSize="16sp" />
 
             <Button
+                android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/btnSignUp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/button_height"
                 android:layout_marginHorizontal="@dimen/_20dp"
                 android:background="@drawable/btnsignup"
                 android:elevation="@dimen/_10dp"

@@ -14,6 +14,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.aquaheyseller.R;
 import com.aquaheyseller.utils.AppConstant;
+import com.aquaheyseller.utils.FileUtils;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.Utils;
 
@@ -50,7 +51,7 @@ public class MyJsonObjectRequest extends JsonObjectRequest {
             }
 
             try {
-                listener.onResponse(new JSONObject(Utils.loadJSONFromAsset(mContext,fileName)));
+                listener.onResponse(new JSONObject(FileUtils.loadJSONFromAsset(mContext,fileName)));
             } catch (Exception e) {
                 e.printStackTrace();
             }

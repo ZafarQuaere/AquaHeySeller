@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.presenters.LoginPresenter;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
+import com.aquaheyseller.utils.KeyboardUtils;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.Utils;
 
@@ -67,6 +68,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
 
     @Override
     public void doLogin() {
+
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         finish();
     }
@@ -97,7 +99,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
                 break;
 
             case R.id.lytParent:
-                Utils.hideKeyboard(mContext);
+                KeyboardUtils.hideKeyboard(mContext);
                 break;
         }
     }

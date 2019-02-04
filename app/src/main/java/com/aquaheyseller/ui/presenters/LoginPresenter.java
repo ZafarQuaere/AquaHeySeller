@@ -11,6 +11,7 @@ import com.aquaheyseller.ui.presenters.operations.ILogin;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.NetworkUtils;
 import com.aquaheyseller.utils.Utils;
 
 import org.json.JSONException;
@@ -34,8 +35,11 @@ public class LoginPresenter extends BasePresenter {
         } else if (password.length() < 6) {
             mLogin.onValidationError(mContext.getString(R.string.password_must_have_atleast_6_character));
         } else {
-            Utils.setLoggedIn(mContext, true);
-            mLogin.callLoginApi(userId, password);
+            if (NetworkUtils.isNetworkEnabled(mContext)) {
+                mLogin.callLoginApi(userId, password);
+            }else {
+                mLogin.onValidationError(mContext.getString(R.string.please_check_your_network_connection));
+            }
         }
     }
 
@@ -58,6 +62,7 @@ public class LoginPresenter extends BasePresenter {
                 String string = gson.toJson(response);*/
                 LogUtils.DEBUG("Login Response ::" + response.toString());
                 dismissDialog();
+                Utils.setLoggedIn(mContext, true);
                 mLogin.doLogin();
             }
 
