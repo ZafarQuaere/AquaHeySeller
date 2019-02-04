@@ -3,6 +3,8 @@ package com.aquaheyseller.ui.activities;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -18,6 +20,7 @@ import com.aquaheyseller.ui.fragments.PaymentsFragment;
 import com.aquaheyseller.ui.presenters.MainPresenter;
 import com.aquaheyseller.ui.presenters.operations.IMain;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.Utils;
 
 public class MainActivity extends BaseActivity<MainPresenter>
         implements IMain {
@@ -120,7 +123,30 @@ public class MainActivity extends BaseActivity<MainPresenter>
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
+            //super.onBackPressed();
+            updateToolbar();
+        }
+        //getPresenter().updateToolbarTitle(mContext);
+    }
+
+    private void updateToolbar() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+        if (count > 0) {
+            try {
+                getSupportFragmentManager().popBackStack();
+                FragmentManager.BackStackEntry a = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 2);//top
+                Fragment baseFrag = (Fragment) getSupportFragmentManager().findFragmentByTag(a.getName());
+                LogUtils.DEBUG("baseFrag Fragment : " + baseFrag.getClass().getSimpleName());
+                Utils.updateActionBar(mContext, baseFrag.getClass().getSimpleName(), baseFrag.getClass().getSimpleName(), null, null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
             super.onBackPressed();
         }
+        if (count == 1){
+            finishAffinity();
+        }
+
     }
 }

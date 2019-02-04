@@ -25,6 +25,7 @@ import com.aquaheyseller.R;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
+import com.aquaheyseller.ui.fragments.PaymentsFragment;
 import com.aquaheyseller.ui.interfaces.DialogButtonClick;
 import com.aquaheyseller.utils.storage.AppSharedPrefs;
 
@@ -151,11 +152,12 @@ public class Utils {
         RelativeLayout toolbarLayout = (RelativeLayout) ((Activity)activity).findViewById(R.id.lytToolbar);
         TextView textTitle = (TextView) toolbarLayout.findViewById(R.id.textTitle);
         TextView textBack = (TextView) toolbarLayout.findViewById(R.id.textBack);
-        textTitle.setText(dynamicTitle);
+
         textBack.setVisibility(View.GONE);
 
         if (className.equals(new HomeFragment().getClass().getSimpleName())) {
             textBack.setVisibility(View.GONE);
+            textTitle.setText(activity.getString(R.string.app_name));
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -164,6 +166,7 @@ public class Utils {
                 }
             });
         } else if (className.equals(new OrdersFragment().getClass().getSimpleName())) {
+            textTitle.setText(activity.getString(R.string.orders));
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -173,6 +176,16 @@ public class Utils {
         }
 
         else if (className.equals(new ListingsFragment().getClass().getSimpleName())) {
+            textTitle.setText(activity.getString(R.string.listings));
+            textBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((Activity)activity).onBackPressed();
+                }
+            });
+        }
+        else if (className.equals(new PaymentsFragment().getClass().getSimpleName())) {
+            textTitle.setText(activity.getString(R.string.payments));
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
