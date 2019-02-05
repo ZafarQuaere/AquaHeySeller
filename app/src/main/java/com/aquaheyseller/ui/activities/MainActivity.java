@@ -2,7 +2,6 @@ package com.aquaheyseller.ui.activities;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -27,7 +26,6 @@ public class MainActivity extends BaseActivity<MainPresenter>
 
     private Toolbar toolbar;
     private DrawerLayout drawer;
-    private NavigationView navigationView;
     private Context mContext;
 
     @Override
@@ -61,7 +59,6 @@ public class MainActivity extends BaseActivity<MainPresenter>
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
         ImageView imgDrawerIcon = (ImageView) findViewById(R.id.imgActionBarDrawerIcon);
         imgDrawerIcon.setOnClickListener(new View.OnClickListener() {
             @Override
