@@ -14,4 +14,11 @@ fun main(args: Array<String>){
     println("Your Long Value is "+l);
     println("Your Short Value is "+s);
     println("Your Byte Value is "+b);
+
+    println("\n\nBiggest Int is "+Int.MAX_VALUE)
+    println("Lowest Int is "+Int.MIN_VALUE)
+
+    if (true is Boolean){
+        println("true is Boolean")
+    }
 }
