@@ -1,0 +1,12 @@
+Aqua Hey Seller App Api Requirements.
+
+1) Sign Up :
+GSTNO (To fetch details of the bussiness, a separate api),
+BusinessName,email,mobile, password.
+
+2) Login Api
+MobileNo, password
+
+3) Forgot Password
+	Generate OTP : (MobileNo)
+	Enter OTP : (MobileNo, otp)

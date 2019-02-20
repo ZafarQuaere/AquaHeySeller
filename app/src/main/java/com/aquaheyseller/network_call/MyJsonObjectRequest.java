@@ -56,7 +56,6 @@ public class MyJsonObjectRequest extends JsonObjectRequest {
                 e.printStackTrace();
             }
         }else {
-            LogUtils.DEBUG(AppConstant.TAG+" json request : " + requestBody.toString());
             LogUtils.DEBUG(AppConstant.TAG+" url : " + url);
         }
 
