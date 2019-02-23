@@ -2,11 +2,35 @@ Aqua Hey Seller App Api Requirements.
 
 1) Sign Up :
 GSTNO (To fetch details of the bussiness, a separate api),
+
 BusinessName,email,mobile, password.
 
-2) Login Api
-MobileNo, password
+2)
+Api Name : Login Api
+Parameter : MobileNo, password
 
-3) Forgot Password
-	Generate OTP : (MobileNo)
-	Enter OTP : (MobileNo, otp)
+3)
+Api name : Forgot Password
+
+	a) Generate OTP : Parameter(MobileNo)
+	b) Enter OTP : Parameter(MobileNo, otp)
+
+
+
+4. Home Screen with Dashboard contents: (If content is available then content otherwise a message )
+	i. Sales this week
+	ii. Today’s Sales
+	iii. Service Quality
+
+6. Orders Api
+	Numbers of Orders he is having in a week (with category of pending,shipped,completed)
+
+
+URL_LOGIN = "http://www.aquahey.com/login"; //{mobile,password}
+
+URL_NEW_BRAND = 	"http://www.aquahey.com/new-brand"; //{brandname,banner_image}
+URL_INSERT_PRODUCT = "http://www.aquahey.com/insert-product"; //{pName,imagePath,dealerId,name,price,productType,isBrand}
+
+URL_INSERT_DEALER = "http://www.aquahey.com/insert-dealer"; //{dName,mobile,brandIds,rating,addressId}
+URL_DEALER_ADDRESS = "http://www.aquahey.com/insert-dealer-address"; //{userId,addressOne,city,state,pincode,latitude,longitude}
+URL_SIGNUP = "http://www.aquahey.com/signup"; //{name,password,mobile,email,userType,dealerId}
