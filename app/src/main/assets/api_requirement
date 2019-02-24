@@ -26,7 +26,7 @@ Api name : Forgot Password
 	Numbers of Orders he is having in a week (with category of pending,shipped,completed)
 
 
-URL_LOGIN = "http://www.aquahey.com/login"; //{mobile,password}
+URL_LOGIN = "http://www.aquahey.com/login"; //{mobile,password} //not working with mobile and password
 
 URL_NEW_BRAND = 	"http://www.aquahey.com/new-brand"; //{brandname,banner_image}
 URL_INSERT_PRODUCT = "http://www.aquahey.com/insert-product"; //{pName,imagePath,dealerId,name,price,productType,isBrand}
@@ -34,3 +34,38 @@ URL_INSERT_PRODUCT = "http://www.aquahey.com/insert-product"; //{pName,imagePath
 URL_INSERT_DEALER = "http://www.aquahey.com/insert-dealer"; //{dName,mobile,brandIds,rating,addressId}
 URL_DEALER_ADDRESS = "http://www.aquahey.com/insert-dealer-address"; //{userId,addressOne,city,state,pincode,latitude,longitude}
 URL_SIGNUP = "http://www.aquahey.com/signup"; //{name,password,mobile,email,userType,dealerId}
+
+===============================================================================================================
+Request Response
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+URL_LOGIN = "http://www.aquahey.com/login"; //{mobile,password}
+
+
+URL_NEW_BRAND = 	"http://www.aquahey.com/new-brand"; //{brandname,banner_image}
+URL_INSERT_PRODUCT = "http://www.aquahey.com/insert-product"; //{pName,imagePath,dealerId,name,price,productType,isBrand}
+
+
+URL_INSERT_DEALER = "http://www.aquahey.com/insert-dealer"; //{
+  "dName": "MyWater",
+  "mobile": "7834908329",
+  "brandIds": "",
+  "rating": "",
+  "addressId": ""
+}
+Response : {"success":1,"id":0,"token":"","uid":4}
+
+URL_DEALER_ADDRESS = "http://www.aquahey.com/insert-dealer-address"; //{
+  "userId": "4",
+  "addressOne": "MyWater",
+  "city": "Delhi",
+  "state": "Delhi",
+  "pincode": "123456",
+  "latitude": "112233",
+  "longitude": "445566"
+}
+Response : Html pages
+
+URL_SIGNUP = "http://www.aquahey.com/signup"; //{name,password,mobile,email,userType,dealerId}
+Response : Error : {"message":"Mobile Number Already Ragistered","totalItem":""}
+{"success":1,"totalItem":0,"resultArray":{"id":"18","name":"Zafar","password":"e552b64969de0305919e367fd9783e388c8c4b8244e8172a6717a09a974230d9",
+"mobile":"1234567890","email":"zafima20@gmail.com","token":"No Available","userType":"1","dealerId":"4"}}
