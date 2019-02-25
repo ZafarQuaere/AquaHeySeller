@@ -50,11 +50,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         editPassword = (EditText) findViewById(R.id.editPassword);
         textForgetPswd = (TextView) findViewById(R.id.textForgetPswd);
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
-        Button btnSignUp = (Button) findViewById(R.id.btnSignUp);
+        Button btnAddSeller = (Button) findViewById(R.id.btnAddSeller);
         RelativeLayout lytParent = (RelativeLayout) findViewById(R.id.lytParent);
         lytTop = (LinearLayout) findViewById(R.id.lytTop);
         btnLogin.setOnClickListener(this);
-        btnSignUp.setOnClickListener(this);
+        btnAddSeller.setOnClickListener(this);
         lytParent.setOnClickListener(this);
         textForgetPswd.setOnClickListener(this);
 
@@ -94,8 +94,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
                 validationField();
                 break;
 
-            case R.id.btnSignUp:
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            case R.id.btnAddSeller:
+                startActivity(new Intent(LoginActivity.this, AddSellerActivity.class));
                 break;
 
             case R.id.lytParent:

@@ -11,9 +11,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
+import com.aquaheyseller.network_call.MyJsonObjectRequest;
 import com.aquaheyseller.ui.adapters.OrdresPagerAdapter;
+import com.aquaheyseller.utils.AppConstant;
+import com.aquaheyseller.utils.AppController;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.Utils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelectedListener {
 
@@ -33,6 +43,7 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
         View view = inflater.inflate(R.layout.fragment_orders, container, false);
         mContext = getActivity();
         initUI(view);
+        callOrderApi();
         return view;
     }
 
@@ -73,5 +84,30 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
 
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
+    }
+
+
+    public void callOrderApi() {
+
+
+        String url = AppConstant.baseUrl + AppConstant.listUrl+""+2;
+        LogUtils.DEBUG("URL : " + url );
+        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+               /* Gson gson = new GsonBuilder().create();
+                String string = gson.toJson(response);*/
+                LogUtils.DEBUG("List Response ::" + response.toString());
+                Utils.saveListResponse(getActivity(),response.toString());
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                LogUtils.DEBUG("List Error ::" + error.getMessage());
+            }
+        });
+        AppController.getInstance().addToRequestQueue(objectRequest, "List");
     }
 }

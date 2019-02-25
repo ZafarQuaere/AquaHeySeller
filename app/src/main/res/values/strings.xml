@@ -55,4 +55,13 @@
     <string name="please_enter_otp">Please enter otp which is sent to your mobile number</string>
     <string name="enter_valid_otp">Enter valid otp</string>
     <string name="please_check_your_network_connection">Please check your internet connection.</string>
+    <string name="key_list_data">key_list_data</string>
+    <string name="save">Save</string>
+    <string name="enter_address">Enter Address</string>
+    <string name="enter_city">Enter City</string>
+    <string name="enter_state">Enter State</string>
+    <string name="enter_pincode">Enter Pincode</string>
+    <string name="sellername">Enter Seller/Business Name</string>
+    <string name="enter_mobile_no">Enter Mobile No.</string>
+    <string name="add_seller">Add Seller</string>
 </resources>

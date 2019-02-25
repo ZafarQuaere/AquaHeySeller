@@ -219,5 +219,23 @@ public class Utils {
     }
 
 
+    public static void saveListResponse(Context mContext,String data) {
+        if (mContext == null)
+            return;
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
+        prefs.put(mContext.getString(R.string.key_list_data), data);
+    }
 
+    public static String getListData(Context context) {
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(context);
+        String data = "";
+        try {
+            data = (String) prefs.get(context.getString(R.string.key_list_data));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return data;
+        }
+        return data;
+
+    }
 }
