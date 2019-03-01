@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.network_call.request.Register;
+import com.aquaheyseller.network_call.request_model.Register;
 import com.aquaheyseller.ui.presenters.RegisterPresenter;
 import com.aquaheyseller.ui.presenters.operations.IRegister;
 import com.aquaheyseller.utils.LogUtils;

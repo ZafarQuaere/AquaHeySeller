@@ -1,4 +1,4 @@
-package com.aquaheyseller.network_call.request;
+package com.aquaheyseller.network_call.request_model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

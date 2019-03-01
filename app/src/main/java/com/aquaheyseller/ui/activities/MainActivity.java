@@ -1,6 +1,7 @@
 package com.aquaheyseller.ui.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -95,8 +96,9 @@ public class MainActivity extends BaseActivity<MainPresenter>
     }
 
     public void item3Click(View view) {
-        LogUtils.showToast(mContext,"Development under progress");
         closeDrawer();
+        LogUtils.showToast(mContext,"Development under progress");
+        startActivity(new Intent(MainActivity.this,AddSellerAddressActivity.class));
     }
 
     public void onLogoutClick(View view) {

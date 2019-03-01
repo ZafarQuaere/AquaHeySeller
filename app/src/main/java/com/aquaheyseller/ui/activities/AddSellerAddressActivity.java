@@ -7,31 +7,31 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.network_call.request.Register;
-import com.aquaheyseller.ui.presenters.RegisterPresenter;
-import com.aquaheyseller.ui.presenters.operations.IRegister;
+import com.aquaheyseller.network_call.request_model.Address;
+import com.aquaheyseller.ui.presenters.AddressPresenter;
+import com.aquaheyseller.ui.presenters.operations.ISellerAddress;
 import com.aquaheyseller.utils.LogUtils;
 
 
-public class AddSellerAddressActivity extends BaseActivity<RegisterPresenter> implements IRegister {
+public class AddSellerAddressActivity extends BaseActivity<AddressPresenter> implements ISellerAddress {
 
     private Context mContext;
 
     @Override
-    protected RegisterPresenter initPresenter() {
-        return new RegisterPresenter(this,this);
+    protected AddressPresenter initPresenter() {
+        return new AddressPresenter(this, this);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_add_seller_address);
         mContext = this;
 
-        findViewById(R.id.btnRegister).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnSaveAddress).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // startActivity(new Intent(RegisterActivity.this, EnterOTPActivity.class));
+                // startActivity(new Intent(RegisterActivity.this, EnterOTPActivity.class));
                 validateFields();
             }
         });
@@ -39,35 +39,33 @@ public class AddSellerAddressActivity extends BaseActivity<RegisterPresenter> im
     }
 
     private void validateFields() {
-        EditText editName = (EditText) findViewById(R.id.editName);
-        EditText editMobile = (EditText) findViewById(R.id.editMobile);
-        EditText editEmailId = (EditText) findViewById(R.id.editEmailId);
-        EditText editPassword = (EditText) findViewById(R.id.editPassword);
-        EditText editConfirmPassword = (EditText) findViewById(R.id.editConfirmPassword);
+        EditText editAddress = (EditText) findViewById(R.id.editAddress);
+        EditText editCity = (EditText) findViewById(R.id.editCity);
+        EditText editState = (EditText) findViewById(R.id.editState);
+        EditText editPincode = (EditText) findViewById(R.id.editPincode);
 
-        getPresenter().validateFields(editName.getText().toString().trim(),
-                editMobile.getText().toString().trim(),
-                editEmailId.getText().toString().trim(),
-                editPassword.getText().toString().trim(),
-                editConfirmPassword.getText().toString().trim());
+        getPresenter().validateFields(editAddress.getText().toString().trim(),
+                editCity.getText().toString().trim(),
+                editState.getText().toString().trim(),
+                editPincode.getText().toString().trim());
     }
 
     @Override
-    public void callApi(Register register) {
+    public void callApi(Address address) {
         //openProgressDialog();
-        getPresenter().callRegisterApi(register);
+        getPresenter().callAddressApi(address);
 
     }
 
     @Override
-    public void doRegister() {
-       // hideProgressDialog();
+    public void saveAddress() {
+        // hideProgressDialog();
         startActivity(new Intent(AddSellerAddressActivity.this, MainActivity.class));
         finish();
     }
 
     @Override
     public void onValidationError(String msg) {
-        LogUtils.showErrorDialog(mContext,getString(R.string.ok),msg);
+        LogUtils.showErrorDialog(mContext, getString(R.string.ok), msg);
     }
 }

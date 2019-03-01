@@ -1,6 +1,6 @@
 package com.aquaheyseller.ui.presenters.operations;
 
-import com.aquaheyseller.network_call.request.Register;
+import com.aquaheyseller.network_call.request_model.Register;
 
 public interface IRegister {
 

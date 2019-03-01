@@ -6,7 +6,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
-import com.aquaheyseller.network_call.request.Register;
+import com.aquaheyseller.network_call.request_model.Register;
 import com.aquaheyseller.ui.presenters.operations.IRegister;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;

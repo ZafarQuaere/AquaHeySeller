@@ -11,11 +11,8 @@ Parameter : MobileNo, password
 
 3)
 Api name : Forgot Password
-
 	a) Generate OTP : Parameter(MobileNo)
 	b) Enter OTP : Parameter(MobileNo, otp)
-
-
 
 4. Home Screen with Dashboard contents: (If content is available then content otherwise a message )
 	i. Sales this week

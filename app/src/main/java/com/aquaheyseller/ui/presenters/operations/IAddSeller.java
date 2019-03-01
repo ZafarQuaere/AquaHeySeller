@@ -6,5 +6,5 @@ public interface IAddSeller {
 
     void addSeller();
     void onValidationError(String msg);
-    void callApi();
+    void callApi(String dealerName,String dealerMobile);
 }

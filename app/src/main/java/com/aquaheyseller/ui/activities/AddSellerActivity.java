@@ -7,19 +7,18 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.network_call.request.Register;
-import com.aquaheyseller.ui.presenters.RegisterPresenter;
-import com.aquaheyseller.ui.presenters.operations.IRegister;
+import com.aquaheyseller.ui.presenters.AddSellerPresenter;
+import com.aquaheyseller.ui.presenters.operations.IAddSeller;
 import com.aquaheyseller.utils.LogUtils;
 
 
-public class AddSellerActivity extends BaseActivity<RegisterPresenter> implements IRegister {
+public class AddSellerActivity extends BaseActivity<AddSellerPresenter> implements IAddSeller {
 
     private Context mContext;
 
     @Override
-    protected RegisterPresenter initPresenter() {
-        return new RegisterPresenter(this,this);
+    protected AddSellerPresenter initPresenter() {
+        return new AddSellerPresenter(this, this);
     }
 
     @Override
@@ -27,40 +26,41 @@ public class AddSellerActivity extends BaseActivity<RegisterPresenter> implement
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_seller);
         mContext = this;
-
+        findViewById(R.id.btnAddSeller).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validateFields();
+            }
+        });
 
     }
 
     private void validateFields() {
-        EditText editName = (EditText) findViewById(R.id.editName);
-        EditText editMobile = (EditText) findViewById(R.id.editMobile);
-        EditText editEmailId = (EditText) findViewById(R.id.editEmailId);
-        EditText editPassword = (EditText) findViewById(R.id.editPassword);
-        EditText editConfirmPassword = (EditText) findViewById(R.id.editConfirmPassword);
+        EditText editSellerName = (EditText) findViewById(R.id.editSellerName);
+        EditText editSellerMobile = (EditText) findViewById(R.id.editSellerMobile);
 
-        getPresenter().validateFields(editName.getText().toString().trim(),
-                editMobile.getText().toString().trim(),
-                editEmailId.getText().toString().trim(),
-                editPassword.getText().toString().trim(),
-                editConfirmPassword.getText().toString().trim());
+
+        getPresenter().validateFields(editSellerName.getText().toString().trim(),
+                editSellerMobile.getText().toString().trim());
     }
 
     @Override
-    public void callApi(Register register) {
+    public void callApi(String dName, String mobile) {
+        startActivity(new Intent(AddSellerActivity.this, RegisterActivity.class));
         //openProgressDialog();
-        getPresenter().callRegisterApi(register);
+        getPresenter().callAddSellerApi(dName, mobile);
 
     }
 
     @Override
-    public void doRegister() {
-       // hideProgressDialog();
+    public void addSeller() {
+        // hideProgressDialog();
         startActivity(new Intent(AddSellerActivity.this, MainActivity.class));
         finish();
     }
 
     @Override
     public void onValidationError(String msg) {
-        LogUtils.showErrorDialog(mContext,getString(R.string.ok),msg);
+        LogUtils.showErrorDialog(mContext, getString(R.string.ok), msg);
     }
 }
