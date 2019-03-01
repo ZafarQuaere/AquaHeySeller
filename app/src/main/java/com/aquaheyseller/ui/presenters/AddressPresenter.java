@@ -43,7 +43,6 @@ public class AddressPresenter extends BasePresenter {
             } else {
                 mSellerAddress.onValidationError(mContext.getString(R.string.please_check_your_network_connection));
             }
-
         }
     }
 
@@ -51,12 +50,13 @@ public class AddressPresenter extends BasePresenter {
         showDialog("Address....", "Saving Address");
         JSONObject requestObject = new JSONObject();
         try {
-            requestObject.put("userId", "");
+            requestObject.put("userId", "20");
             requestObject.put("addressOne", address.getAddress());
             requestObject.put("city", address.getCity());
             requestObject.put("state", address.getState());
             requestObject.put("pincode", address.getPincode());
-            // requestObject.put("dealerId", register.getDealerId());
+             requestObject.put("latitude", "256535");
+             requestObject.put("longitude", "256535");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -68,7 +68,7 @@ public class AddressPresenter extends BasePresenter {
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("Address Response ::" + response.toString());
                 dismissDialog();
-                // mSellerAddress.saveAddress();
+                 mSellerAddress.saveAddress();
             }
 
         }, new Response.ErrorListener() {

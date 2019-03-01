@@ -34,8 +34,7 @@ public class ForgotPswdPresenter extends BasePresenter {
             iFrgtPswd.onValidationError(mContext.getString(R.string.please_enter_valid_mobile_number));
         } else {
             if (NetworkUtils.isNetworkEnabled(mContext)) {
-               // iFrgtPswd.callSubmitMobileApi(mobileNo);
-                iFrgtPswd.submitMobile();
+               iFrgtPswd.callSubmitMobileApi(mobileNo);
             }else {
                 iFrgtPswd.onValidationError(mContext.getString(R.string.please_check_your_network_connection));
             }
@@ -44,20 +43,18 @@ public class ForgotPswdPresenter extends BasePresenter {
 
     public void callSubmitMobileApi(String mobile) {
         showDialog(" Please wait....", "Forgot Password");
-        JSONObject requestObject = new JSONObject();
+       /* JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("mobile", mobile);
-
         } catch (JSONException e) {
             e.printStackTrace();
-        }
-        String url = AppConstant.baseUrl + AppConstant.loginUrl;
-        LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
-        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
+        }*/
+        //String url = AppConstant.URL_BASE + AppConstant.URL_VERIFY_MOBILE+mobile;
+        String url = AppConstant.URL_BASE + AppConstant.URL_OTP_SERVICE+mobile;
+      //  LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
+        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-               /* Gson gson = new GsonBuilder().create();
-                String string = gson.toJson(response);*/
                 LogUtils.DEBUG("ForgotPassword Response ::" + response.toString());
                 dismissDialog();
                 iFrgtPswd.submitMobile();

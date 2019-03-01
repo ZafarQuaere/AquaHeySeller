@@ -59,6 +59,6 @@ public class ForgetPswdActivity extends BaseActivity<ForgotPswdPresenter> implem
 
     @Override
     public void callSubmitMobileApi(String mobile) {
-       // getPresenter().callSubmitMobileApi(mobile);
+        getPresenter().callSubmitMobileApi(mobile);
     }
 }

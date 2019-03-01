@@ -43,17 +43,17 @@ public class LoginPresenter extends BasePresenter {
         }
     }
 
-    public void callApi(String userId, String password) {
+    public void callApi(String mobile, String password) {
         showDialog("Login Please wait....", "Login");
         JSONObject requestObject = new JSONObject();
         try {
-            requestObject.put("email", userId);
+            requestObject.put("mobile", mobile);
             requestObject.put("password", password);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        String url = AppConstant.baseUrl + AppConstant.loginUrl;
+        String url = AppConstant.URL_BASE + AppConstant.URL_LOGIN;
         LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
             @Override

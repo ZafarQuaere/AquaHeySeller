@@ -61,9 +61,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     }
 
     private void validationField() {
-        String userId = editUserName.getText().toString().trim();
+        String mobile = editUserName.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
-        getPresenter().validateUsernamePassword(userId, password);
+        getPresenter().validateUsernamePassword(mobile, password);
     }
 
     @Override

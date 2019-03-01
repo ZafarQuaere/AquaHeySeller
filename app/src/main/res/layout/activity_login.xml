@@ -47,11 +47,11 @@
                 android:background="@drawable/rectangle_bg"
                 android:elevation="@dimen/_10dp"
                 android:gravity="center_horizontal"
-                android:hint="@string/username"
+                android:hint="@string/mobile_no"
                 android:inputType="text"
                 android:maxLength="35"
                 android:maxLines="1"
-                android:text="peter@klaven"
+                android:text=""
                 android:paddingVertical="@dimen/_10dp"
                 android:paddingLeft="@dimen/_10dp"
                 android:textColor="@color/color_black"
@@ -72,7 +72,7 @@
                 android:maxLines="1"
                 android:paddingVertical="@dimen/_10dp"
                 android:paddingLeft="@dimen/_10dp"
-                android:text="cityslicka"
+                android:text=""
                 android:textColor="@color/color_black"
                 android:textSize="16sp" />
 

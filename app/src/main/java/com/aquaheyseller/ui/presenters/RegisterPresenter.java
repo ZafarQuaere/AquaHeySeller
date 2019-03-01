@@ -42,7 +42,7 @@ public class RegisterPresenter extends BasePresenter {
             mRegister.onValidationError(mContext.getString(R.string.please_enter_same_pswd));
         } else {
             if (NetworkUtils.isNetworkEnabled(mContext)) {
-                Register register = new Register(name, pswd, mobileNo, email, 0, 0);
+                Register register = new Register(name, pswd, mobileNo, email, 1, 7);
                 mRegister.callApi(register);
             }else {
                 mRegister.onValidationError(mContext.getString(R.string.please_check_your_network_connection));
@@ -55,17 +55,17 @@ public class RegisterPresenter extends BasePresenter {
         showDialog("Registering....","Register");
         JSONObject requestObject = new JSONObject();
         try {
-           // requestObject.put("dname", register.getName());
+            requestObject.put("name", register.getName());
             requestObject.put("email", register.getEmail());
             requestObject.put("password", register.getPassword());
-           /* requestObject.put("mobile", register.getMobile());
+            requestObject.put("mobile", register.getMobile());
             requestObject.put("userType", register.getUserType());
-            requestObject.put("dealerId", register.getDealerId());*/
+            requestObject.put("dealerId", register.getDealerId());
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        String url = AppConstant.baseUrl+AppConstant.registerUrl;
+        String url = AppConstant.URL_BASE+AppConstant.URL_REGISTER;
         LogUtils.DEBUG("URL : "+url+"\nRequest Body ::"+requestObject.toString());
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
             @Override

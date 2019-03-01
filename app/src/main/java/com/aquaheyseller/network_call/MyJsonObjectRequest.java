@@ -73,7 +73,7 @@ public class MyJsonObjectRequest extends JsonObjectRequest {
             //if reading from local then return null to handle the call
             return Response.success(null,HttpHeaderParser.parseCacheHeaders(response));
         }
-        LogUtils.DEBUG(" [raw json]: " + (new String(response.data)));
+        //LogUtils.DEBUG(" [raw json]: " + (new String(response.data)));
         String jsonString = null;
         try {
             jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers, PROTOCOL_CHARSET));
