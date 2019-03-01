@@ -32,21 +32,18 @@ public class AddSellerActivity extends BaseActivity<AddSellerPresenter> implemen
                 validateFields();
             }
         });
-
     }
 
     private void validateFields() {
         EditText editSellerName = (EditText) findViewById(R.id.editSellerName);
         EditText editSellerMobile = (EditText) findViewById(R.id.editSellerMobile);
-
-
         getPresenter().validateFields(editSellerName.getText().toString().trim(),
                 editSellerMobile.getText().toString().trim());
     }
 
     @Override
     public void callApi(String dName, String mobile) {
-        startActivity(new Intent(AddSellerActivity.this, RegisterActivity.class));
+       // startActivity(new Intent(AddSellerActivity.this, RegisterActivity.class));
         //openProgressDialog();
         getPresenter().callAddSellerApi(dName, mobile);
 
@@ -55,7 +52,7 @@ public class AddSellerActivity extends BaseActivity<AddSellerPresenter> implemen
     @Override
     public void addSeller() {
         // hideProgressDialog();
-        startActivity(new Intent(AddSellerActivity.this, MainActivity.class));
+        startActivity(new Intent(AddSellerActivity.this, RegisterActivity.class));
         finish();
     }
 

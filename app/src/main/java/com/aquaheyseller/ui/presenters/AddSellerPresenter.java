@@ -42,7 +42,7 @@ public class AddSellerPresenter extends BasePresenter {
     }
 
     public void callAddSellerApi(String dName, String mobile) {
-        showDialog("AddSeller....", "Register");
+        showDialog("AddSeller....", "Processing ..");
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("dName", dName);

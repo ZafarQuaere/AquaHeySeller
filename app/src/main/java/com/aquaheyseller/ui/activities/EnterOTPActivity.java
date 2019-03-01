@@ -58,6 +58,8 @@ public class EnterOTPActivity extends BaseActivity<OtpPresenter> implements IOtp
         getPresenter().callSubmitOtpApi(otp);
     }
 
+
+
     public void resendOTP(View view) {
 
     }

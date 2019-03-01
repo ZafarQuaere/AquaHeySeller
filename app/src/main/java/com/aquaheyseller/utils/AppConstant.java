@@ -15,6 +15,10 @@ public class AppConstant {
     public static final String URL_DEALER_ADDRESS = "/insert-dealer-address"; //(brandname,banner_image)
     public static final String URL_INSERT_DELAER = "/insert-dealer"; //(dName,mobile,brandIds,rating,addressId)
     public static final String URL_INSERT_PRODUCT = "/insert-product"; //{pName,imagePath,dealerId,name,price,productType,isBrand}
+    public static final String URL_VERIFY_MOBILE = "/mobile-verify?mobile=";
+    public static final String URL_OTP_SERVICE = "/otp_service?mobile=";
+    public static final String URL_CHANGE_PASSWORD = "/change-password?mobile=";
+    public static final String URL_CP_PASSWORD = "&password=";
 
 
     public static final String baseUrl = "https://reqres.in";
