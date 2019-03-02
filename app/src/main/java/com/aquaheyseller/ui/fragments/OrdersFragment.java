@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
 import com.aquaheyseller.ui.adapters.OrdresPagerAdapter;
+import com.aquaheyseller.ui.presenters.BaseFragmentPresenter;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
 import com.aquaheyseller.utils.LogUtils;
@@ -34,6 +35,11 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    protected BaseFragmentPresenter initPresenter() {
+        return null;
     }
 
     @Override

@@ -78,10 +78,12 @@ Note :
 url : http://www.aquahey.com/mobile-verify?mobile=9870273428
 ForgotPassword Response ::{"mobile":"9870273428"}
 
-
+o
 NOTE : What is this api is doing ?
 =====================================================================================================================================================
 url : http://www.aquahey.com/otp_service?mobile=9870273428
 ForgotPassword Response ::{"total_sms":1,"duplicates_removed":0,"optedout_removed":0,"invalid_removed":0,"total_sent":1,"credits_deducted":1,"user_id":"9107",
 "admin_id":"1","campaign_id":9303,"sms_shoot_id":"inspiring5c798f5539efc","submission_time":"2019-03-02 01:30:21","per_sms_charge":1,"route_id":20,
 "sms_text":"5018 is your AQUAHEY OTP","sent_via":"HTTP-API","status":"success","msg":"Your message was sent successfully"}
+
+========================================================================================================================================================

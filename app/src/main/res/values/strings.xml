@@ -69,4 +69,18 @@
     <string name="please_enter_valid_pincode">Please Enter valid pincode.</string>
     <string name="please_enter_city_name">Please enter city</string>
     <string name="please_enter_state">Please enter state.</string>
+
+
+    <string-array name="productTypeArray">
+        <item>Product Type</item>
+        <item>Type1</item>
+        <item>Type2</item>
+        <item>Type3</item>
+    </string-array>
+
+    <string-array name="isBrand">
+        <item>Is Brand</item>
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
 </resources>
