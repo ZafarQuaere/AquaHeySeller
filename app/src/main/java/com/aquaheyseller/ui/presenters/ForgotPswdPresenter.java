@@ -43,14 +43,9 @@ public class ForgotPswdPresenter extends BasePresenter {
 
     public void callSubmitMobileApi(String mobile) {
         showDialog(" Please wait....", "Forgot Password");
-       /* JSONObject requestObject = new JSONObject();
-        try {
-            requestObject.put("mobile", mobile);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }*/
-        //String url = AppConstant.URL_BASE + AppConstant.URL_VERIFY_MOBILE+mobile;
-        String url = AppConstant.URL_BASE + AppConstant.URL_OTP_SERVICE+mobile;
+        String url = AppConstant.URL_BASE + AppConstant.URL_VERIFY_MOBILE+mobile;
+
+       // String url = AppConstant.URL_BASE + AppConstant.URL_OTP_SERVICE+mobile;
       //  LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override

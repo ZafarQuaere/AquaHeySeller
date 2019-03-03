@@ -78,7 +78,7 @@ Note :
 url : http://www.aquahey.com/mobile-verify?mobile=9870273428
 ForgotPassword Response ::{"mobile":"9870273428"}
 
-o
+ostatus
 NOTE : What is this api is doing ?
 =====================================================================================================================================================
 url : http://www.aquahey.com/otp_service?mobile=9870273428
