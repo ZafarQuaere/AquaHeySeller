@@ -1,8 +1,8 @@
 package com.aquaheyseller.ui.presenters.operations;
 
-public interface IOtp {
+public interface INewPswd {
 
-    void submitOtp();
+    void changePswd();
     void onValidationError(String msg);
-    void callApi(String otp);
+    void callApi(String password);
 }

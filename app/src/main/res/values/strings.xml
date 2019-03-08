@@ -69,6 +69,8 @@
     <string name="please_enter_valid_pincode">Please Enter valid pincode.</string>
     <string name="please_enter_city_name">Please enter city</string>
     <string name="please_enter_state">Please enter state.</string>
+    <string name="key_otp_data">key_otp_data</string>
+    <string name="key_mobile_no">key_mobile_no</string>
 
 
     <string-array name="productTypeArray">

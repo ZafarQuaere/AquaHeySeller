@@ -38,7 +38,7 @@ public class RegisterPresenter extends BasePresenter {
             mRegister.onValidationError(mContext.getString(R.string.please_enter_password));
         } else if (pswd.length() < 6) {
             mRegister.onValidationError(mContext.getString(R.string.password_must_have_atleast_6_character));
-        } else if (!confmPswd.equals(pswd)) {
+        } else if (!confmPswd.equalsIgnoreCase(pswd)) {
             mRegister.onValidationError(mContext.getString(R.string.please_enter_same_pswd));
         } else {
             if (NetworkUtils.isNetworkEnabled(mContext)) {

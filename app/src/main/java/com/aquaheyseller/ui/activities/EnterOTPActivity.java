@@ -54,7 +54,7 @@ public class EnterOTPActivity extends BaseActivity<OtpPresenter> implements IOtp
     }
 
     @Override
-    public void callSubmitOtpApi(String otp) {
+    public void callApi(String otp) {
         getPresenter().callSubmitOtpApi(otp);
     }
 

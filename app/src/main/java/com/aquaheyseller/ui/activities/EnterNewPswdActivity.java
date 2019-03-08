@@ -12,24 +12,26 @@ import android.widget.TextView;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.presenters.LoginPresenter;
+import com.aquaheyseller.ui.presenters.NewPasswordPresenter;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
+import com.aquaheyseller.ui.presenters.operations.INewPswd;
 import com.aquaheyseller.utils.KeyboardUtils;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.Utils;
 
 
-public class EnterNewPswdActivity extends BaseActivity<LoginPresenter> implements ILogin, View.OnClickListener {
+public class EnterNewPswdActivity extends BaseActivity<NewPasswordPresenter> implements INewPswd {
 
-    private EditText editUserName;
     private EditText editPassword;
+    private EditText editConfirmPassword;
     private LinearLayout lytTop;
     private Context mContext;
     private TextView textForgetPswd;
 
 
     @Override
-    protected LoginPresenter initPresenter() {
-        return new LoginPresenter(this, this);
+    protected NewPasswordPresenter initPresenter() {
+        return new NewPasswordPresenter(this, this);
     }
 
     @Override
@@ -46,30 +48,25 @@ public class EnterNewPswdActivity extends BaseActivity<LoginPresenter> implement
     }
 
     private void initUI() {
-        editUserName = (EditText) findViewById(R.id.editUserName);
         editPassword = (EditText) findViewById(R.id.editPassword);
-        textForgetPswd = (TextView) findViewById(R.id.textForgetPswd);
-        Button btnLogin = (Button) findViewById(R.id.btnLogin);
+        editConfirmPassword = (EditText) findViewById(R.id.editConfirmPassword);
+
         Button btnAddSeller = (Button) findViewById(R.id.btnAddSeller);
-        RelativeLayout lytParent = (RelativeLayout) findViewById(R.id.lytParent);
-        lytTop = (LinearLayout) findViewById(R.id.lytTop);
-        btnLogin.setOnClickListener(this);
-        btnAddSeller.setOnClickListener(this);
-        lytParent.setOnClickListener(this);
-        textForgetPswd.setOnClickListener(this);
+
+
 
     }
 
     private void validationField() {
-        String mobile = editUserName.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
-        getPresenter().validateUsernamePassword(mobile, password);
+        String confrmPswd = editConfirmPassword.getText().toString().trim();
+        getPresenter().validateUsernamePassword(password,confrmPswd );
     }
 
     @Override
-    public void doLogin() {
+    public void changePswd() {
 
-        startActivity(new Intent(EnterNewPswdActivity.this, MainActivity.class));
+        startActivity(new Intent(EnterNewPswdActivity.this, LoginActivity.class));
         finish();
     }
 
@@ -79,28 +76,9 @@ public class EnterNewPswdActivity extends BaseActivity<LoginPresenter> implement
     }
 
     @Override
-    public void callLoginApi(String userId, String password) {
-        getPresenter().callApi(userId, password);
+    public void callApi(String password) {
+        getPresenter().changePswdApi(password);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.textForgetPswd:
-                startActivity(new Intent(EnterNewPswdActivity.this, ForgetPswdActivity.class));
-                break;
 
-            case R.id.btnLogin:
-                validationField();
-                break;
-
-            case R.id.btnAddSeller:
-                startActivity(new Intent(EnterNewPswdActivity.this, AddSellerActivity.class));
-                break;
-
-            case R.id.lytParent:
-                KeyboardUtils.hideKeyboard(mContext);
-                break;
-        }
-    }
 }

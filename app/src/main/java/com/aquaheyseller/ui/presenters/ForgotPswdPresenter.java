@@ -34,25 +34,37 @@ public class ForgotPswdPresenter extends BasePresenter {
             iFrgtPswd.onValidationError(mContext.getString(R.string.please_enter_valid_mobile_number));
         } else {
             if (NetworkUtils.isNetworkEnabled(mContext)) {
-               iFrgtPswd.callSubmitMobileApi(mobileNo);
-            }else {
+                iFrgtPswd.callSubmitMobileApi(mobileNo);
+            } else {
                 iFrgtPswd.onValidationError(mContext.getString(R.string.please_check_your_network_connection));
             }
         }
     }
 
-    public void callSubmitMobileApi(String mobile) {
+    public void callSubmitMobileApi(final String mobile) {
         showDialog(" Please wait....", "Forgot Password");
-        String url = AppConstant.URL_BASE + AppConstant.URL_VERIFY_MOBILE+mobile;
+        String url = AppConstant.URL_BASE + AppConstant.URL_VERIFY_MOBILE + mobile;
 
-       // String url = AppConstant.URL_BASE + AppConstant.URL_OTP_SERVICE+mobile;
-      //  LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
+        //  LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("ForgotPassword Response ::" + response.toString());
                 dismissDialog();
-                iFrgtPswd.submitMobile();
+                try {
+                    JSONObject jsonObject = new JSONObject(response.toString());
+                    String resMob = jsonObject.getString("mobile");
+                    if (resMob.equalsIgnoreCase(mobile)) {
+                        Utils.setMobileNo(mContext,mobile);
+                        callOTPServiceApi(mobile);
+                    } else {
+                        LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok),
+                                mContext.getString(R.string.please_enter_valid_mobile_number));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
 
         }, new Response.ErrorListener() {
@@ -63,5 +75,24 @@ public class ForgotPswdPresenter extends BasePresenter {
             }
         });
         AppController.getInstance().addToRequestQueue(objectRequest, "ForgotPassword");
+    }
+
+    private void callOTPServiceApi(String mobile) {
+         String url = AppConstant.URL_BASE + AppConstant.URL_OTP_SERVICE+mobile;
+         //LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
+        MyJsonObjectRequest otpServiceRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                LogUtils.DEBUG("OtpService Response ::" + response.toString());
+                Utils.saveOTPData(mContext,response.toString());
+                iFrgtPswd.submitMobile();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                LogUtils.DEBUG("OtpService Error ::" + error.getMessage());
+            }
+        });
+        AppController.getInstance().addToRequestQueue(otpServiceRequest, "OtpService");
     }
 }

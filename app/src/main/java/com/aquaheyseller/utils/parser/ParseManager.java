@@ -40,14 +40,14 @@ public class ParseManager {
         return null;
     }
 
-    public <T> T fromJSON(String objJson, Class<T> classOfT) {
-        if (objJson == null) {
+    public <T> T fromJSON(String stringJson, Class<T> classOfT) {
+        if (stringJson == null) {
             return null;
         }
 
         Gson gson = (new GsonBuilder()).create();
         try {
-            Object object = gson.fromJson(objJson.toString(), classOfT);
+            Object object = gson.fromJson(stringJson.toString(), classOfT);
             return Primitives.wrap(classOfT).cast(object);
         } catch (Exception e) {
             LogUtils.ERROR("ParseManager >> fromJSON >> Error while parsing JSON : " + e.toString());
@@ -71,6 +71,4 @@ public class ParseManager {
 
         return null;
     }
-
-
 }

@@ -238,4 +238,46 @@ public class Utils {
         return data;
 
     }
+
+
+    public static void saveOTPData(Context mContext,String data) {
+        if (mContext == null)
+            return;
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
+        prefs.put(mContext.getString(R.string.key_otp_data), data);
+    }
+
+    public static String getOTPData(Context context) {
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(context);
+        String data = "";
+        try {
+            data = (String) prefs.get(context.getString(R.string.key_otp_data));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return data;
+        }
+        return data;
+
+    }
+
+    public static void setMobileNo(Context mContext,String mobile) {
+        if (mContext == null)
+            return;
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
+        prefs.put(mContext.getString(R.string.key_mobile_no), mobile);
+
+    }
+
+    public static String getMobileNo(Context context) {
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(context);
+        String data = "";
+        try {
+            data = (String) prefs.get(context.getString(R.string.key_mobile_no));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return data;
+        }
+        return data;
+
+    }
 }
