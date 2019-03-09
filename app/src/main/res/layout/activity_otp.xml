@@ -1,142 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/gradient"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@drawable/gradient">
+
+    <include
+        android:id="@+id/lyHeader"
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:layout_marginTop="@dimen/_20dp"
+        android:paddingHorizontal="@dimen/_10dp"
+        android:layout_below="@+id/lyHeader"
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_otp_below"
+        android:textAlignment="center"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/font_20sp" />
+
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_above="@+id/editOTP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_20dp"
+        android:background="@drawable/shape_oval_white"
+        android:padding="20dp"
+        android:src="@drawable/icon_otp" />
+
+    <EditText
+        android:id="@+id/editOTP"
+        android:layout_width="310dp"
+        android:layout_height="@dimen/edit_field_height"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rectangle_bg"
+        android:ems="10"
+        android:hint="@string/enter_otp"
+        android:inputType="number"
+        android:maxLength="10"
+        android:textAlignment="center" />
+
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="171dp"
+        android:layout_height="@dimen/button_height"
+        android:layout_below="@+id/editOTP"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_20dp"
+        android:background="@drawable/btnsignin"
+        android:text="@string/submit"
+        android:textColor="@color/color_white" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnContd2"
+            android:id="@+id/btnResendOTP"
             android:layout_width="180dp"
             android:layout_height="@dimen/resend_otp_button_height"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_weight="1"
             android:background="@drawable/btnresend"
             android:onClick="resendOTP"
             android:text="@string/resend_otp"
-            android:textColor="@color/color_white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            android:textColor="@color/color_white" />
 
         <Button
-            android:id="@+id/cancel"
-            android:layout_width="0dp"
+            android:id="@+id/btnEditNo"
+            android:layout_width="180dp"
             android:layout_height="@dimen/edit_no_button_height"
-            android:layout_marginTop="8dp"
+            android:layout_weight="1"
             android:background="@drawable/btnedit"
-            android:text="@string/edit_number"
             android:onClick="editNumber"
-            android:textColor="@color/color_white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btnContd2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            android:text="@string/edit_number"
+            android:textColor="@color/color_white" />
+    </LinearLayout>
 
-        <EditText
-            android:id="@+id/editOTP"
-            android:layout_width="270dp"
-            android:layout_height="@dimen/edit_field_height"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:maxLength="6"
-            android:background="@drawable/rectangle_bg"
-            android:ems="10"
-            android:hint="@string/enter_otp"
-            android:inputType="number"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.62" />
-
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/shape_oval_white"
-            android:padding="20dp"
-            android:src="@drawable/icon_otp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.41000003" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/sit_back_and_relax_while_we_verify_your_mobile_number"
-            android:textAlignment="center"
-            android:textColor="@color/color_white"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.04000002" />
-
-        <Button
-            android:id="@+id/btnSubmit"
-            android:layout_width="270dp"
-            android:layout_height="@dimen/button_height"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/btnsignin"
-            android:text="@string/submit"
-            android:textColor="@color/color_white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.73" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/enter_otp_below"
-            android:textAlignment="center"
-            android:textColor="@color/color_white"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.22000003" />
-
-    </android.support.constraint.ConstraintLayout>
+</RelativeLayout>

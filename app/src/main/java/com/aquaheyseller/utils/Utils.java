@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
@@ -14,12 +16,18 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aquaheyseller.R;
+import com.aquaheyseller.ui.activities.AddSellerActivity;
+import com.aquaheyseller.ui.activities.AddSellerAddressActivity;
+import com.aquaheyseller.ui.activities.EnterNewPswdActivity;
+import com.aquaheyseller.ui.activities.EnterOTPActivity;
 import com.aquaheyseller.ui.activities.ForgetPswdActivity;
 import com.aquaheyseller.ui.activities.LoginActivity;
+import com.aquaheyseller.ui.activities.RegisterActivity;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
@@ -35,6 +43,7 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.zip.GZIPInputStream;
 
@@ -143,18 +152,31 @@ public class Utils {
         RelativeLayout toolbarLayout = (RelativeLayout) ((Activity) activity).findViewById(R.id.lytToolbar);
         TextView textTitle = (TextView) toolbarLayout.findViewById(R.id.textTitle);
         TextView textBack = (TextView) toolbarLayout.findViewById(R.id.textBack);
+        ImageView imgActionBarDrawerIcon = (ImageView) toolbarLayout.findViewById(R.id.imgActionBarDrawerIcon);
 
         textBack.setVisibility(View.GONE);
-
-        if (className.equals(new LoginActivity().getClass().getSimpleName())) {
+        textTitle.setText(dynamicTitle);
+      /*  if (className.equals(new LoginActivity().getClass().getSimpleName())) {
             textTitle.setText(dynamicTitle);
-
         } else if (className.equals(new ForgetPswdActivity().getClass().getSimpleName())) {
             textTitle.setText(dynamicTitle);
-
+        }else if (className.equals(new AddSellerActivity().getClass().getSimpleName())) {
+            textTitle.setText(dynamicTitle);
+        }else if (className.equals(new EnterOTPActivity().getClass().getSimpleName())) {
+            textTitle.setText(dynamicTitle);
+        }else if (className.equals(new EnterNewPswdActivity().getClass().getSimpleName())) {
+            textTitle.setText(dynamicTitle);
+        }else */if (className.equals(new AddSellerAddressActivity().getClass().getSimpleName())) {
+            textBack.setVisibility(View.VISIBLE);
+            textBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((Activity) activity).onBackPressed();
+                }
+            });
         } else if (className.equals(new HomeFragment().getClass().getSimpleName())) {
             textBack.setVisibility(View.GONE);
-            textTitle.setText(activity.getString(R.string.app_name));
+            imgActionBarDrawerIcon.setVisibility(View.VISIBLE);
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -163,7 +185,7 @@ public class Utils {
                 }
             });
         } else if (className.equals(new OrdersFragment().getClass().getSimpleName())) {
-            textTitle.setText(activity.getString(R.string.orders));
+            imgActionBarDrawerIcon.setVisibility(View.VISIBLE);
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -171,7 +193,7 @@ public class Utils {
                 }
             });
         } else if (className.equals(new ListingsFragment().getClass().getSimpleName())) {
-            textTitle.setText(activity.getString(R.string.listings));
+            imgActionBarDrawerIcon.setVisibility(View.VISIBLE);
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -179,7 +201,7 @@ public class Utils {
                 }
             });
         } else if (className.equals(new PaymentsFragment().getClass().getSimpleName())) {
-            textTitle.setText(activity.getString(R.string.payments));
+            imgActionBarDrawerIcon.setVisibility(View.VISIBLE);
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -271,4 +293,28 @@ public class Utils {
         }
         return data;
     }
+
+   /* public GeoPoint getLocationFromAddress(String strAddress){
+
+        Geocoder coder = new Geocoder(this);
+        List<Address> address;
+        GeoPoint p1 = null;
+
+        try {
+            address = coder.getFromLocationName(strAddress,5);
+            if (address==null) {
+                return null;
+            }
+            Address location=address.get(0);
+            location.getLatitude();
+            location.getLongitude();
+
+            p1 = new GeoPoint((double) (location.getLatitude() * 1E6),
+                    (double) (location.getLongitude() * 1E6));
+
+            return p1;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
 }

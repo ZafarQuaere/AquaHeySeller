@@ -10,6 +10,7 @@ import com.aquaheyseller.R;
 import com.aquaheyseller.ui.presenters.OtpPresenter;
 import com.aquaheyseller.ui.presenters.operations.IOtp;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.Utils;
 
 
 public class EnterOTPActivity extends BaseActivity<OtpPresenter> implements IOtp {
@@ -26,6 +27,8 @@ public class EnterOTPActivity extends BaseActivity<OtpPresenter> implements IOtp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
         mContext = this;
+        Utils.updateActionBar(this,new EnterOTPActivity().getClass().getSimpleName(),getString(R.string.enter_otp),
+                null,null);
         findViewById(R.id.btnSubmit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

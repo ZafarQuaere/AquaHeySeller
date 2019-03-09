@@ -7,22 +7,12 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <!-- <include
-         android:visibility="gone"
-         android:id="@+id/lytToolbar"
-         layout="@layout/app_bar"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"/>-->
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/lytTop"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/_40dp"
-        android:elevation="@dimen/_10dp"
-        android:src="@drawable/icon_drops" />
-
+    <include
+        android:id="@+id/lyHeader"
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height"
+        android:layout_alignParentTop="true" />
 
     <LinearLayout
         android:id="@+id/lytTop"

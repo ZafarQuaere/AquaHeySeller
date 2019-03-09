@@ -31,19 +31,19 @@ public class MainPresenter extends BasePresenter {
         switch (fragName) {
             case "HomeFragment":
                 Utils.moveToFragment(mContext, new HomeFragment(), HomeFragment.class.getSimpleName(), null);
-                Utils.updateActionBar(mContext,HomeFragment.class.getSimpleName(),"AquaHey",null,null);
+                Utils.updateActionBar(mContext,HomeFragment.class.getSimpleName(),mContext.getString(R.string.app_name),null,null);
                 break;
             case "OrdersFragment":
                 Utils.moveToFragment(mContext, new OrdersFragment(), OrdersFragment.class.getSimpleName(), null);
-                Utils.updateActionBar(mContext,OrdersFragment.class.getSimpleName(),"Orders",null,null);
+                Utils.updateActionBar(mContext,OrdersFragment.class.getSimpleName(),mContext.getString(R.string.orders),null,null);
                 break;
             case "ListingsFragment":
                 Utils.moveToFragment(mContext, new ListingsFragment(), ListingsFragment.class.getSimpleName(), null);
-                Utils.updateActionBar(mContext,ListingsFragment.class.getSimpleName(),"Order List",null,null);
+                Utils.updateActionBar(mContext,ListingsFragment.class.getSimpleName(),mContext.getString(R.string.order_list),null,null);
                 break;
             case "PaymentsFragment":
                 Utils.moveToFragment(mContext, new PaymentsFragment(), PaymentsFragment.class.getSimpleName(), null);
-                Utils.updateActionBar(mContext,PaymentsFragment.class.getSimpleName(),"Payments",null,null);
+                Utils.updateActionBar(mContext,PaymentsFragment.class.getSimpleName(),mContext.getString(R.string.payments),null,null);
                 break;
         }
         //LogUtils.showToast(mContext, fragName);

@@ -13,6 +13,7 @@ import com.aquaheyseller.R;
 import com.aquaheyseller.ui.presenters.NewPasswordPresenter;
 import com.aquaheyseller.ui.presenters.operations.INewPswd;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.Utils;
 
 
 public class EnterNewPswdActivity extends BaseActivity<NewPasswordPresenter> implements INewPswd {
@@ -39,6 +40,8 @@ public class EnterNewPswdActivity extends BaseActivity<NewPasswordPresenter> imp
     }
 
     private void initUI() {
+        Utils.updateActionBar(this,new EnterNewPswdActivity().getClass().getSimpleName(),getString(R.string.change_pswd),
+                null,null);
         editPassword = (EditText) findViewById(R.id.editPassword);
         editConfirmPassword = (EditText) findViewById(R.id.editConfirmPassword);
         Button btnChangePswd = (Button) findViewById(R.id.btnChangePswd);

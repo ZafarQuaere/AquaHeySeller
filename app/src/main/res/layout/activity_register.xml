@@ -1,187 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:focusableInTouchMode="true"
-    android:background="@color/color_app_theme">
+    android:background="@color/color_app_theme"
+    android:focusableInTouchMode="true">
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/btnsignin"
-        android:elevation="@dimen/_10dp"
-        android:text="@string/signup_label"
-        android:textColor="@color/color_white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <EditText
-        android:id="@+id/editConfirmPassword"
-        android:layout_width="270dp"
-        android:layout_height="@dimen/edit_field_height"
-        android:layout_margin="@dimen/_10dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/rectangle_bg"
-        android:elevation="@dimen/_10dp"
-        android:ems="10"
-        android:hint="@string/confirm_pswd"
-        android:inputType="textPassword"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.86" />
-
-    <EditText
-        android:id="@+id/editPassword"
-        android:layout_width="270dp"
-        android:layout_height="@dimen/edit_field_height"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/rectangle_bg"
-        android:elevation="@dimen/_10dp"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74" />
-
-    <EditText
-        android:id="@+id/editEmailId"
-        android:layout_width="270dp"
-        android:layout_height="@dimen/edit_field_height"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/rectangle_bg"
-        android:elevation="@dimen/_10dp"
-        android:ems="10"
-        android:hint="@string/email_id"
-        android:inputType="textEmailAddress"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.62" />
-
-    <EditText
-        android:id="@+id/editName"
-        android:layout_width="270dp"
-        android:layout_height="@dimen/edit_field_height"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/rectangle_bg"
-        android:elevation="@dimen/_10dp"
-        android:hint="@string/name"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
-
-    <EditText
-        android:id="@+id/editMobile"
-        android:layout_width="270dp"
-        android:layout_height="@dimen/edit_field_height"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/rectangle_bg"
-        android:elevation="@dimen/_10dp"
-        android:ems="10"
-        android:hint="@string/mobile_no"
-        android:inputType="number"
-        android:maxLength="10"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="472dp"
-        android:elevation="@dimen/_10dp"
-        android:src="@drawable/icon_drops"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+    <include
+        android:id="@+id/lyHeader"
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height"
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_below="@+id/lyHeader"
+        android:padding="@dimen/_10dp"
         android:text="@string/register_to_use_aqua_hey"
         android:textAlignment="center"
         android:textColor="@color/color_white"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.00999999" />
+        android:textSize="@dimen/font_20sp" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="270dp"
-        android:layout_height="@dimen/edit_field_height"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/rectangle_bg"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView6">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_30dp">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_20dp"
+                android:elevation="@dimen/_10dp"
+                android:src="@drawable/icon_drops" />
+
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_field_height"
+                android:background="@drawable/rectangle_bg"
+                android:drawableRight="@android:drawable/ic_menu_search"
+                android:drawablePadding="@dimen/_10dp"
+                android:elevation="@dimen/_10dp"
+                android:hint="@string/gst_no"
+                android:imeOptions="actionSearch"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editName"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_field_height"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/rectangle_bg"
+                android:elevation="@dimen/_10dp"
+                android:hint="@string/name"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editMobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_field_height"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/rectangle_bg"
+                android:elevation="@dimen/_10dp"
+                android:ems="10"
+                android:hint="@string/mobile_no"
+                android:inputType="number"
+                android:maxLength="10"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editEmailId"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_field_height"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/rectangle_bg"
+                android:elevation="@dimen/_10dp"
+                android:ems="10"
+                android:hint="@string/email_id"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editPassword"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_field_height"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/rectangle_bg"
+                android:elevation="@dimen/_10dp"
+                android:ems="10"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textAlignment="center" />
+
+
+            <EditText
+                android:id="@+id/editConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_field_height"
+                android:layout_marginTop="@dimen/_20dp"
+                android:background="@drawable/rectangle_bg"
+                android:elevation="@dimen/_10dp"
+                android:ems="10"
+                android:hint="@string/confirm_pswd"
+                android:inputType="textPassword"
+                android:textAlignment="center" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btnsignin"
         android:elevation="@dimen/_10dp"
-        android:hint="GST No"
-        android:inputType="textPersonName"
-        android:drawableRight="@android:drawable/ic_menu_search"
-        android:drawablePadding="@dimen/_10dp"
-        android:imeOptions="actionSearch"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/editName"
-        app:layout_constraintEnd_toEndOf="@+id/editName"
-        app:layout_constraintStart_toStartOf="@+id/editName" />
-</android.support.constraint.ConstraintLayout>
+        android:text="@string/signup_label"
+        android:textColor="@color/color_white" />
+</RelativeLayout>
 

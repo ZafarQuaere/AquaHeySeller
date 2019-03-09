@@ -71,6 +71,10 @@
     <string name="please_enter_state">Please enter state.</string>
     <string name="key_otp_data">key_otp_data</string>
     <string name="key_mobile_no">key_mobile_no</string>
+    <string name="new_password">New Password</string>
+    <string name="change_pswd">Change Password</string>
+    <string name="gst_no">GST No</string>
+    <string name="order_list">Order List</string>
 
 
     <string-array name="productTypeArray">

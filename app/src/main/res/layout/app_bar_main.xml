@@ -32,19 +32,19 @@
                 android:scaleType="fitStart"
                 android:src="@drawable/ic_menu_24dp" />
             <TextView
+                android:background="@drawable/ic_arrow_back"
                 android:id="@+id/textBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:textColor="@color/color_white"
-                android:paddingVertical="@dimen/_10dp"
-                android:paddingLeft="@dimen/_10dp"
                 android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/_10dp"
                 android:gravity="center"
                 android:textSize="@dimen/font_20sp"
-                android:text="back"
+                android:text=""
                 android:textStyle="bold"
-                android:visibility="gone" />
+                android:visibility="visible" />
             <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="wrap_content"

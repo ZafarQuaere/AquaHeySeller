@@ -11,6 +11,7 @@ import com.aquaheyseller.network_call.request_model.Address;
 import com.aquaheyseller.ui.presenters.AddressPresenter;
 import com.aquaheyseller.ui.presenters.operations.ISellerAddress;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.Utils;
 
 
 public class AddSellerAddressActivity extends BaseActivity<AddressPresenter> implements ISellerAddress {
@@ -27,7 +28,8 @@ public class AddSellerAddressActivity extends BaseActivity<AddressPresenter> imp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_seller_address);
         mContext = this;
-
+        Utils.updateActionBar(this,new AddSellerAddressActivity().getClass().getSimpleName(),getString(R.string.save_address),
+                null,null);
         findViewById(R.id.btnSaveAddress).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

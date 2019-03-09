@@ -11,6 +11,7 @@ import com.aquaheyseller.network_call.request_model.Register;
 import com.aquaheyseller.ui.presenters.RegisterPresenter;
 import com.aquaheyseller.ui.presenters.operations.IRegister;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.Utils;
 
 
 public class RegisterActivity extends BaseActivity<RegisterPresenter> implements IRegister {
@@ -27,7 +28,8 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mContext = this;
-
+        Utils.updateActionBar(this,new RegisterActivity().getClass().getSimpleName(),getString(R.string.change_pswd),
+                null,null);
         findViewById(R.id.btnRegister).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

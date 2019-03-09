@@ -10,6 +10,7 @@ import com.aquaheyseller.R;
 import com.aquaheyseller.ui.presenters.AddSellerPresenter;
 import com.aquaheyseller.ui.presenters.operations.IAddSeller;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.Utils;
 
 
 public class AddSellerActivity extends BaseActivity<AddSellerPresenter> implements IAddSeller {
@@ -26,6 +27,8 @@ public class AddSellerActivity extends BaseActivity<AddSellerPresenter> implemen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_seller);
         mContext = this;
+        Utils.updateActionBar(this,new AddSellerActivity().getClass().getSimpleName(),getString(R.string.add_seller),
+                null,null);
         findViewById(R.id.btnAddSeller).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
