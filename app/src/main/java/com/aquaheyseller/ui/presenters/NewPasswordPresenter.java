@@ -27,7 +27,7 @@ public class NewPasswordPresenter extends BasePresenter {
         mContext = context;
     }
 
-    public void validateUsernamePassword(String password, String confirmPswd) {
+    public void validatePswd(String password, String confirmPswd) {
         if (password.equals("") || password.isEmpty()) {
             mNewPswd.onValidationError(mContext.getString(R.string.please_enter_password));
         }  else if (password.length() < 6) {
@@ -44,9 +44,9 @@ public class NewPasswordPresenter extends BasePresenter {
     }
 
     public void changePswdApi(String password) {
-        String otpData = Utils.getOTPData(mContext);
+     /*   String otpData = Utils.getOTPData(mContext);
 
-        LogUtils.DEBUG("OTP DATA : " + otpData);
+        LogUtils.DEBUG("OTP DATA : " + otpData);*/
         showDialog(" Please wait....", "SubmitOtp");
         JSONObject requestObject = new JSONObject();
         try {
@@ -59,8 +59,8 @@ public class NewPasswordPresenter extends BasePresenter {
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                /**/
                 LogUtils.DEBUG("SubmitOtp Response ::" + response.toString());
+                mNewPswd.changePswd();
                 dismissDialog();
 
             }

@@ -4,5 +4,5 @@ public interface IOtp {
 
     void submitOtp();
     void onValidationError(String msg);
-    void callApi(String otp);
+
 }

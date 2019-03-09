@@ -26,14 +26,12 @@ public class EnterOTPActivity extends BaseActivity<OtpPresenter> implements IOtp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otp);
         mContext = this;
-
         findViewById(R.id.btnSubmit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validationField();
             }
         });
-
     }
 
 
@@ -44,7 +42,7 @@ public class EnterOTPActivity extends BaseActivity<OtpPresenter> implements IOtp
 
     @Override
     public void submitOtp() {
-        startActivity(new Intent(EnterOTPActivity.this, LoginActivity.class));
+        startActivity(new Intent(EnterOTPActivity.this, EnterNewPswdActivity.class));
         finishAffinity();
     }
 
@@ -53,18 +51,10 @@ public class EnterOTPActivity extends BaseActivity<OtpPresenter> implements IOtp
         LogUtils.showErrorDialog(mContext, getString(R.string.ok), msg);
     }
 
-    @Override
-    public void callApi(String otp) {
-        getPresenter().callSubmitOtpApi(otp);
-    }
-
-
 
     public void resendOTP(View view) {
-
     }
 
     public void editNumber(View view) {
-
     }
 }

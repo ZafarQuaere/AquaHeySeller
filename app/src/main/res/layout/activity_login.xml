@@ -7,21 +7,21 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-    <!-- <include
-         android:visibility="gone"
-         android:id="@+id/lytToolbar"
-         layout="@layout/app_bar"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"/>-->
+    <include
+        android:id="@+id/lyHeader"
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <ImageView
+
+    <!--<ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/lytTop"
+        android:layout_below="@+id/lyHeader"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/_40dp"
         android:elevation="@dimen/_10dp"
-        android:src="@drawable/icon_drops" />
+        android:src="@drawable/icon_drops" />-->
 
 
     <LinearLayout
@@ -51,9 +51,9 @@
                 android:inputType="text"
                 android:maxLength="35"
                 android:maxLines="1"
-                android:text=""
                 android:paddingVertical="@dimen/_10dp"
                 android:paddingLeft="@dimen/_10dp"
+                android:text=""
                 android:textColor="@color/color_black"
                 android:textSize="16sp" />
 
@@ -105,11 +105,11 @@
                 android:textSize="16sp" />
 
             <Button
-                android:layout_marginTop="@dimen/_10dp"
                 android:id="@+id/btnAddSeller"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/button_height"
                 android:layout_marginHorizontal="@dimen/_20dp"
+                android:layout_marginTop="@dimen/_10dp"
                 android:background="@drawable/btnsignup"
                 android:elevation="@dimen/_10dp"
                 android:foreground="?attr/selectableItemBackgroundBorderless"

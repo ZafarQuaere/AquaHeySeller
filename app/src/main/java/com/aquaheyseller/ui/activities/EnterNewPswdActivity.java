@@ -7,17 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.ui.presenters.LoginPresenter;
 import com.aquaheyseller.ui.presenters.NewPasswordPresenter;
-import com.aquaheyseller.ui.presenters.operations.ILogin;
 import com.aquaheyseller.ui.presenters.operations.INewPswd;
-import com.aquaheyseller.utils.KeyboardUtils;
 import com.aquaheyseller.utils.LogUtils;
-import com.aquaheyseller.utils.Utils;
 
 
 public class EnterNewPswdActivity extends BaseActivity<NewPasswordPresenter> implements INewPswd {
@@ -39,33 +34,30 @@ public class EnterNewPswdActivity extends BaseActivity<NewPasswordPresenter> imp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_new_pswd);
         mContext = this;
-        if (Utils.isLoggedIn(mContext)) {
-            startActivity(new Intent(EnterNewPswdActivity.this, MainActivity.class));
-            finish();
-        } else {
-            initUI();
-        }
+        initUI();
+
     }
 
     private void initUI() {
         editPassword = (EditText) findViewById(R.id.editPassword);
         editConfirmPassword = (EditText) findViewById(R.id.editConfirmPassword);
-
-        Button btnAddSeller = (Button) findViewById(R.id.btnAddSeller);
-
-
-
+        Button btnChangePswd = (Button) findViewById(R.id.btnChangePswd);
+        btnChangePswd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validateInputs();
+            }
+        });
     }
 
-    private void validationField() {
+    private void validateInputs() {
         String password = editPassword.getText().toString().trim();
         String confrmPswd = editConfirmPassword.getText().toString().trim();
-        getPresenter().validateUsernamePassword(password,confrmPswd );
+        getPresenter().validatePswd(password,confrmPswd );
     }
 
     @Override
     public void changePswd() {
-
         startActivity(new Intent(EnterNewPswdActivity.this, LoginActivity.class));
         finish();
     }

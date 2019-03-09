@@ -46,6 +46,9 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     }
 
     private void initUI() {
+        Utils.updateActionBar(this,new LoginActivity().getClass().getSimpleName(),getString(R.string.login_label),
+                null,null);
+
         editUserName = (EditText) findViewById(R.id.editUserName);
         editPassword = (EditText) findViewById(R.id.editPassword);
         textForgetPswd = (TextView) findViewById(R.id.textForgetPswd);

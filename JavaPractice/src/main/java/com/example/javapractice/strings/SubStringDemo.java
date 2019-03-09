@@ -1,6 +1,5 @@
 package com.example.javapractice.strings;
 
-import com.sun.org.apache.xml.internal.security.utils.JavaUtils;
 
 public class SubStringDemo {
     public static String otpText = "5018 is your AQUAHEY OTP";

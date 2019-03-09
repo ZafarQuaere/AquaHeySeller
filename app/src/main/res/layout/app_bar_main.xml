@@ -16,12 +16,14 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary" />
+
         <RelativeLayout
             android:id="@+id/lytToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
+                android:visibility="invisible"
                 android:id="@+id/imgActionBarDrawerIcon"
                 android:layout_width="@dimen/_40dp"
                 android:layout_height="@dimen/_40dp"

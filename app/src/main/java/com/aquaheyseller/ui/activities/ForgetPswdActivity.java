@@ -13,6 +13,7 @@ import com.aquaheyseller.ui.presenters.OtpPresenter;
 import com.aquaheyseller.ui.presenters.operations.IFrgtPswd;
 import com.aquaheyseller.ui.presenters.operations.IOtp;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.Utils;
 
 
 public class ForgetPswdActivity extends BaseActivity<ForgotPswdPresenter> implements IFrgtPswd {
@@ -30,7 +31,8 @@ public class ForgetPswdActivity extends BaseActivity<ForgotPswdPresenter> implem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_pswd);
         mContext = this;
-
+        Utils.updateActionBar(this,new ForgetPswdActivity().getClass().getSimpleName(),getString(R.string.forgot_pswd),
+                null,null);
         findViewById(R.id.btnSubmit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
