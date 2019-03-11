@@ -75,6 +75,7 @@
     <string name="change_pswd">Change Password</string>
     <string name="gst_no">GST No</string>
     <string name="order_list">Order List</string>
+    <string name="my_account">My Account</string>
 
 
     <string-array name="productTypeArray">
