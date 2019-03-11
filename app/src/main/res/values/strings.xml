@@ -76,6 +76,7 @@
     <string name="gst_no">GST No</string>
     <string name="order_list">Order List</string>
     <string name="my_account">My Account</string>
+    <string name="register">Register</string>
 
 
     <string-array name="productTypeArray">
