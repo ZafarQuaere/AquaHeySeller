@@ -28,7 +28,7 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mContext = this;
-        Utils.updateActionBar(this,new RegisterActivity().getClass().getSimpleName(),getString(R.string.change_pswd),
+        Utils.updateActionBar(this,new RegisterActivity().getClass().getSimpleName(),getString(R.string.register),
                 null,null);
         findViewById(R.id.btnRegister).setOnClickListener(new View.OnClickListener() {
             @Override
