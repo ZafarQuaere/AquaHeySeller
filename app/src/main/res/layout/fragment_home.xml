@@ -1,25 +1,201 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:clickable="true"
+    android:layout_height="match_parent"
     android:background="@color/color_white"
-    android:layout_height="match_parent">
+    android:clickable="true">
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/lytFourCircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Home Fragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/_10dp">
+
+        <LinearLayout
+            android:id="@+id/lyt1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <!-- Ice Order Layout -->
+            <RelativeLayout
+                android:id="@+id/rlyIceOrder"
+                android:layout_width="@dimen/circle_width"
+                android:layout_height="@dimen/circle_height"
+                android:layout_marginRight="@dimen/_20dp"
+                android:background="@drawable/circle_blue_color"
+                android:elevation="@dimen/_10dp"
+                android:padding="@dimen/_10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textIconIceOrder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:shadowColor="#99000000"
+                        android:shadowRadius="2"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/font_40sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/orders"
+                        android:textColor="@color/color_white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text=""
+                        android:textColor="@color/color_white" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!-- Equipment Repair Layout -->
+            <RelativeLayout
+                android:id="@+id/lytEquipmentRepair"
+                android:layout_width="@dimen/circle_width"
+                android:layout_height="@dimen/circle_height"
+                android:layout_marginLeft="@dimen/_20dp"
+                android:background="@drawable/circle_blue_color"
+                android:elevation="@dimen/_10dp"
+                android:padding="@dimen/_10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textIconEquipmentRepair"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:shadowColor="#99000000"
+                        android:shadowRadius="2"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/font_40sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:padding="@dimen/_5dp"
+                        android:text="@string/history"
+                        android:textColor="@color/color_white" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lyt1"
+            android:layout_marginTop="@dimen/_40dp"
+            android:layout_marginBottom="@dimen/_20dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <!-- Share feedback Layout -->
+            <RelativeLayout
+                android:id="@+id/lytShareFeedback"
+                android:layout_width="@dimen/circle_width"
+                android:layout_height="@dimen/circle_height"
+                android:layout_marginRight="@dimen/_20dp"
+                android:background="@drawable/circle_blue_color"
+                android:elevation="@dimen/_10dp"
+                android:padding="@dimen/_10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textIconShareFeedback"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:shadowColor="#99000000"
+                        android:shadowRadius="2"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/font_40sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:padding="@dimen/_5dp"
+                        android:text="@string/transactions"
+                        android:textColor="@color/color_white" />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+
+            <!-- History Layout -->
+            <RelativeLayout
+                android:id="@+id/lytHistory"
+                android:layout_width="@dimen/circle_width"
+                android:layout_height="@dimen/circle_height"
+                android:layout_marginLeft="@dimen/_20dp"
+                android:background="@drawable/circle_blue_color"
+                android:elevation="@dimen/_10dp"
+                android:padding="@dimen/_10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textIconHistory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:shadowColor="#99000000"
+                        android:shadowRadius="2"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/font_40sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:padding="@dimen/_5dp"
+                        android:text="@string/history"
+                        android:textColor="@color/color_white" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

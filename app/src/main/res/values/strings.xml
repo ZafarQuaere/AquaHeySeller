@@ -77,6 +77,8 @@
     <string name="order_list">Order List</string>
     <string name="my_account">My Account</string>
     <string name="register">Register</string>
+    <string name="history">History</string>
+    <string name="transactions">Transaction</string>
 
 
     <string-array name="productTypeArray">
