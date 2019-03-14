@@ -172,6 +172,17 @@
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         android:textColor="@color/colorAccent" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_logout"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:gravity="center_vertical"
+                        android:onClick="onLogoutClick"
+                        android:paddingVertical="@dimen/nav_header_vertical_spacing"
+                        android:text="@string/logout"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/colorAccent" />
 
                 </LinearLayout>
 
@@ -214,17 +225,6 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/colorAccent" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_logout"
-                android:drawablePadding="@dimen/drawable_padding"
-                android:gravity="center_vertical"
-                android:onClick="onLogoutClick"
-                android:paddingVertical="@dimen/nav_header_vertical_spacing"
-                android:text="@string/logout"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/colorAccent" />
 
         </LinearLayout>
     </ScrollView>

@@ -108,6 +108,13 @@ public class MainActivity extends BaseActivity<MainPresenter>
         closeDrawer();
     }
 
+    public void expandMyAccount(View view) {
+        LinearLayout lytMyAccount = (LinearLayout)findViewById(R.id.lytMyAccount);
+        ImageButton iconMyAccountExpand = (ImageButton)findViewById(R.id.iconMyAccountExpand);
+        lytMyAccount.setVisibility(lytMyAccount.getVisibility()== View.VISIBLE ? View.GONE : View.VISIBLE);
+        iconMyAccountExpand.setBackground(lytMyAccount.getVisibility()== View.VISIBLE ?getResources().getDrawable(R.drawable.ic_minus) : getResources().getDrawable(R.drawable.ic_plus));
+    }
+
     public void closeDrawer() {
         if (drawer != null) {
             drawer.closeDrawer(GravityCompat.START);
@@ -149,12 +156,5 @@ public class MainActivity extends BaseActivity<MainPresenter>
             finishAffinity();
         }
 
-    }
-
-    public void expandMyAccount(View view) {
-        LinearLayout lytMyAccount = (LinearLayout)findViewById(R.id.lytMyAccount);
-        ImageButton iconMyAccountExpand = (ImageButton)findViewById(R.id.iconMyAccountExpand);
-        lytMyAccount.setVisibility(lytMyAccount.getVisibility()== View.VISIBLE ? View.GONE : View.VISIBLE);
-        iconMyAccountExpand.setBackground(lytMyAccount.getVisibility()== View.VISIBLE ?getResources().getDrawable(R.drawable.ic_minus) : getResources().getDrawable(R.drawable.ic_plus));
     }
 }
