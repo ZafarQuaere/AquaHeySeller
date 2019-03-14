@@ -79,6 +79,7 @@
     <string name="register">Register</string>
     <string name="history">History</string>
     <string name="transactions">Transaction</string>
+    <string name="my_profile">My Profile</string>
 
 
     <string-array name="productTypeArray">

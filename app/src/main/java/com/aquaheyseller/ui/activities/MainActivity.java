@@ -10,7 +10,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.fragments.HomeFragment;
@@ -147,5 +149,12 @@ public class MainActivity extends BaseActivity<MainPresenter>
             finishAffinity();
         }
 
+    }
+
+    public void expandMyAccount(View view) {
+        LinearLayout lytMyAccount = (LinearLayout)findViewById(R.id.lytMyAccount);
+        ImageButton iconMyAccountExpand = (ImageButton)findViewById(R.id.iconMyAccountExpand);
+        lytMyAccount.setVisibility(lytMyAccount.getVisibility()== View.VISIBLE ? View.GONE : View.VISIBLE);
+        iconMyAccountExpand.setBackground(lytMyAccount.getVisibility()== View.VISIBLE ?getResources().getDrawable(R.drawable.ic_minus) : getResources().getDrawable(R.drawable.ic_plus));
     }
 }

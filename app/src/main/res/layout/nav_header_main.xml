@@ -112,25 +112,69 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textMyAcocunt"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/rlytMyAccount"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/ic_my_account"
-                    android:drawablePadding="@dimen/drawable_padding"
-                    android:gravity="center_vertical"
-                    android:onClick="myAccountClick"
-                    android:paddingVertical="@dimen/nav_header_vertical_spacing"
-                    android:text="@string/my_account"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                    android:textColor="@color/colorAccent" />
+                    android:orientation="horizontal"
+                    android:onClick="expandMyAccount"
+                    android:paddingVertical="@dimen/nav_header_vertical_spacing">
 
-                <ImageButton
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/textMyAcocunt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_my_account"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/my_account"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/colorAccent" />
+
+                    <ImageButton
+                        android:id="@+id/iconMyAccountExpand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_plus"
+                        android:layout_alignParentRight="true"/>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/lytMyAccount"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/ic_plus"/>
+                    android:layout_below="@+id/rlytMyAccount"
+                    android:paddingLeft="@dimen/_30dp"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_support"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:gravity="center_vertical"
+                        android:onClick="item3Click"
+                        android:paddingVertical="@dimen/nav_header_vertical_spacing"
+                        android:text="@string/my_profile"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/colorAccent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_settings"
+                        android:drawablePadding="@dimen/drawable_padding"
+                        android:gravity="center_vertical"
+                        android:onClick="item3Click"
+                        android:paddingVertical="@dimen/nav_header_vertical_spacing"
+                        android:text="@string/change_pswd"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                        android:textColor="@color/colorAccent" />
+
+
+                </LinearLayout>
+
 
             </RelativeLayout>
 
