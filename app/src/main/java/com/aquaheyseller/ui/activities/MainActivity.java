@@ -97,10 +97,13 @@ public class MainActivity extends BaseActivity<MainPresenter>
         closeDrawer();
     }
 
+    public void saveAddressClick(View view) {
+        closeDrawer();
+        startActivity(new Intent(MainActivity.this,AddSellerAddressActivity.class));
+    }
     public void item3Click(View view) {
         closeDrawer();
         LogUtils.showToast(mContext,"Development under progress");
-        startActivity(new Intent(MainActivity.this,AddSellerAddressActivity.class));
     }
 
     public void onLogoutClick(View view) {
