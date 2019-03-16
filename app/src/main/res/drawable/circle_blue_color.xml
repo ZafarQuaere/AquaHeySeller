@@ -20,6 +20,6 @@
         />
     <!-- Button Default Image-->
     <item
-        android:drawable="@drawable/button_blue_circle_selector_bg"/>
+        android:drawable="@drawable/circle_home_big"/>
 
 </selector>

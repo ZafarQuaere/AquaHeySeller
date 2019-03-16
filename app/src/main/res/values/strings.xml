@@ -80,6 +80,11 @@
     <string name="history">History</string>
     <string name="transactions">Transaction</string>
     <string name="my_profile">My Profile</string>
+    <string name="sales">Sales</string>
+    <string name="total_sales_this_week">Total Sales this week</string>
+    <string name="todays_sale">Today\'s Sale</string>
+    <string name="rupee_symbol">₹</string>
+    <string name="service_quality">Service Quality</string>
 
 
     <string-array name="productTypeArray">
