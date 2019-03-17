@@ -85,6 +85,9 @@
     <string name="todays_sale">Today\'s Sale</string>
     <string name="rupee_symbol">₹</string>
     <string name="service_quality">Service Quality</string>
+    <string name="new_order">New Order</string>
+    <string name="pending">Pending</string>
+    <string name="completed">Completed</string>
 
 
     <string-array name="productTypeArray">

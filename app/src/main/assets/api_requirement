@@ -45,7 +45,7 @@ Note : Response format need to have one more field of success : 0
 ============================================================================================
 url : http://www.aquahey.com/signup
 Request Body ::{"name":"Mera Paani","email":"zafima20@gmail.com","password":"123456","mobile":"9870273428","userType":1,"dealerId":7}
-Register Response :: "success":1,"totalItem":0,"resultArray":{"id":"20","name":"My Store","password":"e552b64969de0305919e367fd9783e388c8c4b8244e8172a6717a09a974230d9",
+Register Response :: {"success":1,"totalItem":0,"resultArray":{"id":"20","name":"My Store","password":"e552b64969de0305919e367fd9783e388c8c4b8244e8172a6717a09a974230d9",
 "mobile":"9870273428","email":"zafima20@gmail.com","token":"No Available","userType":"1","dealerId":"7"}}
 
 Note :
@@ -87,3 +87,16 @@ ForgotPassword Response ::{"total_sms":1,"duplicates_removed":0,"optedout_remove
 "sms_text":"5018 is your AQUAHEY OTP","sent_via":"HTTP-API","status":"success","msg":"Your message was sent successfully"}
 
 ========================================================================================================================================================
+Product Sale :
+New Order -- Pending -- Complete
+
+Listing....
+
+Settings -- Share App
+Feedback.
+
+
+Order Api :
+Home Api :
+Listing Api :  Edit Api
+Profile Api : Edit Api

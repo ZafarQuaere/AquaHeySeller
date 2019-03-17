@@ -109,7 +109,7 @@
             android:id="@+id/txtServiceQuality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_30dp"
+            android:layout_marginLeft="@dimen/_10dp"
             android:layout_marginTop="@dimen/_40dp"
             android:text="@string/service_quality"
             android:textColor="@color/color_font_home"
@@ -120,7 +120,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtServiceQuality"
             android:layout_marginTop="@dimen/_10dp"
-            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
             <RelativeLayout
@@ -128,9 +127,9 @@
                 android:layout_height="@dimen/circle_small_height"
                 android:layout_centerHorizontal="true"
                 android:layout_marginRight="@dimen/_20dp"
+                android:layout_marginLeft="@dimen/_40dp"
                 android:background="@drawable/circle_home_small"
-                android:elevation="@dimen/_10dp"
-                android:padding="@dimen/_10dp">
+                android:elevation="@dimen/_10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -146,8 +145,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginRight="@dimen/_20dp"
                 android:background="@drawable/circle_home_small"
-                android:elevation="@dimen/_10dp"
-                android:padding="@dimen/_10dp">
+                android:elevation="@dimen/_10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -162,8 +160,7 @@
                 android:layout_height="@dimen/circle_small_height"
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/circle_home_small"
-                android:elevation="@dimen/_10dp"
-                android:padding="@dimen/_10dp">
+                android:elevation="@dimen/_10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
