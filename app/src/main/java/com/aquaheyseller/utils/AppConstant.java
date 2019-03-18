@@ -2,6 +2,8 @@ package com.aquaheyseller.utils;
 
 public class AppConstant {
 
+    public static final Integer SUCCESS = 1;
+    public static final Integer FAILURE = 0;
     // Splash screen timer
     public static int SPLASH_TIME_OUT = 2000;
     public static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";

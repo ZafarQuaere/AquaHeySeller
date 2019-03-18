@@ -7,12 +7,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
+import com.aquaheyseller.network_call.response_model.LoginPojo;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.NetworkUtils;
 import com.aquaheyseller.utils.Utils;
+import com.aquaheyseller.utils.parser.ParseManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,12 +60,24 @@ public class LoginPresenter extends BasePresenter {
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-               /* Gson gson = new GsonBuilder().create();
-                String string = gson.toJson(response);*/
                 LogUtils.DEBUG("Login Response ::" + response.toString());
-                dismissDialog();
-                Utils.setLoggedIn(mContext, true);
-                mLogin.doLogin();
+                LoginPojo loginData = ParseManager.getInstance().fromJSON(response.toString(),LoginPojo.class);
+                try {
+                    if (loginData.getSuccess().equals(AppConstant.SUCCESS)){
+                        dismissDialog();
+                        Utils.setLoggedIn(mContext, true);
+                        mLogin.doLogin();
+                    }else {
+                        LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok),
+                                mContext.getString(R.string.please_enter_valid_credentials));
+                    }
+                } catch (Exception e) {
+                    dismissDialog();
+                    e.printStackTrace();
+                    LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok),
+                            mContext.getString(R.string.please_enter_valid_credentials));
+                }
+
             }
 
         }, new Response.ErrorListener() {

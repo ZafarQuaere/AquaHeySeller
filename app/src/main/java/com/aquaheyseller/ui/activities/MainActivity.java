@@ -160,4 +160,8 @@ public class MainActivity extends BaseActivity<MainPresenter>
         }
 
     }
+
+    public void changePasswordClick(View view) {
+        startActivity(new Intent(MainActivity.this,ForgetPswdActivity.class));
+    }
 }

@@ -88,6 +88,8 @@
     <string name="new_order">New Order</string>
     <string name="pending">Pending</string>
     <string name="completed">Completed</string>
+    <string name="please_enter_valid_registered_number">Please enter valid registered mobile number.</string>
+    <string name="please_enter_valid_credentials">Please enter valid credentials</string>
 
 
     <string-array name="productTypeArray">

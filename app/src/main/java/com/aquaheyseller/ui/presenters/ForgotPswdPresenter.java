@@ -53,15 +53,17 @@ public class ForgotPswdPresenter extends BasePresenter {
                 dismissDialog();
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
-                    String resMob = jsonObject.getString("mobile");
+                    String resMob = jsonObject.optString("mobile");
                     if (resMob.equalsIgnoreCase(mobile)) {
                         Utils.setMobileNo(mContext,mobile);
                         callOTPServiceApi(mobile);
                     } else {
                         LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok),
-                                mContext.getString(R.string.please_enter_valid_mobile_number));
+                                mContext.getString(R.string.please_enter_valid_registered_number));
                     }
                 } catch (JSONException e) {
+                    LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok),
+                            mContext.getString(R.string.please_enter_valid_registered_number));
                     e.printStackTrace();
                 }
 

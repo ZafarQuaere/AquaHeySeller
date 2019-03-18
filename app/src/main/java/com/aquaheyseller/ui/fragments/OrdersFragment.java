@@ -95,7 +95,6 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
 
     public void callOrderApi() {
 
-
         String url = AppConstant.baseUrl + AppConstant.listUrl+""+2;
         LogUtils.DEBUG("URL : " + url );
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
