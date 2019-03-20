@@ -59,7 +59,7 @@
     </style>
 
     <!-- Password Edit -->
-    <style name="PasswordEdit">
+    <style name="PasswordInputEdit">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:inputType">textPassword</item>
@@ -98,6 +98,15 @@
         <item name="android:textColor">@color/colorInputText</item>
         <item name="android:textColorHint">@color/colorHintText</item>
         <item name="android:background">@drawable/rectangle_bg</item>
+    </style>
+
+    <!-- Regular TextView -->
+    <style name="RegularTextview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/regular_text</item>
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
     <style name="positive">
