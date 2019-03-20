@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Address;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.aquaheyseller.BuildConfig;
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.activities.AddSellerActivity;
 import com.aquaheyseller.ui.activities.AddSellerAddressActivity;
@@ -27,6 +29,7 @@ import com.aquaheyseller.ui.activities.EnterNewPswdActivity;
 import com.aquaheyseller.ui.activities.EnterOTPActivity;
 import com.aquaheyseller.ui.activities.ForgetPswdActivity;
 import com.aquaheyseller.ui.activities.LoginActivity;
+import com.aquaheyseller.ui.activities.MainActivity;
 import com.aquaheyseller.ui.activities.RegisterActivity;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
@@ -292,6 +295,21 @@ public class Utils {
             return data;
         }
         return data;
+    }
+
+    public static void shareApp(Activity activity) {
+        try {
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("text/plain");
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "AquaHey Seller");
+            String shareMessage= "\nLet me recommend you this application\n\n";
+            shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+            shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
+            activity.startActivity(Intent.createChooser(shareIntent, activity.getString(R.string.select_app_to_share)));
+        } catch(Exception e) {
+            e.printStackTrace();
+            //e.toString();
+        }
     }
 
    /* public GeoPoint getLocationFromAddress(String strAddress){

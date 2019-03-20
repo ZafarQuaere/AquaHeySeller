@@ -164,4 +164,8 @@ public class MainActivity extends BaseActivity<MainPresenter>
     public void changePasswordClick(View view) {
         startActivity(new Intent(MainActivity.this,ForgetPswdActivity.class));
     }
+
+    public void onShareClick(View view) {
+        Utils.shareApp(MainActivity.this);
+    }
 }
