@@ -90,7 +90,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.textForgetPswd:
-                startActivity(new Intent(LoginActivity.this, ForgetPswdActivity.class));
+                getPresenter().startActivity(mContext);
                 break;
 
             case R.id.btnLogin:

@@ -1,9 +1,7 @@
 package com.aquaheyseller.ui.presenters.operations;
 
 
-import com.aquaheyseller.network_call.request_model.Address;
-
-public interface IListingFrag {
+public interface IFragProfile {
 
     void addProduct();
     void onValidationError(String msg);

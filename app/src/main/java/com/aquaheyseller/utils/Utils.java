@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
@@ -23,18 +21,13 @@ import android.widget.TextView;
 
 import com.aquaheyseller.BuildConfig;
 import com.aquaheyseller.R;
-import com.aquaheyseller.ui.activities.AddSellerActivity;
 import com.aquaheyseller.ui.activities.AddSellerAddressActivity;
-import com.aquaheyseller.ui.activities.EnterNewPswdActivity;
-import com.aquaheyseller.ui.activities.EnterOTPActivity;
 import com.aquaheyseller.ui.activities.ForgetPswdActivity;
-import com.aquaheyseller.ui.activities.LoginActivity;
-import com.aquaheyseller.ui.activities.MainActivity;
-import com.aquaheyseller.ui.activities.RegisterActivity;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
 import com.aquaheyseller.ui.fragments.PaymentsFragment;
+import com.aquaheyseller.ui.fragments.FragmentProfile;
 import com.aquaheyseller.ui.interfaces.DialogButtonClick;
 import com.aquaheyseller.utils.storage.AppSharedPrefs;
 
@@ -46,7 +39,6 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.zip.GZIPInputStream;
 
@@ -161,9 +153,7 @@ public class Utils {
         textTitle.setText(dynamicTitle);
       /*  if (className.equals(new LoginActivity().getClass().getSimpleName())) {
             textTitle.setText(dynamicTitle);
-        } else if (className.equals(new ForgetPswdActivity().getClass().getSimpleName())) {
-            textTitle.setText(dynamicTitle);
-        }else if (className.equals(new AddSellerActivity().getClass().getSimpleName())) {
+        } else if (className.equals(new AddSellerActivity().getClass().getSimpleName())) {
             textTitle.setText(dynamicTitle);
         }else if (className.equals(new EnterOTPActivity().getClass().getSimpleName())) {
             textTitle.setText(dynamicTitle);
@@ -203,8 +193,25 @@ public class Utils {
                     ((Activity) activity).onBackPressed();
                 }
             });
+        } else if (className.equals(new FragmentProfile().getClass().getSimpleName())) {
+            imgActionBarDrawerIcon.setVisibility(View.VISIBLE);
+            textBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((Activity) activity).onBackPressed();
+                }
+            });
         } else if (className.equals(new PaymentsFragment().getClass().getSimpleName())) {
             imgActionBarDrawerIcon.setVisibility(View.VISIBLE);
+            textBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((Activity) activity).onBackPressed();
+                }
+            });
+        }
+        else if (className.equals(new ForgetPswdActivity().getClass().getSimpleName())) {
+            textBack.setVisibility(View.VISIBLE);
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -220,7 +227,7 @@ public class Utils {
         if (activity == null) {
             return;
         }
-        android.app.FragmentManager fm = ((Activity) activity).getFragmentManager();
+        FragmentManager fm = ((AppCompatActivity)activity).getSupportFragmentManager();
 
         for (int i = fm.getBackStackEntryCount() - 1; i > 0; i--) {
             String fragmentName = (fm.getBackStackEntryAt(i)).getName();
@@ -231,7 +238,7 @@ public class Utils {
                 break;
             }
         }
-        // updateActionBar(activity, new HomeFragment().getClass().getSimpleName(), activity.getString(R.string.reddy_ice), null, null, null);
+        Utils.updateActionBar(activity,HomeFragment.class.getSimpleName(),activity.getString(R.string.home),null,null);
         // updateBottomBar(activity, new HomeFragment().getClass().getSimpleName());
     }
 

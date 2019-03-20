@@ -4,6 +4,9 @@ public class AppConstant {
 
     public static final Integer SUCCESS = 1;
     public static final Integer FAILURE = 0;
+    public static final String COMINGFROM = "ComingFrom";
+    public static final int LOGIN = 1;
+    public static final int HOME = 2;
     // Splash screen timer
     public static int SPLASH_TIME_OUT = 2000;
     public static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";

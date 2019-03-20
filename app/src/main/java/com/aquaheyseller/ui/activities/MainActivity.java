@@ -19,6 +19,7 @@ import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
 import com.aquaheyseller.ui.fragments.PaymentsFragment;
+import com.aquaheyseller.ui.fragments.FragmentProfile;
 import com.aquaheyseller.ui.presenters.MainPresenter;
 import com.aquaheyseller.ui.presenters.operations.IMain;
 import com.aquaheyseller.utils.LogUtils;
@@ -96,7 +97,11 @@ public class MainActivity extends BaseActivity<MainPresenter>
         getPresenter().moveToFragment(ListingsFragment.class.getSimpleName());
         closeDrawer();
     }
+    public void onProfileClick(View view) {
+        closeDrawer();
+        getPresenter().moveToFragment(FragmentProfile.class.getSimpleName());
 
+    }
     public void saveAddressClick(View view) {
         closeDrawer();
         startActivity(new Intent(MainActivity.this,AddSellerAddressActivity.class));
@@ -143,12 +148,13 @@ public class MainActivity extends BaseActivity<MainPresenter>
     private void updateToolbar() {
         int count = getSupportFragmentManager().getBackStackEntryCount();
         if (count > 0) {
-            try {
+            //Utils.clearBackStackTillHomeFragment(MainActivity.this);
+           try {
                 getSupportFragmentManager().popBackStack();
                 FragmentManager.BackStackEntry a = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 2);//top
                 Fragment baseFrag = (Fragment) getSupportFragmentManager().findFragmentByTag(a.getName());
                 LogUtils.DEBUG("baseFrag Fragment : " + baseFrag.getClass().getSimpleName());
-                Utils.updateActionBar(mContext, baseFrag.getClass().getSimpleName(), baseFrag.getClass().getSimpleName(), null, null);
+                getPresenter().updateActionBarTitleOnBackPress(mContext,baseFrag);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -162,10 +168,13 @@ public class MainActivity extends BaseActivity<MainPresenter>
     }
 
     public void changePasswordClick(View view) {
-        startActivity(new Intent(MainActivity.this,ForgetPswdActivity.class));
+        getPresenter().startActivity(mContext);
+
     }
 
     public void onShareClick(View view) {
         Utils.shareApp(MainActivity.this);
     }
+
+
 }

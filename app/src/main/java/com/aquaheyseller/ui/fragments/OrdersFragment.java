@@ -56,18 +56,11 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
     private void initUI(View view) {
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
 
-       /* //Adding the tabs using addTab() method
-        tabLayout.addTab(tabLayout.newTab().setText("Pending"));
-        tabLayout.addTab(tabLayout.newTab().setText("Shipped"));
-        tabLayout.addTab(tabLayout.newTab().setText("Completed"));*/
-
-        //tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
         //Initializing viewPager
         viewPager = (ViewPager) view.findViewById(R.id.viewPager);
 
         //Creating our pager adapter
-        OrdresPagerAdapter adapter = new OrdresPagerAdapter(this.getChildFragmentManager(),tabLayout.getTabCount());
+        OrdresPagerAdapter adapter = new OrdresPagerAdapter(getActivity(),this.getChildFragmentManager(),tabLayout.getTabCount());
 
         //Adding adapter to pager
         viewPager.setAdapter(adapter);

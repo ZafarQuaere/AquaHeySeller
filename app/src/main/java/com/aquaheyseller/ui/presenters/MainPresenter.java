@@ -3,15 +3,19 @@ package com.aquaheyseller.ui.presenters;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.Fragment;
 
 import com.aquaheyseller.R;
+import com.aquaheyseller.ui.activities.ForgetPswdActivity;
 import com.aquaheyseller.ui.activities.LoginActivity;
+import com.aquaheyseller.ui.fragments.FragmentProfile;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
 import com.aquaheyseller.ui.fragments.PaymentsFragment;
 import com.aquaheyseller.ui.interfaces.DialogButtonClick;
 import com.aquaheyseller.ui.presenters.operations.IMain;
+import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.Utils;
 import com.aquaheyseller.utils.storage.AppSharedPrefs;
@@ -45,6 +49,10 @@ public class MainPresenter extends BasePresenter {
                 Utils.moveToFragment(mContext, new PaymentsFragment(), PaymentsFragment.class.getSimpleName(), null);
                 Utils.updateActionBar(mContext,PaymentsFragment.class.getSimpleName(),mContext.getString(R.string.payments),null,null);
                 break;
+            case "FragmentProfile":
+                Utils.moveToFragment(mContext, new FragmentProfile(), FragmentProfile.class.getSimpleName(), null);
+                Utils.updateActionBar(mContext, FragmentProfile.class.getSimpleName(),mContext.getString(R.string.my_profile),null,null);
+                break;
         }
         //LogUtils.showToast(mContext, fragName);
     }
@@ -65,5 +73,27 @@ public class MainPresenter extends BasePresenter {
                     public void onCancelClick() {
                     }
                 });
+    }
+
+    public void startActivity(Context mContext) {
+        Intent intent = new Intent(mContext, ForgetPswdActivity.class);
+        intent.putExtra(AppConstant.COMINGFROM,AppConstant.HOME);
+        mContext.startActivity(intent);
+    }
+
+    public void updateActionBarTitleOnBackPress(Context mContext, Fragment baseFragment) {
+        if (baseFragment.getClass().getSimpleName().contains("Home")) {
+            Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.home), null, null);
+        } else if (baseFragment.getClass().getSimpleName().contains("Listing")) {
+            Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.listings), null, null);
+        } else if (baseFragment.getClass().getSimpleName().contains("Profile")) {
+            Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.my_profile), null, null);
+        } else if (baseFragment.getClass().getSimpleName().contains("Orders")) {
+            Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.orders), null, null);
+        } else if (baseFragment.getClass().getSimpleName().contains("Payments")) {
+            Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.payments), null, null);
+        } else if (baseFragment.getClass().getSimpleName().contains("Address")) {
+            Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.save_address), null, null);
+        }
     }
 }

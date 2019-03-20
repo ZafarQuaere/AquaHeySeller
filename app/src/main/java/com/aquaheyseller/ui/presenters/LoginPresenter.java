@@ -1,6 +1,7 @@
 package com.aquaheyseller.ui.presenters;
 
 import android.content.Context;
+import android.content.Intent;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -8,6 +9,7 @@ import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
 import com.aquaheyseller.network_call.response_model.LoginPojo;
+import com.aquaheyseller.ui.activities.ForgetPswdActivity;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
@@ -88,5 +90,11 @@ public class LoginPresenter extends BasePresenter {
             }
         });
         AppController.getInstance().addToRequestQueue(objectRequest, "Login");
+    }
+
+    public void startActivity(Context mContext) {
+        Intent intent = new Intent(mContext, ForgetPswdActivity.class);
+        intent.putExtra(AppConstant.COMINGFROM,AppConstant.LOGIN);
+        mContext.startActivity(intent);
     }
 }

@@ -155,7 +155,7 @@
                         android:drawableLeft="@drawable/ic_support"
                         android:drawablePadding="@dimen/drawable_padding"
                         android:gravity="center_vertical"
-                        android:onClick="item3Click"
+                        android:onClick="onProfileClick"
                         android:paddingVertical="@dimen/nav_header_vertical_spacing"
                         android:text="@string/my_profile"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body1"

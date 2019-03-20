@@ -1,5 +1,6 @@
 package com.aquaheyseller.ui.presenters;
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.android.volley.Request;
@@ -7,6 +8,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
+import com.aquaheyseller.ui.activities.ForgetPswdActivity;
 import com.aquaheyseller.ui.presenters.operations.IFrgtPswd;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
@@ -96,5 +98,13 @@ public class ForgotPswdPresenter extends BasePresenter {
             }
         });
         AppController.getInstance().addToRequestQueue(otpServiceRequest, "OtpService");
+    }
+
+    public void updateActionBar(Context mContext) {
+        int intExtra = ((Activity)mContext).getIntent().getIntExtra(AppConstant.COMINGFROM, AppConstant.LOGIN);
+       // LogUtils.showToast(mContext,intExtra== 1 ? "Coming form Login" : "Coming from home");
+
+        Utils.updateActionBar(mContext,new ForgetPswdActivity().getClass().getSimpleName(),intExtra == 1 ? mContext.getString(R.string.forgot_pswd) :
+                mContext.getString(R.string.change_pswd), null,null);
     }
 }

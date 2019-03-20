@@ -9,7 +9,7 @@ import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
 import com.aquaheyseller.network_call.request_model.Address;
-import com.aquaheyseller.ui.presenters.operations.IFragListing;
+import com.aquaheyseller.ui.presenters.operations.IFragProfile;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
 import com.aquaheyseller.utils.LogUtils;
@@ -18,13 +18,13 @@ import com.aquaheyseller.utils.NetworkUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ListingsPresenter extends BaseFragmentPresenter {
+public class ProfilePresenter extends BaseFragmentPresenter {
     private Context mContext;
-    private IFragListing mAddProduct;
+    private IFragProfile mAddProduct;
 
-    public ListingsPresenter(Context context, IFragListing iSellerAddress) {
+    public ProfilePresenter(Context context, IFragProfile iFragProfile) {
         super(context);
-        mAddProduct = iSellerAddress;
+        mAddProduct = iFragProfile;
         mContext = context;
     }
 

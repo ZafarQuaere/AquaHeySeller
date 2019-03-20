@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.ui.presenters.HomePresenter;
-import com.aquaheyseller.ui.presenters.operations.IFragHome;
+import com.aquaheyseller.ui.presenters.ProfilePresenter;
+import com.aquaheyseller.ui.presenters.operations.IFragProfile;
 
-public class HomeFragment extends BaseFragment<HomePresenter> implements IFragHome {
+public class FragmentProfile extends BaseFragment<ProfilePresenter> implements IFragProfile {
 
 
     @Override
@@ -20,19 +20,29 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IFragHo
     }
 
     @Override
-    protected HomePresenter initPresenter() {
-        return new HomePresenter(getActivity(), this);
+    protected ProfilePresenter initPresenter() {
+        return new ProfilePresenter(getActivity(),this);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        getPresenter().callDashboardApi();
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
         return view;
     }
 
     @Override
-    public void updateUI(String response) {
+    public void addProduct() {
+
+    }
+
+    @Override
+    public void onValidationError(String msg) {
+
+    }
+
+    @Override
+    public void callApi() {
 
     }
 }
