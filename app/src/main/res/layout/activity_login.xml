@@ -54,7 +54,7 @@
                 android:paddingVertical="@dimen/_10dp"
                 android:paddingLeft="@dimen/_10dp"
                 android:text=""
-                android:textColor="@color/color_black"
+                android:textColor="@color/colorBlack"
                 android:textSize="16sp" />
 
 
@@ -73,7 +73,7 @@
                 android:paddingVertical="@dimen/_10dp"
                 android:paddingLeft="@dimen/_10dp"
                 android:text=""
-                android:textColor="@color/color_black"
+                android:textColor="@color/colorBlack"
                 android:textSize="16sp" />
 
 
@@ -88,7 +88,7 @@
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="@string/login_label"
                 android:textAllCaps="false"
-                android:textColor="@color/color_white"
+                android:textColor="@color/colorWhite"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
                 android:padding="@dimen/_10dp"
                 android:text="@string/forgot_pswd"
                 android:textAlignment="center"
-                android:textColor="@color/color_white"
+                android:textColor="@color/colorWhite"
                 android:textSize="16sp" />
 
             <Button
@@ -115,7 +115,7 @@
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="@string/add_seller"
                 android:textAllCaps="true"
-                android:textColor="@color/color_white"
+                android:textColor="@color/colorWhite"
                 android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>

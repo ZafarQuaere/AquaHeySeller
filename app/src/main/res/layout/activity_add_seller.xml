@@ -43,7 +43,7 @@
                 android:maxLines="1"
                 android:paddingVertical="@dimen/_10dp"
                 android:paddingLeft="@dimen/_10dp"
-                android:textColor="@color/color_black"
+                android:textColor="@color/colorBlack"
                 android:textSize="16sp" />
 
 
@@ -61,7 +61,7 @@
                 android:maxLines="1"
                 android:paddingVertical="@dimen/_10dp"
                 android:paddingLeft="@dimen/_10dp"
-                android:textColor="@color/color_black"
+                android:textColor="@color/colorBlack"
                 android:textSize="16sp" />
 
 
@@ -76,7 +76,7 @@
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="@string/add_seller"
                 android:textAllCaps="false"
-                android:textColor="@color/color_white"
+                android:textColor="@color/colorWhite"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 

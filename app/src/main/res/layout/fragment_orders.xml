@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:clickable="true"
-    android:background="@color/color_white"
+    android:background="@color/colorWhite"
     android:layout_height="match_parent">
 
 
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabSelectedTextColor="@color/colorAccent"
-        app:tabTextColor="@color/color_white">
+        app:tabTextColor="@color/colorWhite">
 
           <android.support.design.widget.TabItem
             android:layout_width="wrap_content"

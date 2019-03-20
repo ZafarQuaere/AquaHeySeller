@@ -33,7 +33,7 @@
                 android:padding="@dimen/_10dp"
                 android:text="@string/register_to_use_aqua_hey"
                 android:textAlignment="center"
-                android:textColor="@color/color_white"
+                android:textColor="@color/colorWhite"
                 android:textSize="@dimen/font_20sp" />
 
 
@@ -133,6 +133,6 @@
         android:background="@drawable/btnsignin"
         android:elevation="@dimen/_10dp"
         android:text="@string/signup_label"
-        android:textColor="@color/color_white" />
+        android:textColor="@color/colorWhite" />
 </RelativeLayout>
 
