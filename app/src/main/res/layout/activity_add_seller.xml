@@ -32,37 +32,20 @@
 
             <EditText
                 android:id="@+id/editSellerName"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edit_field_height"
-                android:background="@drawable/rectangle_bg"
-                android:elevation="@dimen/_10dp"
-                android:gravity="center_horizontal"
+                style="@style/TextInputEdit"
+                android:gravity="center"
                 android:hint="@string/sellername"
                 android:inputType="text"
-                android:maxLength="35"
-                android:maxLines="1"
-                android:paddingVertical="@dimen/_10dp"
-                android:paddingLeft="@dimen/_10dp"
-                android:textColor="@color/color_black"
-                android:textSize="16sp" />
+                android:maxLength="35"/>
 
 
             <EditText
                 android:id="@+id/editSellerMobile"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edit_field_height"
-                android:layout_marginTop="@dimen/_20dp"
-                android:background="@drawable/rectangle_bg"
-                android:elevation="@dimen/_10dp"
-                android:gravity="center_horizontal"
+                style="@style/NumberInputEdit"
+                android:gravity="center"
                 android:hint="@string/enter_mobile_no"
-                android:inputType="number"
-                android:maxLength="10"
-                android:maxLines="1"
-                android:paddingVertical="@dimen/_10dp"
-                android:paddingLeft="@dimen/_10dp"
-                android:textColor="@color/color_black"
-                android:textSize="16sp" />
+                android:layout_marginTop="@dimen/_20dp"
+                android:maxLength="10"/>
 
 
             <Button
@@ -76,7 +59,7 @@
                 android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="@string/add_seller"
                 android:textAllCaps="false"
-                android:textColor="@color/color_white"
+                android:textColor="@color/colorWhite"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 

@@ -78,7 +78,7 @@
             android:background="@drawable/btnsignin"
             android:elevation="@dimen/_10dp"
             android:text="@string/save_address"
-            android:textColor="@color/color_white" />
+            android:textColor="@color/colorWhite" />
     </LinearLayout>
 </LinearLayout>
 

@@ -20,7 +20,7 @@
         android:padding="@dimen/_10dp"
         android:text="@string/sit_back_and_relax_while_we_verify_your_mobile_number_and_send_otp"
         android:textAlignment="center"
-        android:textColor="@color/color_white"
+        android:textColor="@color/colorWhite"
         android:textSize="20sp" />
 
     <ImageView
@@ -56,6 +56,6 @@
         android:layout_marginTop="@dimen/_20dp"
         android:background="@drawable/btnsignin"
         android:text="@string/submit"
-        android:textColor="@color/color_white" />
+        android:textColor="@color/colorWhite" />
 
 </RelativeLayout>

@@ -31,7 +31,7 @@ public class MainPresenter extends BasePresenter {
         switch (fragName) {
             case "HomeFragment":
                 Utils.moveToFragment(mContext, new HomeFragment(), HomeFragment.class.getSimpleName(), null);
-                Utils.updateActionBar(mContext,HomeFragment.class.getSimpleName(),mContext.getString(R.string.app_name),null,null);
+                Utils.updateActionBar(mContext,HomeFragment.class.getSimpleName(),mContext.getString(R.string.home),null,null);
                 break;
             case "OrdersFragment":
                 Utils.moveToFragment(mContext, new OrdersFragment(), OrdersFragment.class.getSimpleName(), null);

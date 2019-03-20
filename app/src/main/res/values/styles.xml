@@ -27,7 +27,7 @@
 
     <style name="ProgressDialogTheme" parent="android:Theme.Holo.Dialog">
         <item name="android:alertDialogStyle">@style/CustomProgressDialogStyle</item>
-        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowBackground">@color/colorTransparent</item>
         <item name="android:textColorPrimary">#FFFFFF</item>
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:textColor">@color/color_app_theme</item>
@@ -38,16 +38,16 @@
 
 
     <style name="CustomProgressDialogStyle">
-        <item name="android:bottomBright">@color/transparent</item>
-        <item name="android:bottomDark">@color/transparent</item>
-        <item name="android:bottomMedium">@color/transparent</item>
-        <item name="android:centerBright">@color/transparent</item>
-        <item name="android:centerDark">@color/transparent</item>
-        <item name="android:centerMedium">@color/transparent</item>
-        <item name="android:fullBright">@color/transparent</item>
-        <item name="android:fullDark">@color/transparent</item>
-        <item name="android:topBright">@color/transparent</item>
-        <item name="android:topDark">@color/transparent</item>
+        <item name="android:bottomBright">@color/colorTransparent</item>
+        <item name="android:bottomDark">@color/colorTransparent</item>
+        <item name="android:bottomMedium">@color/colorTransparent</item>
+        <item name="android:centerBright">@color/colorTransparent</item>
+        <item name="android:centerDark">@color/colorTransparent</item>
+        <item name="android:centerMedium">@color/colorTransparent</item>
+        <item name="android:fullBright">@color/colorTransparent</item>
+        <item name="android:fullDark">@color/colorTransparent</item>
+        <item name="android:topBright">@color/colorTransparent</item>
+        <item name="android:topDark">@color/colorTransparent</item>
     </style>
     <!--Alert Dialog Theme-->
     <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
@@ -58,8 +58,61 @@
 
     </style>
 
+    <!-- Password Edit -->
+    <style name="PasswordInputEdit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:minHeight">@dimen/edit_field_height</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/regular_text</item>
+        <item name="android:textColor">@color/colorInputText</item>
+        <item name="android:textColorHint">@color/colorHintText</item>
+        <item name="android:background">@drawable/rectangle_bg</item>
+    </style>
+
+    <!-- TextInput Edit -->
+    <style name="TextInputEdit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/edit_field_height</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:inputType">text</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/regular_text</item>
+        <item name="android:textColor">@color/colorInputText</item>
+        <item name="android:textColorHint">@color/colorHintText</item>
+        <item name="android:background">@drawable/rectangle_bg</item>
+    </style>
+
+    <!-- TextInput Edit -->
+    <style name="NumberInputEdit">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/edit_field_height</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:inputType">number</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/regular_text</item>
+        <item name="android:textColor">@color/colorInputText</item>
+        <item name="android:textColorHint">@color/colorHintText</item>
+        <item name="android:background">@drawable/rectangle_bg</item>
+    </style>
+
+    <!-- Regular TextView -->
+    <style name="RegularTextview">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/regular_text</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
     <style name="positive">
         <item name="android:textColor">#336ce6</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+
 </resources>

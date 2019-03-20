@@ -208,9 +208,9 @@
                 android:drawableLeft="@drawable/ic_support"
                 android:drawablePadding="@dimen/drawable_padding"
                 android:gravity="center_vertical"
-                android:onClick="item3Click"
+                android:onClick="onShareClick"
                 android:paddingVertical="@dimen/nav_header_vertical_spacing"
-                android:text="@string/support"
+                android:text="@string/share"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/colorAccent" />
 
@@ -222,7 +222,7 @@
                 android:gravity="center_vertical"
                 android:onClick="item3Click"
                 android:paddingVertical="@dimen/nav_header_vertical_spacing"
-                android:text="@string/settings"
+                android:text="@string/help_faq"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="@color/colorAccent" />
 
