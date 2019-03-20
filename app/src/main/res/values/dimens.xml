@@ -54,5 +54,7 @@
     <dimen name="padding_home_screen">16dp</dimen>
     <dimen name="home_screen_margin_top">150dp</dimen>
 
+    <dimen name="order_cardview_margin">16dp</dimen>
+
 
 </resources>
