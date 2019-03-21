@@ -48,7 +48,8 @@ public class LoginPresenter extends BasePresenter {
     }
 
     public void callApi(String mobile, String password) {
-        showDialog("Login Please wait....", "Login");
+       // showDialog("Login Please wait....", "Login");
+        openProgressDialog();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("mobile", mobile);
@@ -65,16 +66,16 @@ public class LoginPresenter extends BasePresenter {
                 LogUtils.DEBUG("Login Response ::" + response.toString());
                 LoginPojo loginData = ParseManager.getInstance().fromJSON(response.toString(),LoginPojo.class);
                 try {
-                    if (loginData.getSuccess().equals(AppConstant.SUCCESS)){
-                        dismissDialog();
+                    if (loginData.getStatus().equals(AppConstant.SUCCESS)){
+                        hideProgressDialog();
                         Utils.setLoggedIn(mContext, true);
                         mLogin.doLogin();
                     }else {
-                        LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok),
-                                mContext.getString(R.string.please_enter_valid_credentials));
+                        LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok), loginData.getMessage());
+                        hideProgressDialog();
                     }
                 } catch (Exception e) {
-                    dismissDialog();
+                    hideProgressDialog();
                     e.printStackTrace();
                     LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok),
                             mContext.getString(R.string.please_enter_valid_credentials));
@@ -85,7 +86,8 @@ public class LoginPresenter extends BasePresenter {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                dismissDialog();
+                hideProgressDialog();
+
                 LogUtils.DEBUG("Login Error ::" + error.getMessage());
             }
         });

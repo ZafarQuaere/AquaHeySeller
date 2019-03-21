@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
@@ -11,18 +12,18 @@
         android:id="@+id/txtSalesLable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_20dp"
         android:layout_marginTop="@dimen/_40dp"
         android:text="@string/sales"
-        android:layout_marginLeft="@dimen/_20dp"
         android:textColor="@color/colorTextHome"
         android:textSize="@dimen/font_20sp" />
 
     <TextView
-        android:layout_marginLeft="@dimen/_20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtSalesLable"
         android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/_20dp"
         android:layout_marginTop="@dimen/_10dp"
         android:text="@string/total_sales_this_week"
         android:textColor="@color/colorTextHome"
@@ -102,65 +103,35 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_20dp">
+        android:layout_alignParentBottom="true">
 
         <TextView
             android:id="@+id/txtServiceQuality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_10dp"
-            android:layout_marginTop="@dimen/_40dp"
             android:text="@string/service_quality"
             android:textColor="@color/colorTextHome"
             android:textSize="@dimen/font_20sp" />
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="121dp"
             android:layout_below="@+id/txtServiceQuality"
-            android:layout_marginTop="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_20dp"
             android:orientation="horizontal">
 
             <RelativeLayout
-                android:layout_width="@dimen/circle_small_width"
+                android:id="@+id/relativeLayout4"
+                android:layout_width="@dimen/circle_small_height"
                 android:layout_height="@dimen/circle_small_height"
                 android:layout_centerHorizontal="true"
-                android:layout_marginRight="@dimen/_20dp"
-                android:layout_marginLeft="@dimen/_40dp"
+                android:layout_marginEnd="59dp"
                 android:background="@drawable/circle_home_small"
-                android:elevation="@dimen/_10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="@dimen/_10dp"
-                    android:text="5" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="@dimen/circle_small_width"
-                android:layout_height="@dimen/circle_small_height"
-                android:layout_centerHorizontal="true"
-                android:layout_marginRight="@dimen/_20dp"
-                android:background="@drawable/circle_home_small"
-                android:elevation="@dimen/_10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="@dimen/_10dp"
-                    android:text="2" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="@dimen/circle_small_width"
-                android:layout_height="@dimen/circle_small_height"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/circle_home_small"
-                android:elevation="@dimen/_10dp">
+                android:elevation="@dimen/_10dp"
+                app:layout_constraintEnd_toStartOf="@+id/relativeLayout6"
+                app:layout_constraintStart_toEndOf="@+id/relativeLayout5"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -168,9 +139,87 @@
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/_10dp"
                     android:text="3" />
+
             </RelativeLayout>
 
-        </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/relativeLayout5"
+                android:layout_width="@dimen/circle_small_height"
+                android:layout_height="@dimen/circle_small_height"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="69dp"
+                android:background="@drawable/circle_home_small"
+                android:elevation="@dimen/_10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/relativeLayout4"
+                app:layout_constraintEnd_toStartOf="@+id/relativeLayout4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/relativeLayout4"
+                app:layout_constraintVertical_bias="1.0">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:text="3" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout6"
+                android:layout_width="@dimen/circle_small_height"
+                android:layout_height="@dimen/circle_small_height"
+                android:layout_centerHorizontal="true"
+                android:layout_marginEnd="27dp"
+                android:background="@drawable/circle_home_small"
+                android:elevation="@dimen/_10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/relativeLayout4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/relativeLayout4"
+                app:layout_constraintTop_toTopOf="@+id/relativeLayout4">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:text="3" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="@+id/relativeLayout5"
+                app:layout_constraintHorizontal_bias="0.608"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout5"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout5" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="@+id/relativeLayout4"
+                app:layout_constraintHorizontal_bias="0.521"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout4"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout4" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="TextView"
+                app:layout_constraintEnd_toEndOf="@+id/relativeLayout6"
+                app:layout_constraintStart_toStartOf="@+id/relativeLayout6"
+                app:layout_constraintTop_toBottomOf="@+id/relativeLayout6" />
+        </android.support.constraint.ConstraintLayout>
     </RelativeLayout>
 
 </RelativeLayout>

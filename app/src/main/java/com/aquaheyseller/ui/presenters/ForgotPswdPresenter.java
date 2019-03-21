@@ -44,7 +44,7 @@ public class ForgotPswdPresenter extends BasePresenter {
     }
 
     public void callSubmitMobileApi(final String mobile) {
-        showDialog(" Please wait....", "Forgot Password");
+        openProgressDialog();
         String url = AppConstant.URL_BASE + AppConstant.URL_VERIFY_MOBILE + mobile;
 
         //  LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
@@ -52,7 +52,7 @@ public class ForgotPswdPresenter extends BasePresenter {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("ForgotPassword Response ::" + response.toString());
-                dismissDialog();
+                hideProgressDialog();
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     String resMob = jsonObject.optString("mobile");
@@ -74,7 +74,7 @@ public class ForgotPswdPresenter extends BasePresenter {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                dismissDialog();
+                hideProgressDialog();
                 LogUtils.DEBUG("ForgotPassword Error ::" + error.getMessage());
             }
         });

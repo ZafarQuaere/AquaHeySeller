@@ -5,39 +5,37 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class LoginPojo {
-
-    @SerializedName("success")
+    @SerializedName("message")
     @Expose
-    private Integer success;
-    @SerializedName("totalItem")
+    private String message;
+    @SerializedName("status")
     @Expose
-    private Integer totalItem;
-    @SerializedName("resultArray")
+    private Integer status;
+    @SerializedName("data")
     @Expose
-    private ResultArray resultArray;
+    private Data data;
 
-    public Integer getSuccess() {
-        return success;
+    public String getMessage() {
+        return message;
     }
 
-    public void setSuccess(Integer success) {
-        this.success = success;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public Integer getTotalItem() {
-        return totalItem;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setTotalItem(Integer totalItem) {
-        this.totalItem = totalItem;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public ResultArray getResultArray() {
-        return resultArray;
+    public Data getData() {
+        return data;
     }
 
-    public void setResultArray(ResultArray resultArray) {
-        this.resultArray = resultArray;
+    public void setData(Data data) {
+        this.data = data;
     }
-
 }

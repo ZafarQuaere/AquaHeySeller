@@ -1,10 +1,9 @@
-
 package com.aquaheyseller.network_call.response_model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ResultArray {
+public class Data {
 
     @SerializedName("id")
     @Expose

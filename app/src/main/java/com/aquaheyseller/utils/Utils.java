@@ -21,13 +21,17 @@ import android.widget.TextView;
 
 import com.aquaheyseller.BuildConfig;
 import com.aquaheyseller.R;
+import com.aquaheyseller.ui.activities.AddSellerActivity;
 import com.aquaheyseller.ui.activities.AddSellerAddressActivity;
+import com.aquaheyseller.ui.activities.EnterNewPswdActivity;
+import com.aquaheyseller.ui.activities.EnterOTPActivity;
 import com.aquaheyseller.ui.activities.ForgetPswdActivity;
+import com.aquaheyseller.ui.activities.LoginActivity;
+import com.aquaheyseller.ui.fragments.FragmentProfile;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
 import com.aquaheyseller.ui.fragments.PaymentsFragment;
-import com.aquaheyseller.ui.fragments.FragmentProfile;
 import com.aquaheyseller.ui.interfaces.DialogButtonClick;
 import com.aquaheyseller.utils.storage.AppSharedPrefs;
 
@@ -151,15 +155,33 @@ public class Utils {
 
         textBack.setVisibility(View.GONE);
         textTitle.setText(dynamicTitle);
-      /*  if (className.equals(new LoginActivity().getClass().getSimpleName())) {
-            textTitle.setText(dynamicTitle);
+        if (className.equals(new LoginActivity().getClass().getSimpleName())) {
+
         } else if (className.equals(new AddSellerActivity().getClass().getSimpleName())) {
-            textTitle.setText(dynamicTitle);
-        }else if (className.equals(new EnterOTPActivity().getClass().getSimpleName())) {
-            textTitle.setText(dynamicTitle);
-        }else if (className.equals(new EnterNewPswdActivity().getClass().getSimpleName())) {
-            textTitle.setText(dynamicTitle);
-        }else */if (className.equals(new AddSellerAddressActivity().getClass().getSimpleName())) {
+            textBack.setVisibility(View.VISIBLE);
+            textBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((Activity) activity).onBackPressed();
+                }
+            });
+        } else if (className.equals(new EnterOTPActivity().getClass().getSimpleName())) {
+            textBack.setVisibility(View.VISIBLE);
+            textBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((Activity) activity).onBackPressed();
+                }
+            });
+        } else if (className.equals(new EnterNewPswdActivity().getClass().getSimpleName())) {
+            textBack.setVisibility(View.VISIBLE);
+            textBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((Activity) activity).onBackPressed();
+                }
+            });
+        } else if (className.equals(new AddSellerAddressActivity().getClass().getSimpleName())) {
             textBack.setVisibility(View.VISIBLE);
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -170,13 +192,6 @@ public class Utils {
         } else if (className.equals(new HomeFragment().getClass().getSimpleName())) {
             textBack.setVisibility(View.GONE);
             imgActionBarDrawerIcon.setVisibility(View.VISIBLE);
-            textBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //activity.startActivity(new Intent(activity, LoginActivity.class));
-
-                }
-            });
         } else if (className.equals(new OrdersFragment().getClass().getSimpleName())) {
             imgActionBarDrawerIcon.setVisibility(View.VISIBLE);
             textBack.setOnClickListener(new View.OnClickListener() {
@@ -209,8 +224,7 @@ public class Utils {
                     ((Activity) activity).onBackPressed();
                 }
             });
-        }
-        else if (className.equals(new ForgetPswdActivity().getClass().getSimpleName())) {
+        } else if (className.equals(new ForgetPswdActivity().getClass().getSimpleName())) {
             textBack.setVisibility(View.VISIBLE);
             textBack.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -227,7 +241,7 @@ public class Utils {
         if (activity == null) {
             return;
         }
-        FragmentManager fm = ((AppCompatActivity)activity).getSupportFragmentManager();
+        FragmentManager fm = ((AppCompatActivity) activity).getSupportFragmentManager();
 
         for (int i = fm.getBackStackEntryCount() - 1; i > 0; i--) {
             String fragmentName = (fm.getBackStackEntryAt(i)).getName();
@@ -238,7 +252,7 @@ public class Utils {
                 break;
             }
         }
-        Utils.updateActionBar(activity,HomeFragment.class.getSimpleName(),activity.getString(R.string.home),null,null);
+        Utils.updateActionBar(activity, HomeFragment.class.getSimpleName(), activity.getString(R.string.home), null, null);
         // updateBottomBar(activity, new HomeFragment().getClass().getSimpleName());
     }
 
@@ -309,11 +323,11 @@ public class Utils {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "AquaHey Seller");
-            String shareMessage= "\nLet me recommend you this application\n\n";
-            shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+            String shareMessage = "\nLet me recommend you this application\n\n";
+            shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "\n\n";
             shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
             activity.startActivity(Intent.createChooser(shareIntent, activity.getString(R.string.select_app_to_share)));
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             //e.toString();
         }

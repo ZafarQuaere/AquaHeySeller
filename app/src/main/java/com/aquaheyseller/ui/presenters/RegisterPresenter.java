@@ -52,7 +52,7 @@ public class RegisterPresenter extends BasePresenter {
     }
 
     public void callRegisterApi(final Register register) {
-        showDialog("Registering....","Register");
+        openProgressDialog();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("name", register.getName());
@@ -71,14 +71,14 @@ public class RegisterPresenter extends BasePresenter {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("Register Response ::" + response.toString());
-                dismissDialog();
+                hideProgressDialog();
                 mRegister.doRegister();
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                dismissDialog();
+                hideProgressDialog();
                 LogUtils.DEBUG("Register Error ::" + error.getMessage());
             }
         });

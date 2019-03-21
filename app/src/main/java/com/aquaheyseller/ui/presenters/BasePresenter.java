@@ -7,8 +7,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 
 
+import com.aquaheyseller.ui.fragments.ProgressFragment;
 import com.aquaheyseller.utils.UIUtils;
 
 import java.util.ArrayList;
@@ -22,6 +24,7 @@ public abstract class BasePresenter {
     private final List<BasePresenter> mPresenters;
 
     protected Dialog mDialog;
+    private ProgressFragment progressDialog;
 
     public BasePresenter(Context context) {
         mContext = context;
@@ -57,7 +60,8 @@ public abstract class BasePresenter {
         for (BasePresenter presenter : mPresenters) {
             presenter.onStop();
         }
-        dismissDialog();
+       // dismissDialog();
+        hideProgressDialog();
     }
 
     protected Context getContext() {
@@ -70,7 +74,7 @@ public abstract class BasePresenter {
     }
 
     // Dialog
-    public Dialog showDialog(int messageRes, int titleRes) {
+   /* public Dialog showDialog(int messageRes, int titleRes) {
         return showDialog(messageRes, titleRes, null);
     }
 
@@ -110,6 +114,18 @@ public abstract class BasePresenter {
     public void dismissDialog() {
         if (mDialog != null) {
             mDialog.dismiss();
+        }
+    }*/
+
+    public void openProgressDialog(){
+        progressDialog = new ProgressFragment();
+        progressDialog.setCancelable(false);
+        progressDialog.showNow(((AppCompatActivity) mContext).getSupportFragmentManager(),"Progress");
+    }
+
+    public void hideProgressDialog(){
+        if (progressDialog!= null) {
+            progressDialog.dismiss();
         }
     }
 }

@@ -42,7 +42,7 @@ public class AddSellerPresenter extends BasePresenter {
     }
 
     public void callAddSellerApi(String dName, String mobile) {
-        showDialog("AddSeller....", "Processing ..");
+        openProgressDialog();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("dName", dName);
@@ -60,14 +60,14 @@ public class AddSellerPresenter extends BasePresenter {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("AddSeller Response ::" + response.toString());
-                dismissDialog();
+                hideProgressDialog();
                 mSeller.addSeller();
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                dismissDialog();
+                hideProgressDialog();
                 LogUtils.DEBUG("AddSeller Error ::" + error.getMessage());
             }
         });

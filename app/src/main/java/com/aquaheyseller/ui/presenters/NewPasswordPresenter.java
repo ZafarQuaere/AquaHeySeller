@@ -47,7 +47,7 @@ public class NewPasswordPresenter extends BasePresenter {
      /*   String otpData = Utils.getOTPData(mContext);
 
         LogUtils.DEBUG("OTP DATA : " + otpData);*/
-        showDialog(" Please wait....", "SubmitOtp");
+        openProgressDialog();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("mobile", "");
@@ -61,14 +61,14 @@ public class NewPasswordPresenter extends BasePresenter {
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("SubmitOtp Response ::" + response.toString());
                 mNewPswd.changePswd();
-                dismissDialog();
+                hideProgressDialog();
 
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                dismissDialog();
+                hideProgressDialog();
                 LogUtils.DEBUG("SubmitOtp Error ::" + error.getMessage());
             }
         });

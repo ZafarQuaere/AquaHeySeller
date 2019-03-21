@@ -47,7 +47,7 @@ public class AddressPresenter extends BasePresenter {
     }
 
     public void callAddressApi(final Address address) {
-        showDialog("Address....", "Saving Address");
+        openProgressDialog();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("userId", "20");
@@ -67,14 +67,14 @@ public class AddressPresenter extends BasePresenter {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("Address Response ::" + response.toString());
-                dismissDialog();
+                hideProgressDialog();
                  mSellerAddress.saveAddress();
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                dismissDialog();
+                hideProgressDialog();
                 LogUtils.DEBUG("Address Error ::" + error.getMessage());
             }
         });
