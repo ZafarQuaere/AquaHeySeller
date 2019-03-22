@@ -1,18 +1,20 @@
 package com.aquaheyseller.ui.presenters;
 
 import android.content.Context;
+import android.location.Address;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
-import com.aquaheyseller.network_call.request_model.Address;
+import com.aquaheyseller.network_call.request_model.AddressData;
 import com.aquaheyseller.ui.presenters.operations.ISellerAddress;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.NetworkUtils;
+import com.aquaheyseller.utils.Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,25 +40,32 @@ public class AddressPresenter extends BasePresenter {
             mSellerAddress.onValidationError(mContext.getString(R.string.please_enter_valid_pincode));
         } else {
             if (NetworkUtils.isNetworkEnabled(mContext)) {
-                Address adress = new Address(address, state, city, pincode, "latitude", "longitude");
-                mSellerAddress.callApi(adress);
+                getLatLongNCallApi(address,city,state,pincode);
+
             } else {
                 mSellerAddress.onValidationError(mContext.getString(R.string.please_check_your_network_connection));
             }
         }
     }
 
-    public void callAddressApi(final Address address) {
+    private void getLatLongNCallApi(String address, String city, String state, String pincode) {
+        String fullAddress = address+", "+city+", "+state+", "+pincode;
+        Address location = Utils.getlocationfromaddress(mContext, fullAddress);
+        AddressData adress = new AddressData(address, state, city, pincode, location.getLatitude()+"", ""+location.getLongitude());
+        mSellerAddress.callApi(adress);
+    }
+
+    public void callAddressApi(final AddressData addressData) {
         openProgressDialog();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("userId", "20");
-            requestObject.put("addressOne", address.getAddress());
-            requestObject.put("city", address.getCity());
-            requestObject.put("state", address.getState());
-            requestObject.put("pincode", address.getPincode());
-             requestObject.put("latitude", "256535");
-             requestObject.put("longitude", "256535");
+            requestObject.put("addressOne", addressData.getAddress());
+            requestObject.put("city", addressData.getCity());
+            requestObject.put("state", addressData.getState());
+            requestObject.put("pincode", addressData.getPincode());
+             requestObject.put("latitude", addressData.getLatitude());
+             requestObject.put("longitude", addressData.getLongitude());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -66,7 +75,7 @@ public class AddressPresenter extends BasePresenter {
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                LogUtils.DEBUG("Address Response ::" + response.toString());
+                LogUtils.DEBUG("AddressData Response ::" + response.toString());
                 hideProgressDialog();
                  mSellerAddress.saveAddress();
             }
@@ -75,9 +84,9 @@ public class AddressPresenter extends BasePresenter {
             @Override
             public void onErrorResponse(VolleyError error) {
                 hideProgressDialog();
-                LogUtils.DEBUG("Address Error ::" + error.getMessage());
+                LogUtils.DEBUG("AddressData Error ::" + error.getMessage());
             }
         });
-        AppController.getInstance().addToRequestQueue(objectRequest, "Address");
+        AppController.getInstance().addToRequestQueue(objectRequest, "AddressData");
     }
 }

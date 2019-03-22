@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.network_call.request_model.Address;
+import com.aquaheyseller.network_call.request_model.AddressData;
 import com.aquaheyseller.ui.presenters.AddressPresenter;
 import com.aquaheyseller.ui.presenters.operations.ISellerAddress;
 import com.aquaheyseller.utils.LogUtils;
@@ -53,9 +53,9 @@ public class AddSellerAddressActivity extends BaseActivity<AddressPresenter> imp
     }
 
     @Override
-    public void callApi(Address address) {
+    public void callApi(AddressData addressData) {
         //openProgressDialog();
-        getPresenter().callAddressApi(address);
+        getPresenter().callAddressApi(addressData);
 
     }
 

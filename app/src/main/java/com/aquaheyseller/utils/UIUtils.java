@@ -1,5 +1,6 @@
 package com.aquaheyseller.utils;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
@@ -10,15 +11,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 
 import com.aquaheyseller.R;
 
@@ -53,11 +51,11 @@ public class UIUtils {
         return 0;
     }
 
-    public static String getText(@NonNull EditText editText) {
+    public static String getText(EditText editText) {
         return editText.getText().toString().trim();
     }
 
-    public static String getText(@NonNull Spinner spinner) {
+    public static String getText(Spinner spinner) {
         Object selectedItem = spinner.getSelectedItem();
         return selectedItem == null ? null : selectedItem.toString();
     }
@@ -74,26 +72,24 @@ public class UIUtils {
      *
      * @param context
      * @param resId
-     *
      * @return
      */
     public static int getColor(Context context, int resId) {
         Resources resources = context.getResources();
         String type = resources.getResourceTypeName(resId);
         if ("attr".equalsIgnoreCase(type)) {
-            int[] attrs = new int[] {resId};
+            int[] attrs = new int[]{resId};
             TypedArray a = context.obtainStyledAttributes(resId, attrs);
             int color = a.getColor(0, 0);
             a.recycle();
             return color;
-        }
-        else if ("color".equalsIgnoreCase(type)) {
+        } else if ("color".equalsIgnoreCase(type)) {
             return ContextCompat.getColor(context, resId);
         }
         throw new IllegalStateException("Make sure the resId is from either R.attr or R.color");
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public static Bitmap getBitmap(Context context, int id) {
         Drawable drawable = ContextCompat.getDrawable(context, id);
         if (drawable instanceof BitmapDrawable) {
@@ -109,6 +105,17 @@ public class UIUtils {
             }
         }
         return null;
+    }
+
+
+    public static float pxToDp(float px) {
+        float densityDpi = Resources.getSystem().getDisplayMetrics().densityDpi;
+        return px / (densityDpi / 160f);
+    }
+
+    public static int dpToPx(float dp) {
+        float density = Resources.getSystem().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
 
 }

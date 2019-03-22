@@ -3,7 +3,7 @@ package com.aquaheyseller.network_call.request_model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Address implements Parcelable {
+public class AddressData implements Parcelable {
     private String address;
     private String city;
     private String state;
@@ -60,11 +60,11 @@ public class Address implements Parcelable {
         this.pincode = pincode;
     }
 
-    public static Creator<Address> getCREATOR() {
+    public static Creator<AddressData> getCREATOR() {
         return CREATOR;
     }
 
-    public Address(String address, String city, String state, String pincode, String latitude, String longitude) {
+    public AddressData(String address, String city, String state, String pincode, String latitude, String longitude) {
         this.address = address;
         this.city = city;
         this.state = state;
@@ -74,7 +74,7 @@ public class Address implements Parcelable {
 
     }
 
-    public Address(Parcel in) {
+    public AddressData(Parcel in) {
         address = in.readString();
         city = in.readString();
         state = in.readString();
@@ -83,15 +83,15 @@ public class Address implements Parcelable {
         longitude = in.readString();
     }
 
-    public static final Creator<Address> CREATOR = new Creator<Address>() {
+    public static final Creator<AddressData> CREATOR = new Creator<AddressData>() {
         @Override
-        public Address createFromParcel(Parcel in) {
-            return new Address(in);
+        public AddressData createFromParcel(Parcel in) {
+            return new AddressData(in);
         }
 
         @Override
-        public Address[] newArray(int size) {
-            return new Address[size];
+        public AddressData[] newArray(int size) {
+            return new AddressData[size];
         }
     };
 
