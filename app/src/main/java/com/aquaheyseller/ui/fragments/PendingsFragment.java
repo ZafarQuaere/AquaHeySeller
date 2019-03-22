@@ -16,7 +16,7 @@ import com.aquaheyseller.ui.fragments.dummy.DummyContent;
 import com.aquaheyseller.ui.fragments.dummy.DummyContent.DummyItem;
 
 
-public class ShippedFragment extends Fragment {
+public class PendingsFragment extends Fragment {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
 
@@ -24,12 +24,12 @@ public class ShippedFragment extends Fragment {
     private OnListFragmentInteractionListener mListener;
 
 
-    public ShippedFragment() {
+    public PendingsFragment() {
     }
 
     @SuppressWarnings("unused")
-    public static ShippedFragment newInstance(int columnCount) {
-        ShippedFragment fragment = new ShippedFragment();
+    public static PendingsFragment newInstance(int columnCount) {
+        PendingsFragment fragment = new PendingsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -48,7 +48,7 @@ public class ShippedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_shipped, container, false);
+        View view = inflater.inflate(R.layout.fragment_pendings, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {

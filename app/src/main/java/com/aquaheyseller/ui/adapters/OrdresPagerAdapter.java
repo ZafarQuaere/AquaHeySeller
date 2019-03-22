@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.ui.fragments.CompletedFragment;
-import com.aquaheyseller.ui.fragments.PendingFragment;
-import com.aquaheyseller.ui.fragments.ShippedFragment;
+import com.aquaheyseller.ui.fragments.NewOrderFragment;
+import com.aquaheyseller.ui.fragments.PendingsFragment;
 
 public class OrdresPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -33,10 +33,10 @@ public class OrdresPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                PendingFragment tab1 = new PendingFragment();
+                NewOrderFragment tab1 = new NewOrderFragment();
                 return tab1;
             case 1:
-                ShippedFragment tab2 = new ShippedFragment();
+                PendingsFragment tab2 = new PendingsFragment();
                 return tab2;
             case 2:
                 CompletedFragment tab3 = new CompletedFragment();
