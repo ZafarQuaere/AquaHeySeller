@@ -87,6 +87,10 @@ ForgotPassword Response ::{"total_sms":1,"duplicates_removed":0,"optedout_remove
 "sms_text":"5018 is your AQUAHEY OTP","sent_via":"HTTP-API","status":"success","msg":"Your message was sent successfully"}
 
 ========================================================================================================================================================
+url : http://www.aquahey.com/product?dealerId=1 (Listing Api)
+url : http://www.aquahey.com/new-orders?dealerId=1&status=2 (Orders Api)
+
+
 Product Sale :
 New Order -- Pending -- Complete
 

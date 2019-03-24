@@ -26,6 +26,9 @@ public class AppConstant {
     public static final String URL_CHANGE_PASSWORD = "/change-password?mobile=";
     public static final String URL_CP_PASSWORD = "&password=";
 
+    public static final String URL_ORDERS = "new-orders?dealerId=";
+    public static final String URL_ORDER_STATUS = "&status=";
+
 
     public static final String baseUrl = "https://reqres.in";
     public static final String listUrl = "/api/users?page=";
