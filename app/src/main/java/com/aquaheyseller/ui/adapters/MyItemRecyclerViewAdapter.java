@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.ui.fragments.ShippedFragment.OnListFragmentInteractionListener;
+import com.aquaheyseller.ui.fragments.PendingsFragment.OnListFragmentInteractionListener;
 import com.aquaheyseller.ui.fragments.dummy.DummyContent.DummyItem;
 
 import java.util.List;

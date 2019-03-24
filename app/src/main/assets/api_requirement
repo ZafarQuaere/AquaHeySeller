@@ -63,13 +63,13 @@ Login Response ::{"message":"Mobile number or Password Wrong.","totalItem":""}
 
 Note : Response format need to have one more field of success : 0
 ===============================================================================================================
-URL :  http://www.aquahey.com/insert-dealear-address
+URL :  http://www.aquahey.com/insert-dealear-addressData
 Request Body ::{"userId":"20","addressOne":"Karimganj, Road No 2","city":"Bihar","state":"Gaya","pincode":"823001","latitude":"256535","longitude":"256535"}
 Address Response ::{"success":1,"id":6,"token":""}
 
  Note : What is the use of id & token ?
 ====================================================================================================================================================
-URL : http://www.aquahey.com/insert-dealear-address
+URL : http://www.aquahey.com/insert-dealear-addressData
 Request Body ::{"userId":"20","addressOne":"Karimganj, Road No 2, Gali No 9","city":"Bihar","state":"Gaya","pincode":"823001","latitude":"256535","longitude":"256535"}
 Address Response ::{"success":1,"id":7,"token":""}
 

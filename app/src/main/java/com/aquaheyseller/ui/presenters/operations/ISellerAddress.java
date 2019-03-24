@@ -1,11 +1,11 @@
 package com.aquaheyseller.ui.presenters.operations;
 
 
-import com.aquaheyseller.network_call.request_model.Address;
+import com.aquaheyseller.network_call.request_model.AddressData;
 
 public interface ISellerAddress {
 
     void saveAddress();
     void onValidationError(String msg);
-    void callApi(Address address);
+    void callApi(AddressData addressData);
 }

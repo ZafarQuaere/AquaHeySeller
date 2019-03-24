@@ -41,17 +41,17 @@ public class HomePresenter extends BaseFragmentPresenter {
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                LogUtils.DEBUG("Address Response ::" + response.toString());
+                LogUtils.DEBUG("AddressData Response ::" + response.toString());
                 mIFragHome.updateUI(response.toString());
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                LogUtils.DEBUG("Address Error ::" + error.getMessage());
+                LogUtils.DEBUG("AddressData Error ::" + error.getMessage());
             }
         });
-        AppController.getInstance().addToRequestQueue(objectRequest, "Address");
+        AppController.getInstance().addToRequestQueue(objectRequest, "AddressData");
     }
 
     public void starTestDialog() {

@@ -7,6 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
@@ -43,6 +45,7 @@ import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.zip.GZIPInputStream;
 
@@ -333,27 +336,26 @@ public class Utils {
         }
     }
 
-   /* public GeoPoint getLocationFromAddress(String strAddress){
+    public static Address getlocationfromaddress(Context context, String strAddress) {
 
-        Geocoder coder = new Geocoder(this);
-        List<Address> address;
-        GeoPoint p1 = null;
+        Geocoder coder = new Geocoder(context);
+        List<Address> address = null;
+        //  GeoPoint p1 = null;
 
         try {
-            address = coder.getFromLocationName(strAddress,5);
-            if (address==null) {
-                return null;
-            }
-            Address location=address.get(0);
-            location.getLatitude();
-            location.getLongitude();
-
-            p1 = new GeoPoint((double) (location.getLatitude() * 1E6),
-                    (double) (location.getLongitude() * 1E6));
-
-            return p1;
+            address = coder.getFromLocationName(strAddress, 5);
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }*/
+        if (address == null)
+            return null;
+
+        Address location = address.get(0);
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+
+
+       // return "Latitude : " +latitude + "  Longitude : " + longitude;
+        return  location;
+    }
 }

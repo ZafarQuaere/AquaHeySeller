@@ -1,89 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:clickable="true"
-    android:background="@color/color_app_theme"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorCircleSmall"
+    android:clickable="true">
 
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="344dp"
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="Product Name"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:listitem="@layout/fragment_item"
+        android:padding="@dimen/_10dp"/>
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="344dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Price"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="343dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="44dp"
-        android:ems="10"
-        android:hint="Product Type"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="@+id/editText3"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
-    <Spinner
-        android:entries="@array/productTypeArray"
-        android:id="@+id/spinProductType"
-        android:layout_width="160dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinIsBrand"
-        app:layout_constraintEnd_toStartOf="@+id/spinIsBrand"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText4"
-        app:layout_constraintTop_toBottomOf="@+id/editText4"
-        app:layout_constraintVertical_bias="0.0" />
 
-    <Spinner
-        android:entries="@array/isBrand"
-        android:id="@+id/spinIsBrand"
-        android:layout_width="150dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="44dp"
-        app:layout_constraintEnd_toEndOf="@+id/editText4"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
-
-    <Button
-        android:id="@+id/btnAddProduct"
-        android:layout_width="149dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="84dp"
-        android:text="Add Product"
-        app:layout_constraintEnd_toEndOf="@+id/spinIsBrand"
-        app:layout_constraintHorizontal_bias="0.872"
-        app:layout_constraintStart_toStartOf="@+id/spinProductType"
-        app:layout_constraintTop_toBottomOf="@+id/spinProductType" />
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

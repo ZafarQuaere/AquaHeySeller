@@ -8,7 +8,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
-import com.aquaheyseller.network_call.request_model.Address;
+import com.aquaheyseller.network_call.request_model.AddressData;
 import com.aquaheyseller.ui.presenters.operations.IFragListing;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
@@ -39,7 +39,7 @@ public class ListingsPresenter extends BaseFragmentPresenter {
             mAddProduct.onValidationError(mContext.getString(R.string.please_enter_valid_pincode));
         } else {
             if (NetworkUtils.isNetworkEnabled(mContext)) {
-                Address adress = new Address(address, state, city, pincode, "latitude", "longitude");
+                AddressData adress = new AddressData(address, state, city, pincode, "latitude", "longitude");
                // mAddProduct.callApi(adress);
             } else {
                 mAddProduct.onValidationError(mContext.getString(R.string.please_check_your_network_connection));
@@ -47,14 +47,14 @@ public class ListingsPresenter extends BaseFragmentPresenter {
         }
     }
 
-    public void callAddressApi(final Address address) {
+    public void callAddressApi(final AddressData addressData) {
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("userId", "20");
-            requestObject.put("addressOne", address.getAddress());
-            requestObject.put("city", address.getCity());
-            requestObject.put("state", address.getState());
-            requestObject.put("pincode", address.getPincode());
+            requestObject.put("addressOne", addressData.getAddress());
+            requestObject.put("city", addressData.getCity());
+            requestObject.put("state", addressData.getState());
+            requestObject.put("pincode", addressData.getPincode());
              requestObject.put("latitude", "256535");
              requestObject.put("longitude", "256535");
 
@@ -66,7 +66,7 @@ public class ListingsPresenter extends BaseFragmentPresenter {
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                LogUtils.DEBUG("Address Response ::" + response.toString());
+                LogUtils.DEBUG("AddressData Response ::" + response.toString());
 
                 // mAddProduct.saveAddress();
             }
@@ -75,10 +75,10 @@ public class ListingsPresenter extends BaseFragmentPresenter {
             @Override
             public void onErrorResponse(VolleyError error) {
 
-                LogUtils.DEBUG("Address Error ::" + error.getMessage());
+                LogUtils.DEBUG("AddressData Error ::" + error.getMessage());
             }
         });
-        AppController.getInstance().addToRequestQueue(objectRequest, "Address");
+        AppController.getInstance().addToRequestQueue(objectRequest, "AddressData");
     }
 
     public void starTestDialog() {

@@ -92,7 +92,7 @@ public class MainPresenter extends BasePresenter {
             Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.orders), null, null);
         } else if (baseFragment.getClass().getSimpleName().contains("Payments")) {
             Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.payments), null, null);
-        } else if (baseFragment.getClass().getSimpleName().contains("Address")) {
+        } else if (baseFragment.getClass().getSimpleName().contains("AddressData")) {
             Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.save_address), null, null);
         }
     }

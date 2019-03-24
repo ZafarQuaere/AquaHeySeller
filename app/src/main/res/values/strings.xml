@@ -65,7 +65,7 @@
     <string name="sellername">Enter Seller/Business Name</string>
     <string name="enter_mobile_no">Enter Mobile No.</string>
     <string name="add_seller">Add Seller</string>
-    <string name="please_enter_address">Please enter address</string>
+    <string name="please_enter_address">Please enter addressData</string>
     <string name="please_enter_valid_pincode">Please Enter valid pincode.</string>
     <string name="please_enter_city_name">Please enter city</string>
     <string name="please_enter_state">Please enter state.</string>
@@ -94,7 +94,7 @@
     <string name="save_profile">Save Profile</string>
 
 
-    <string-array name="productTypeArray">
+  <!--  <string-array name="productTypeArray">
         <item>Product Type</item>
         <item>Type1</item>
         <item>Type2</item>
@@ -105,5 +105,5 @@
         <item>Is Brand</item>
         <item>Yes</item>
         <item>No</item>
-    </string-array>
+    </string-array>-->
 </resources>
