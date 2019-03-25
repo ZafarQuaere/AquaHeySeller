@@ -1,4 +1,4 @@
-package com.aquaheyseller.network_call.response_model;
+package com.aquaheyseller.network_call.response_model.login;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

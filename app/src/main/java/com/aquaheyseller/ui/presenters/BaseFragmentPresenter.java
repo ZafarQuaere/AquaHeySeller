@@ -71,7 +71,12 @@ public abstract class BaseFragmentPresenter {
     public void openProgressDialog(){
         progressDialog = new ProgressFragment();
         progressDialog.setCancelable(false);
-        progressDialog.showNow(((AppCompatActivity) mContext).getSupportFragmentManager(),"Progress");
+        if (progressDialog.isAdded()){
+            progressDialog.showNow(((AppCompatActivity) mContext).getSupportFragmentManager(),"Progress");
+        }else {
+            return;
+        }
+
     }
 
     public void hideProgressDialog(){

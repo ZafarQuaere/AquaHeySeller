@@ -8,7 +8,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
-import com.aquaheyseller.network_call.response_model.LoginPojo;
+import com.aquaheyseller.network_call.response_model.login.LoginPojo;
 import com.aquaheyseller.ui.activities.ForgetPswdActivity;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
 import com.aquaheyseller.utils.AppConstant;
@@ -69,6 +69,7 @@ public class LoginPresenter extends BasePresenter {
                     if (loginData.getStatus().equals(AppConstant.SUCCESS)){
                         hideProgressDialog();
                         Utils.setLoggedIn(mContext, true);
+                        Utils.saveLoginData(mContext,response.toString());
                         mLogin.doLogin();
                     }else {
                         LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok), loginData.getMessage());

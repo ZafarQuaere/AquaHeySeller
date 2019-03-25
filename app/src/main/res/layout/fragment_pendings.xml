@@ -10,5 +10,5 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".ui.fragments.PendingsFragment"
-    tools:listitem="@layout/fragment_item"
+    tools:listitem="@layout/list_items"
     tools:showIn="@layout/fragment_orders"/>

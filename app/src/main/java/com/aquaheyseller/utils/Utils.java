@@ -358,4 +358,28 @@ public class Utils {
        // return "Latitude : " +latitude + "  Longitude : " + longitude;
         return  location;
     }
+
+    public static String getDealerId(Context mContext) {
+        String loginData = getLoginData(mContext);
+        return "1";
+    }
+
+    public static void saveLoginData(Context mContext, String data) {
+        if (mContext == null)
+            return;
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
+        prefs.put(mContext.getString(R.string.key_login_data), data);
+    }
+
+    public static String getLoginData(Context context) {
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(context);
+        String data = "";
+        try {
+            data = (String) prefs.get(context.getString(R.string.key_login_data));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return data;
+        }
+        return data;
+    }
 }
