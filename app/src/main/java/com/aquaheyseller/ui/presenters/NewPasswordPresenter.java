@@ -10,6 +10,7 @@ import com.aquaheyseller.network_call.MyJsonObjectRequest;
 import com.aquaheyseller.ui.presenters.operations.INewPswd;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
+import com.aquaheyseller.utils.AppLoaderFragment;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.NetworkUtils;
 import com.aquaheyseller.utils.Utils;
@@ -18,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class NewPasswordPresenter extends BasePresenter {
+    private final AppLoaderFragment loader;
     private Context mContext;
     private INewPswd mNewPswd;
 
@@ -25,6 +27,7 @@ public class NewPasswordPresenter extends BasePresenter {
         super(context);
         mNewPswd = iNewPswd;
         mContext = context;
+        loader = AppLoaderFragment.getInstance(mContext);
     }
 
     public void validatePswd(String password, String confirmPswd) {
@@ -47,7 +50,7 @@ public class NewPasswordPresenter extends BasePresenter {
      /*   String otpData = Utils.getOTPData(mContext);
 
         LogUtils.DEBUG("OTP DATA : " + otpData);*/
-        openProgressDialog();
+        loader.show();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("mobile", "");
@@ -61,14 +64,14 @@ public class NewPasswordPresenter extends BasePresenter {
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("SubmitOtp Response ::" + response.toString());
                 mNewPswd.changePswd();
-                hideProgressDialog();
+                loader.dismiss();
 
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideProgressDialog();
+                  loader.dismiss();
                 LogUtils.DEBUG("SubmitOtp Error ::" + error.getMessage());
             }
         });

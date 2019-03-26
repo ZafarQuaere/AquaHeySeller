@@ -10,6 +10,7 @@ import com.aquaheyseller.network_call.MyJsonObjectRequest;
 import com.aquaheyseller.ui.presenters.operations.IAddSeller;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
+import com.aquaheyseller.utils.AppLoaderFragment;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.NetworkUtils;
 
@@ -17,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AddSellerPresenter extends BasePresenter {
+    private final AppLoaderFragment loader;
     private Context mContext;
     private IAddSeller mSeller;
 
@@ -24,6 +26,7 @@ public class AddSellerPresenter extends BasePresenter {
         super(context);
         mSeller = iAddSeller;
         mContext = context;
+        loader = AppLoaderFragment.getInstance(mContext);
     }
 
     public void validateFields(String name, String mobileNo) {
@@ -42,7 +45,7 @@ public class AddSellerPresenter extends BasePresenter {
     }
 
     public void callAddSellerApi(String dName, String mobile) {
-        openProgressDialog();
+        loader.show();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("dName", dName);
@@ -60,14 +63,14 @@ public class AddSellerPresenter extends BasePresenter {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("AddSeller Response ::" + response.toString());
-                hideProgressDialog();
+                loader.dismiss();
                 mSeller.addSeller();
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideProgressDialog();
+                loader.dismiss();
                 LogUtils.DEBUG("AddSeller Error ::" + error.getMessage());
             }
         });

@@ -64,9 +64,7 @@ public class Data {
         return brandId;
     }
 
-    public void setBrandId(String brandId) {
-        this.brandId = brandId;
-    }
+    public void setBrandId(String brandId) { this.brandId = brandId; }
 
     public String getRating() {
         return rating;
@@ -90,10 +88,5 @@ public class Data {
 
     public void setProductType(String productType) {
         this.productType = productType;
-    }
-
-    @Override
-    public String toString() {
-        return "ClassPojo [pName = " + pName + ", dealerId = " + dealerId + ", imagePath = " + imagePath + ", price = " + price + ", IsBrand = " + IsBrand + ", brandId = " + brandId + ", rating = " + rating + ", id = " + id + ", productType = " + productType + "]";
     }
 }

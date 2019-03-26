@@ -12,6 +12,7 @@ import com.aquaheyseller.ui.activities.ForgetPswdActivity;
 import com.aquaheyseller.ui.presenters.operations.IFrgtPswd;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
+import com.aquaheyseller.utils.AppLoaderFragment;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.NetworkUtils;
 import com.aquaheyseller.utils.Utils;
@@ -20,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ForgotPswdPresenter extends BasePresenter {
+    private final AppLoaderFragment loader;
     private Context mContext;
     private IFrgtPswd iFrgtPswd;
 
@@ -27,6 +29,7 @@ public class ForgotPswdPresenter extends BasePresenter {
         super(context);
         this.iFrgtPswd = iFrgtPswd;
         mContext = context;
+        loader = AppLoaderFragment.getInstance(mContext);
     }
 
     public void validMobileNo(String mobileNo) {
@@ -44,7 +47,7 @@ public class ForgotPswdPresenter extends BasePresenter {
     }
 
     public void callSubmitMobileApi(final String mobile) {
-        openProgressDialog();
+        loader.show();
         String url = AppConstant.URL_BASE + AppConstant.URL_VERIFY_MOBILE + mobile;
 
         //  LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
@@ -52,12 +55,12 @@ public class ForgotPswdPresenter extends BasePresenter {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("ForgotPassword Response ::" + response.toString());
-                hideProgressDialog();
+                loader.dismiss();
                 try {
                     JSONObject jsonObject = new JSONObject(response.toString());
                     String resMob = jsonObject.optString("mobile");
                     if (resMob.equalsIgnoreCase(mobile)) {
-                        Utils.setMobileNo(mContext,mobile);
+                        Utils.setMobileNo(mContext, mobile);
                         callOTPServiceApi(mobile);
                     } else {
                         LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok),
@@ -74,7 +77,7 @@ public class ForgotPswdPresenter extends BasePresenter {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideProgressDialog();
+                loader.dismiss();
                 LogUtils.DEBUG("ForgotPassword Error ::" + error.getMessage());
             }
         });
@@ -82,13 +85,13 @@ public class ForgotPswdPresenter extends BasePresenter {
     }
 
     private void callOTPServiceApi(String mobile) {
-         String url = AppConstant.URL_BASE + AppConstant.URL_OTP_SERVICE+mobile;
-         //LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
+        String url = AppConstant.URL_BASE + AppConstant.URL_OTP_SERVICE + mobile;
+        //LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
         MyJsonObjectRequest otpServiceRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("OtpService Response ::" + response.toString());
-                Utils.saveOTPData(mContext,response.toString());
+                Utils.saveOTPData(mContext, response.toString());
                 iFrgtPswd.submitMobile();
             }
         }, new Response.ErrorListener() {
@@ -101,10 +104,10 @@ public class ForgotPswdPresenter extends BasePresenter {
     }
 
     public void updateActionBar(Context mContext) {
-        int intExtra = ((Activity)mContext).getIntent().getIntExtra(AppConstant.COMINGFROM, AppConstant.LOGIN);
-       // LogUtils.showToast(mContext,intExtra== 1 ? "Coming form Login" : "Coming from home");
+        int intExtra = ((Activity) mContext).getIntent().getIntExtra(AppConstant.COMINGFROM, AppConstant.LOGIN);
+        // LogUtils.showToast(mContext,intExtra== 1 ? "Coming form Login" : "Coming from home");
 
-        Utils.updateActionBar(mContext,new ForgetPswdActivity().getClass().getSimpleName(),intExtra == 1 ? mContext.getString(R.string.forgot_pswd) :
-                mContext.getString(R.string.change_pswd), null,null);
+        Utils.updateActionBar(mContext, new ForgetPswdActivity().getClass().getSimpleName(), intExtra == 1 ? mContext.getString(R.string.forgot_pswd) :
+                mContext.getString(R.string.change_pswd), null, null);
     }
 }

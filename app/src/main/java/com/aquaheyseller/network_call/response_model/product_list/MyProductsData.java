@@ -1,24 +1,20 @@
 package com.aquaheyseller.network_call.response_model.product_list;
 
-import java.util.ArrayList;
-
 public class MyProductsData {
 
-    private ArrayList<Data> data;
+    private Data[] data;
 
     private String message;
 
-    private String status;
+    private Integer status;
 
-
-    public ArrayList<Data> getData() {
+    public Data[] getData() {
         return data;
     }
 
-    public void setData(ArrayList<Data> data) {
+    public void setData(Data[] data) {
         this.data = data;
     }
-
 
     public String getMessage() {
         return message;
@@ -28,13 +24,12 @@ public class MyProductsData {
         this.message = message;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
-
 
 }

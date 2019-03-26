@@ -12,6 +12,7 @@ import com.aquaheyseller.network_call.request_model.AddressData;
 import com.aquaheyseller.ui.presenters.operations.ISellerAddress;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
+import com.aquaheyseller.utils.AppLoaderFragment;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.NetworkUtils;
 import com.aquaheyseller.utils.Utils;
@@ -20,6 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AddressPresenter extends BasePresenter {
+    private final AppLoaderFragment loader;
     private Context mContext;
     private ISellerAddress mSellerAddress;
 
@@ -27,6 +29,7 @@ public class AddressPresenter extends BasePresenter {
         super(context);
         mSellerAddress = iSellerAddress;
         mContext = context;
+        loader = AppLoaderFragment.getInstance(mContext);
     }
 
     public void validateFields(String address, String city, String state, String pincode) {
@@ -40,7 +43,7 @@ public class AddressPresenter extends BasePresenter {
             mSellerAddress.onValidationError(mContext.getString(R.string.please_enter_valid_pincode));
         } else {
             if (NetworkUtils.isNetworkEnabled(mContext)) {
-                getLatLongNCallApi(address,city,state,pincode);
+                getLatLongNCallApi(address, city, state, pincode);
 
             } else {
                 mSellerAddress.onValidationError(mContext.getString(R.string.please_check_your_network_connection));
@@ -49,14 +52,14 @@ public class AddressPresenter extends BasePresenter {
     }
 
     private void getLatLongNCallApi(String address, String city, String state, String pincode) {
-        String fullAddress = address+", "+city+", "+state+", "+pincode;
+        String fullAddress = address + ", " + city + ", " + state + ", " + pincode;
         Address location = Utils.getlocationfromaddress(mContext, fullAddress);
-        AddressData adress = new AddressData(address, state, city, pincode, location.getLatitude()+"", ""+location.getLongitude());
+        AddressData adress = new AddressData(address, state, city, pincode, location.getLatitude() + "", "" + location.getLongitude());
         mSellerAddress.callApi(adress);
     }
 
     public void callAddressApi(final AddressData addressData) {
-        openProgressDialog();
+        loader.show();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("userId", "20");
@@ -64,8 +67,8 @@ public class AddressPresenter extends BasePresenter {
             requestObject.put("city", addressData.getCity());
             requestObject.put("state", addressData.getState());
             requestObject.put("pincode", addressData.getPincode());
-             requestObject.put("latitude", addressData.getLatitude());
-             requestObject.put("longitude", addressData.getLongitude());
+            requestObject.put("latitude", addressData.getLatitude());
+            requestObject.put("longitude", addressData.getLongitude());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -76,14 +79,14 @@ public class AddressPresenter extends BasePresenter {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("AddressData Response ::" + response.toString());
-                hideProgressDialog();
-                 mSellerAddress.saveAddress();
+                loader.dismiss();
+                mSellerAddress.saveAddress();
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideProgressDialog();
+                loader.dismiss();
                 LogUtils.DEBUG("AddressData Error ::" + error.getMessage());
             }
         });

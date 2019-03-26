@@ -11,15 +11,10 @@ import android.view.ViewGroup;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.response_model.product_list.Data;
-import com.aquaheyseller.network_call.response_model.product_list.MyProductsData;
 import com.aquaheyseller.ui.adapters.ProductRecylcerAdapter;
 import com.aquaheyseller.ui.presenters.ListingsPresenter;
 import com.aquaheyseller.ui.presenters.operations.IFragListing;
-import com.aquaheyseller.utils.parser.ParseManager;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.aquaheyseller.utils.AppLoaderFragment;
 
 import java.util.ArrayList;
 
@@ -27,6 +22,7 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
 
     private RecyclerView recylcerProducts;
     private RecyclerView.LayoutManager layoutManager;
+    private AppLoaderFragment loader;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,7 +32,7 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
 
     @Override
     protected ListingsPresenter initPresenter() {
-        return new ListingsPresenter(getActivity(),this);
+        return new ListingsPresenter(getActivity(), this);
     }
 
     @Override
@@ -44,6 +40,7 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_listings, container, false);
         initUI(view);
+
         getPresenter().callItemsApi();
 
         return view;
@@ -75,17 +72,18 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
     }
 
     @Override
-    public void updateList(JSONArray data) {
+    public void updateList(Data[] data) {
         ArrayList<Data> productList = new ArrayList<>();
 
-        for (int i = 0; i < data.length(); i++) {
-            try {
+        for (int i = 0; i < data.length; i++) {
+            productList.add(data[i]);
+          /*  try {
                 JSONObject object = data.getJSONObject(i);
                 Data productsData = ParseManager.getInstance().fromJSON(object.toString(), Data.class);
                 productList.add(productsData);
             } catch (JSONException e) {
                 e.printStackTrace();
-            }
+            }*/
         }
         ProductRecylcerAdapter adapter = new ProductRecylcerAdapter(productList, new OnListFragmentInteractionListener() {
             @Override

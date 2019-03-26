@@ -81,15 +81,5 @@ public class ProfilePresenter extends BaseFragmentPresenter {
         AppController.getInstance().addToRequestQueue(objectRequest, "AddressData");
     }
 
-    public void starTestDialog() {
 
-        openProgressDialog();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                hideProgressDialog();
-            }
-        },5000);
-
-    }
 }

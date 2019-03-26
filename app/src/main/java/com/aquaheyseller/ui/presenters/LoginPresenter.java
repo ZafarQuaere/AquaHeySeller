@@ -13,6 +13,7 @@ import com.aquaheyseller.ui.activities.ForgetPswdActivity;
 import com.aquaheyseller.ui.presenters.operations.ILogin;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
+import com.aquaheyseller.utils.AppLoaderFragment;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.NetworkUtils;
 import com.aquaheyseller.utils.Utils;
@@ -24,11 +25,13 @@ import org.json.JSONObject;
 public class LoginPresenter extends BasePresenter {
     private Context mContext;
     private ILogin mLogin;
+    private AppLoaderFragment loader ;
 
     public LoginPresenter(Context context, ILogin iLogin) {
         super(context);
         mLogin = iLogin;
         mContext = context;
+        loader = AppLoaderFragment.getInstance(mContext);
     }
 
     public void validateUsernamePassword(String userId, String password) {
@@ -48,8 +51,7 @@ public class LoginPresenter extends BasePresenter {
     }
 
     public void callApi(String mobile, String password) {
-       // showDialog("Login Please wait....", "Login");
-        openProgressDialog();
+        loader.show();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("mobile", mobile);
@@ -67,16 +69,16 @@ public class LoginPresenter extends BasePresenter {
                 LoginPojo loginData = ParseManager.getInstance().fromJSON(response.toString(),LoginPojo.class);
                 try {
                     if (loginData.getStatus().equals(AppConstant.SUCCESS)){
-                        hideProgressDialog();
+                        loader.dismiss();
                         Utils.setLoggedIn(mContext, true);
                         Utils.saveLoginData(mContext,response.toString());
                         mLogin.doLogin();
                     }else {
                         LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok), loginData.getMessage());
-                        hideProgressDialog();
+                        loader.dismiss();
                     }
                 } catch (Exception e) {
-                    hideProgressDialog();
+                    loader.dismiss();
                     e.printStackTrace();
                     LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok),
                             mContext.getString(R.string.please_enter_valid_credentials));
@@ -87,7 +89,7 @@ public class LoginPresenter extends BasePresenter {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideProgressDialog();
+                loader.dismiss();
 
                 LogUtils.DEBUG("Login Error ::" + error.getMessage());
             }

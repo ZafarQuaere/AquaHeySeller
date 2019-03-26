@@ -3,15 +3,10 @@ package com.aquaheyseller.ui.presenters;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-
 
 import com.aquaheyseller.ui.fragments.ProgressFragment;
-import com.aquaheyseller.utils.UIUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +55,8 @@ public abstract class BasePresenter {
         for (BasePresenter presenter : mPresenters) {
             presenter.onStop();
         }
-       // dismissDialog();
-        hideProgressDialog();
+        // dismissDialog();
+        //hideProgressDialog();
     }
 
     protected Context getContext() {
@@ -117,7 +112,7 @@ public abstract class BasePresenter {
         }
     }*/
 
-    public void openProgressDialog(){
+   /* public void openProgressDialog(){
         progressDialog = new ProgressFragment();
         progressDialog.setCancelable(false);
         progressDialog.showNow(((AppCompatActivity) mContext).getSupportFragmentManager(),"Progress");
@@ -127,5 +122,5 @@ public abstract class BasePresenter {
         if (progressDialog!= null) {
             progressDialog.dismiss();
         }
-    }
+    }*/
 }

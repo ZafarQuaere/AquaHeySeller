@@ -56,11 +56,11 @@ public class HomePresenter extends BaseFragmentPresenter {
 
     public void starTestDialog() {
 
-        openProgressDialog();
+      //  openProgressDialog();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                hideProgressDialog();
+        //        hideProgressDialog();
             }
         }, 5000);
 

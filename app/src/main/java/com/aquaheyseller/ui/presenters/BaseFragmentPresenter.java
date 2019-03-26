@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 
 import com.aquaheyseller.ui.fragments.ProgressFragment;
 
@@ -68,19 +67,19 @@ public abstract class BaseFragmentPresenter {
         return presenter;
     }
 
-    public void openProgressDialog(){
+  /*  public void openProgressDialog(){
         progressDialog = new ProgressFragment();
         progressDialog.setCancelable(false);
-        if (progressDialog.isAdded()){
+//        if (progressDialog.isAdded()){
             progressDialog.showNow(((AppCompatActivity) mContext).getSupportFragmentManager(),"Progress");
-        }else {
-            return;
-        }
+//        }else {
+//            return;
+//        }
 
     }
 
     public void hideProgressDialog(){
         progressDialog.dismiss();
     }
-
+*/
 }

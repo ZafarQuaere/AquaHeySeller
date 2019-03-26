@@ -1,6 +1,7 @@
 package com.aquaheyseller.ui.presenters;
 
 import android.content.Context;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -10,6 +11,7 @@ import com.aquaheyseller.network_call.request_model.Register;
 import com.aquaheyseller.ui.presenters.operations.IRegister;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
+import com.aquaheyseller.utils.AppLoaderFragment;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.NetworkUtils;
 import com.aquaheyseller.utils.Utils;
@@ -18,6 +20,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class RegisterPresenter extends BasePresenter {
+    private final AppLoaderFragment loader;
     private Context mContext;
     private IRegister mRegister;
 
@@ -25,6 +28,7 @@ public class RegisterPresenter extends BasePresenter {
         super(context);
         mRegister = iRegister;
         mContext = context;
+        loader = AppLoaderFragment.getInstance(mContext);
     }
 
     public void validateFields(String name, String mobileNo, String email, String pswd, String confmPswd) {
@@ -44,7 +48,7 @@ public class RegisterPresenter extends BasePresenter {
             if (NetworkUtils.isNetworkEnabled(mContext)) {
                 Register register = new Register(name, pswd, mobileNo, email, 1, 7);
                 mRegister.callApi(register);
-            }else {
+            } else {
                 mRegister.onValidationError(mContext.getString(R.string.please_check_your_network_connection));
             }
 
@@ -52,7 +56,7 @@ public class RegisterPresenter extends BasePresenter {
     }
 
     public void callRegisterApi(final Register register) {
-        openProgressDialog();
+        loader.show();
         JSONObject requestObject = new JSONObject();
         try {
             requestObject.put("name", register.getName());
@@ -65,20 +69,20 @@ public class RegisterPresenter extends BasePresenter {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        String url = AppConstant.URL_BASE+AppConstant.URL_REGISTER;
-        LogUtils.DEBUG("URL : "+url+"\nRequest Body ::"+requestObject.toString());
+        String url = AppConstant.URL_BASE + AppConstant.URL_REGISTER;
+        LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("Register Response ::" + response.toString());
-                hideProgressDialog();
+                loader.dismiss();
                 mRegister.doRegister();
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideProgressDialog();
+                loader.dismiss();
                 LogUtils.DEBUG("Register Error ::" + error.getMessage());
             }
         });
