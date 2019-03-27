@@ -12,6 +12,9 @@ public class AppConstant {
     public static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";
     public static final String TAG = "AquaHey";
     public static final String RUPEES_SYMBOL = "₹";
+    public static final String ORDER_STATUS_NEW = "2";
+    public static final String ORDER_STATUS_COMPLETED = "1";
+    public static final String ORDER_STATUS_PENDING = "0";
 
 
     public static final String URL_BASE = "http://www.aquahey.com";
@@ -26,7 +29,7 @@ public class AppConstant {
     public static final String URL_CHANGE_PASSWORD = "/change-password?mobile=";
     public static final String URL_CP_PASSWORD = "&password=";
 
-    public static final String URL_ORDERS = "new-orders?dealerId=";
+    public static final String URL_ORDERS = "/new-orders?dealerId=";
     public static final String URL_ORDER_STATUS = "&status=";
 
     public static final String URL_PRODUCT_LIST = "/product?dealerId=";
