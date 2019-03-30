@@ -20,10 +20,9 @@
             android:padding="@dimen/_20dp">
 
             <ImageView
-                android:id="@+id/icon_main"
+                android:id="@+id/imgItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:src="@drawable/icon_man" />
 
             <TextView
@@ -31,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/_10dp"
-                android:layout_toRightOf="@+id/icon_main"
+                android:layout_toRightOf="@+id/imgItem"
                 android:textAppearance="?attr/textAppearanceListItem"
                 tools:text="@string/save_address" />
 
@@ -41,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/item_number"
                 android:layout_margin="@dimen/_10dp"
-                android:layout_toRightOf="@+id/icon_main"
+                android:layout_toRightOf="@+id/imgItem"
                 android:textAppearance="?attr/textAppearanceListItem"
                 tools:text="@string/save_address" />
 

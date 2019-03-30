@@ -4,11 +4,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.response_model.product_list.Data;
 import com.aquaheyseller.ui.fragments.ListingsFragment.OnListFragmentInteractionListener;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 
@@ -37,6 +39,7 @@ public class ProductRecylcerAdapter extends RecyclerView.Adapter<ProductRecylcer
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).getPName());
         holder.mContentView.setText(mValues.get(position).getPrice());
+        Picasso.get().load(mValues.get(position).getImagePath()).into(holder.imgItem);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +62,7 @@ public class ProductRecylcerAdapter extends RecyclerView.Adapter<ProductRecylcer
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
+        public final ImageView imgItem;
         public Data mItem;
 
         public ViewHolder(View view) {
@@ -66,6 +70,7 @@ public class ProductRecylcerAdapter extends RecyclerView.Adapter<ProductRecylcer
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
             mContentView = (TextView) view.findViewById(R.id.content);
+            imgItem = (ImageView) view.findViewById(R.id.imgItem);
         }
 
         @Override
