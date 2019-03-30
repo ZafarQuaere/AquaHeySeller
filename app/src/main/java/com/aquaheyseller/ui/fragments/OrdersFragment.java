@@ -34,6 +34,7 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
 
     private Context mContext;
     private ViewPager viewPager;
+    private View view;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,12 +51,9 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_orders, container, false);
+        view = inflater.inflate(R.layout.fragment_orders, container, false);
         mContext = getActivity();
         initUI(view);
-        callNewOrderApi();
-        callPendingOrderApi();
-        callCompletedOrderApi();
         return view;
     }
 
@@ -91,71 +89,4 @@ public class OrdersFragment extends BaseFragment implements TabLayout.OnTabSelec
     public void onTabReselected(TabLayout.Tab tab) {
     }
 
-
-    public void callNewOrderApi() {
-        final AppLoaderFragment loader = AppLoaderFragment.getInstance(mContext);
-        loader.show();
-        String url = URL_BASE + URL_ORDERS + Utils.getDealerId(mContext) + URL_ORDER_STATUS + ORDER_STATUS_NEW;
-        LogUtils.DEBUG("URL : " + url);
-        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                LogUtils.DEBUG("NewOrder Response ::" + response.toString());
-                loader.dismiss();
-
-            }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                LogUtils.DEBUG("NewOrder Error ::" + error.getMessage());
-                loader.dismiss();
-            }
-        });
-        AppController.getInstance().addToRequestQueue(objectRequest, "NewOrder");
-    }
-
-    public void callPendingOrderApi() {
-
-        String url = URL_BASE + URL_ORDERS + Utils.getDealerId(mContext) + URL_ORDER_STATUS + ORDER_STATUS_PENDING;
-        LogUtils.DEBUG("URL : " + url);
-        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                LogUtils.DEBUG("PendingOrder Response ::" + response.toString());
-                Utils.saveListResponse(getActivity(), response.toString());
-
-            }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                LogUtils.DEBUG("Pending Error ::" + error.getMessage());
-            }
-        });
-        AppController.getInstance().addToRequestQueue(objectRequest, "Pending");
-    }
-
-    public void callCompletedOrderApi() {
-
-        String url = URL_BASE + URL_ORDERS + Utils.getDealerId(mContext) + URL_ORDER_STATUS + ORDER_STATUS_COMPLETED;
-        LogUtils.DEBUG("URL : " + url);
-        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                LogUtils.DEBUG("CompletedOrder Response ::" + response.toString());
-                Utils.saveListResponse(getActivity(), response.toString());
-
-            }
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                LogUtils.DEBUG("CompletedOrder Error ::" + error.getMessage());
-            }
-        });
-        AppController.getInstance().addToRequestQueue(objectRequest, "CompletedOrder");
-    }
 }

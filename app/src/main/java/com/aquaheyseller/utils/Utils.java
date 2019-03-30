@@ -382,4 +382,64 @@ public class Utils {
         }
         return data;
     }
+
+    public static void saveNewOrderData(Context mContext, String newOrderData) {
+
+        if (mContext == null)
+            return;
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
+        prefs.put(mContext.getString(R.string.key_new_order_data), newOrderData);
+    }
+
+    public static String getNewOrderData(Context context) {
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(context);
+        String data = "";
+        try {
+            data = (String) prefs.get(context.getString(R.string.key_new_order_data));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return data;
+        }
+        return data;
+    }
+
+    public static void savePendingOrderData(Context mContext, String pendingOrderData) {
+
+        if (mContext == null)
+            return;
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
+        prefs.put(mContext.getString(R.string.key_pending_order_data), pendingOrderData);
+    }
+
+    public static String getPendingOrderData(Context context) {
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(context);
+        String data = "";
+        try {
+            data = (String) prefs.get(context.getString(R.string.key_pending_order_data));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return data;
+        }
+        return data;
+    }
+
+    public static void saveCompleteOrderData(Context mContext, String completeOrderData) {
+
+        if (mContext == null)
+            return;
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
+        prefs.put(mContext.getString(R.string.key_complete_order_data), completeOrderData);
+    }
+
+    public static String getCompleteOrderData(Context context) {
+        AppSharedPrefs prefs = AppSharedPrefs.getInstance(context);
+        String data = "";
+        try {
+            data = (String) prefs.get(context.getString(R.string.key_complete_order_data));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return data;
+        }
+        return data;
+    }
 }

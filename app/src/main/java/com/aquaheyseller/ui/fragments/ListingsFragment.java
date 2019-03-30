@@ -1,7 +1,9 @@
 package com.aquaheyseller.ui.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +17,7 @@ import com.aquaheyseller.ui.adapters.ProductRecylcerAdapter;
 import com.aquaheyseller.ui.presenters.ListingsPresenter;
 import com.aquaheyseller.ui.presenters.operations.IFragListing;
 import com.aquaheyseller.utils.AppLoaderFragment;
+import com.aquaheyseller.utils.LogUtils;
 
 import java.util.ArrayList;
 
@@ -23,11 +26,13 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
     private RecyclerView recylcerProducts;
     private RecyclerView.LayoutManager layoutManager;
     private AppLoaderFragment loader;
+    private Context mContext;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+        mContext = getActivity();
     }
 
     @Override
@@ -88,7 +93,7 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
         ProductRecylcerAdapter adapter = new ProductRecylcerAdapter(productList, new OnListFragmentInteractionListener() {
             @Override
             public void onListFragmentInteraction(Data item) {
-
+                LogUtils.showToast(mContext,item.getPName());
             }
         });
         recylcerProducts.setAdapter(adapter);

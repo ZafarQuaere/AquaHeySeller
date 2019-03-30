@@ -7,17 +7,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.ui.fragments.PendingsFragment.OnListFragmentInteractionListener;
-import com.aquaheyseller.ui.fragments.dummy.DummyContent.DummyItem;
+import com.aquaheyseller.network_call.response_model.orders.OrderList;
+import com.aquaheyseller.ui.fragments.PendingsFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder> {
+public class OrdersRecylcerAdapter extends RecyclerView.Adapter<OrdersRecylcerAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
-    private final OnListFragmentInteractionListener mListener;
+    private final List<OrderList> mValues;
+    private final PendingsFragment.OnListFragmentInteractionListener mListener;
 
-    public MyItemRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public OrdersRecylcerAdapter(ArrayList<OrderList> items, PendingsFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -32,8 +33,8 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mIdView.setText(mValues.get(position).getDeliverDate());
+        holder.mContentView.setText(mValues.get(position).getAmount());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,7 +42,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                  //  mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onListFragmentInteraction(holder.mItem);
                 }
             }
         });
@@ -56,7 +57,7 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public OrderList mItem;
 
         public ViewHolder(View view) {
             super(view);

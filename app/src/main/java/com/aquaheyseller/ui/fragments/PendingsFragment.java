@@ -3,17 +3,23 @@ package com.aquaheyseller.ui.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.ui.adapters.MyItemRecyclerViewAdapter;
-import com.aquaheyseller.ui.fragments.dummy.DummyContent;
-import com.aquaheyseller.ui.fragments.dummy.DummyContent.DummyItem;
+import com.aquaheyseller.network_call.response_model.orders.OrderData;
+import com.aquaheyseller.network_call.response_model.orders.OrderList;
+import com.aquaheyseller.ui.adapters.OrdersRecylcerAdapter;
+import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.Utils;
+import com.aquaheyseller.utils.parser.ParseManager;
+
+import java.util.ArrayList;
 
 
 public class PendingsFragment extends Fragment {
@@ -22,27 +28,17 @@ public class PendingsFragment extends Fragment {
 
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private Context mContext;
+    private RecyclerView recyclerPendings;
+    private LinearLayoutManager layoutManager;
+    private TextView emptyTextView;
+    private OrderData orderData;
 
-
-    public PendingsFragment() {
-    }
-
-    @SuppressWarnings("unused")
-    public static PendingsFragment newInstance(int columnCount) {
-        PendingsFragment fragment = new PendingsFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-        }
+        mContext = getActivity();
     }
 
     @Override
@@ -50,18 +46,40 @@ public class PendingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pendings, container, false);
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+        String pendingOrderData = Utils.getPendingOrderData(mContext);
+        LogUtils.DEBUG("pendingOrderData >>>> " + pendingOrderData);
+        orderData = ParseManager.getInstance().fromJSON(pendingOrderData, OrderData.class);
+        try {
+            LogUtils.DEBUG(">>>>>>>>>> status : " + orderData.getStatus() + " " + orderData.getData().get(0).getAddressId() + " " + orderData.getData().get(0).getOrderDate() + "\n"
+                    + orderData.getData().get(0).getDeliverDate() + " " + orderData.getData().get(0).getPaymentId() + " ");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        initUI(view);
+
         return view;
+    }
+
+    private void initUI(View view) {
+        emptyTextView = (TextView) view.findViewById(R.id.emptyTextView);
+        recyclerPendings = (RecyclerView) view.findViewById(R.id.recyclerPendings);
+        recyclerPendings.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(getActivity());
+        recyclerPendings.setLayoutManager(layoutManager);
+        recyclerPendings.setItemAnimator(new DefaultItemAnimator());
+        updateList();
+    }
+
+    private void updateList() {
+        OrdersRecylcerAdapter adapter = new OrdersRecylcerAdapter((ArrayList<OrderList>) orderData.getData(), new OnListFragmentInteractionListener() {
+
+            @Override
+            public void onListFragmentInteraction(OrderList item) {
+                LogUtils.showToast(mContext,item.getAmount());
+            }
+        });
+        recyclerPendings.setAdapter(adapter);
     }
 
 
@@ -84,6 +102,6 @@ public class PendingsFragment extends Fragment {
 
 
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(OrderList item);
     }
 }

@@ -1,6 +1,5 @@
-1) Signed In data save.
+1) Orders Empty view implementation
 2) Sign Up lat long value test.
 3) Get dealerId utils method.
 4) Orders data management (New, Pending, completed)
 5) Order item row creation with values from response.
-6) Home screen multi screen UI.

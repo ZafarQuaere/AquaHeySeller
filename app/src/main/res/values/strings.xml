@@ -93,6 +93,10 @@
     <string name="select_app_to_share">Select App to share</string>
     <string name="save_profile">Save Profile</string>
     <string name="key_login_data">key_login_data</string>
+    <string name="key_new_order_data">key_new_order_data</string>
+    <string name="key_complete_order_data">key_complete_order_data</string>
+    <string name="key_pending_order_data">key_pending_order_data</string>
+    <string name="no_data_available">No data available</string>
 
 
     <!--  <string-array name="productTypeArray">
