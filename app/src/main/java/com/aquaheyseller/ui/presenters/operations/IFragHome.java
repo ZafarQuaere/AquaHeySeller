@@ -2,5 +2,6 @@ package com.aquaheyseller.ui.presenters.operations;
 
 
 public interface IFragHome {
-    void updateUI(String responseData);
+    void updateTodaySalesData(String todaySalesData);
+    void updateTotalSalesData(String totalSalesData);
 }

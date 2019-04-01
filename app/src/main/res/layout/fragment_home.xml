@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorWhite"
     android:clickable="true"
     android:padding="@dimen/padding_home_screen">
@@ -29,6 +30,7 @@
         android:textSize="@dimen/font_16sp" />
 
     <TextView
+        android:id="@+id/textTotalSalesAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtSalesLable"
@@ -36,7 +38,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/_10dp"
         android:layout_marginRight="@dimen/_20dp"
-        android:text="5620"
+        tools:text="5620"
         android:textColor="@color/colorTextHome"
         android:textSize="@dimen/font_16sp" />
 

@@ -1,7 +1,6 @@
 package com.aquaheyseller.ui.presenters;
 
 import android.content.Context;
-import android.os.Handler;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -10,59 +9,63 @@ import com.aquaheyseller.network_call.MyJsonObjectRequest;
 import com.aquaheyseller.ui.presenters.operations.IFragHome;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
+import com.aquaheyseller.utils.AppLoaderFragment;
 import com.aquaheyseller.utils.LogUtils;
+import com.aquaheyseller.utils.Utils;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class HomePresenter extends BaseFragmentPresenter {
     private Context mContext;
     private IFragHome mIFragHome;
+    private AppLoaderFragment loader;
 
     public HomePresenter(Context context, IFragHome iFragHome) {
         super(context);
         mIFragHome = iFragHome;
         mContext = context;
+        loader = AppLoaderFragment.getInstance(mContext);
     }
 
 
-    public void callDashboardApi() {
-        JSONObject requestObject = new JSONObject();
-        try {
-            requestObject.put("userId", "20");
-            requestObject.put("latitude", "256535");
-            requestObject.put("longitude", "256535");
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        String url = AppConstant.URL_BASE + AppConstant.URL_DEALER_ADDRESS;
-        LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" + requestObject.toString());
-        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, requestObject, new Response.Listener<JSONObject>() {
+    public void callTodaySalesApi() {
+        String url = AppConstant.URL_BASE + AppConstant.URL_TODAY_SALES+ Utils.getDealerId(mContext);
+        LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" );
+        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                LogUtils.DEBUG("AddressData Response ::" + response.toString());
-                mIFragHome.updateUI(response.toString());
+                LogUtils.DEBUG("TodaySales Response ::" + response.toString());
+                mIFragHome.updateTodaySalesData(response.toString());
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                LogUtils.DEBUG("AddressData Error ::" + error.getMessage());
+                LogUtils.DEBUG("TodaySales Error ::" + error.getMessage());
             }
         });
-        AppController.getInstance().addToRequestQueue(objectRequest, "AddressData");
+        AppController.getInstance().addToRequestQueue(objectRequest, "TodaySales");
     }
 
-    public void starTestDialog() {
-
-      //  openProgressDialog();
-        new Handler().postDelayed(new Runnable() {
+    public void callTotalSalesApi() {
+        loader.show();
+        String url = AppConstant.URL_BASE + AppConstant.URL_TOTAL_SALES+ Utils.getDealerId(mContext);
+        LogUtils.DEBUG("URL : " + url + "\nRequest Body ::" );
+        MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.POST, url, null, new Response.Listener<JSONObject>() {
             @Override
-            public void run() {
-        //        hideProgressDialog();
+            public void onResponse(JSONObject response) {
+                LogUtils.DEBUG("TotalSales Response ::" + response.toString());
+                loader.dismiss();
+                mIFragHome.updateTotalSalesData(response.toString());
             }
-        }, 5000);
 
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                LogUtils.DEBUG("TotalSales Error ::" + error.getMessage());
+            }
+        });
+        AppController.getInstance().addToRequestQueue(objectRequest, "TotalSales");
     }
+
 }

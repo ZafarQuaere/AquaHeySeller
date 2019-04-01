@@ -33,6 +33,8 @@ public class AppConstant {
     public static final String URL_ORDER_STATUS = "&status=";
 
     public static final String URL_PRODUCT_LIST = "/product?dealerId=";
+    public static final String URL_TODAY_SALES = "/today-sales?dealerId=";
+    public static final String URL_TOTAL_SALES = "/total-sales?dealerId=";
 
 
     public static final String baseUrl = "https://reqres.in";

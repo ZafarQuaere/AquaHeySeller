@@ -64,8 +64,6 @@ public class Utils {
         java.util.regex.Matcher m = p.matcher(email);
         return m.matches();*/
         return email != null && Patterns.EMAIL_ADDRESS.matcher(email).matches();
-
-
     }
 
     public static ProgressDialog showLoadingDialog(Context context) {
@@ -104,7 +102,6 @@ public class Utils {
             isLogIn = (boolean) prefs.get(context.getString(R.string.key_logged_in));
         }
         return isLogIn;
-
     }
 
     public static void moveToFragment(Context context, Fragment fragment, String fragName, Object data) {
@@ -259,28 +256,6 @@ public class Utils {
         // updateBottomBar(activity, new HomeFragment().getClass().getSimpleName());
     }
 
-
-    public static void saveListResponse(Context mContext, String data) {
-        if (mContext == null)
-            return;
-        AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
-        prefs.put(mContext.getString(R.string.key_list_data), data);
-    }
-
-    public static String getListData(Context context) {
-        AppSharedPrefs prefs = AppSharedPrefs.getInstance(context);
-        String data = "";
-        try {
-            data = (String) prefs.get(context.getString(R.string.key_list_data));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return data;
-        }
-        return data;
-
-    }
-
-
     public static void saveOTPData(Context mContext, String data) {
         if (mContext == null)
             return;
@@ -355,8 +330,8 @@ public class Utils {
         double longitude = location.getLongitude();
 
 
-       // return "Latitude : " +latitude + "  Longitude : " + longitude;
-        return  location;
+        // return "Latitude : " +latitude + "  Longitude : " + longitude;
+        return location;
     }
 
     public static String getDealerId(Context mContext) {
@@ -384,7 +359,6 @@ public class Utils {
     }
 
     public static void saveNewOrderData(Context mContext, String newOrderData) {
-
         if (mContext == null)
             return;
         AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
@@ -404,7 +378,6 @@ public class Utils {
     }
 
     public static void savePendingOrderData(Context mContext, String pendingOrderData) {
-
         if (mContext == null)
             return;
         AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
@@ -424,7 +397,6 @@ public class Utils {
     }
 
     public static void saveCompleteOrderData(Context mContext, String completeOrderData) {
-
         if (mContext == null)
             return;
         AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);

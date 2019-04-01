@@ -15,6 +15,7 @@ import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.response_model.orders.OrderData;
 import com.aquaheyseller.network_call.response_model.orders.OrderList;
 import com.aquaheyseller.ui.adapters.OrdersRecylcerAdapter;
+import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.Utils;
 import com.aquaheyseller.utils.parser.ParseManager;
@@ -24,9 +25,6 @@ import java.util.ArrayList;
 
 public class PendingsFragment extends Fragment {
 
-    private static final String ARG_COLUMN_COUNT = "column-count";
-
-    private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
     private Context mContext;
     private RecyclerView recyclerPendings;
@@ -49,12 +47,6 @@ public class PendingsFragment extends Fragment {
         String pendingOrderData = Utils.getPendingOrderData(mContext);
         LogUtils.DEBUG("pendingOrderData >>>> " + pendingOrderData);
         orderData = ParseManager.getInstance().fromJSON(pendingOrderData, OrderData.class);
-        try {
-            LogUtils.DEBUG(">>>>>>>>>> status : " + orderData.getStatus() + " " + orderData.getData().get(0).getAddressId() + " " + orderData.getData().get(0).getOrderDate() + "\n"
-                    + orderData.getData().get(0).getDeliverDate() + " " + orderData.getData().get(0).getPaymentId() + " ");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         initUI(view);
 
         return view;
@@ -68,7 +60,15 @@ public class PendingsFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getActivity());
         recyclerPendings.setLayoutManager(layoutManager);
         recyclerPendings.setItemAnimator(new DefaultItemAnimator());
-        updateList();
+
+        if (orderData.getStatus().equals(AppConstant.SUCCESS)) {
+            emptyTextView.setVisibility(View.GONE);
+            recyclerPendings.setVisibility(View.VISIBLE);
+            updateList();
+        } else {
+            emptyTextView.setVisibility(View.VISIBLE);
+            recyclerPendings.setVisibility(View.GONE);
+        }
     }
 
     private void updateList() {
@@ -76,7 +76,7 @@ public class PendingsFragment extends Fragment {
 
             @Override
             public void onListFragmentInteraction(OrderList item) {
-                LogUtils.showToast(mContext,item.getAmount());
+                LogUtils.showToast(mContext, item.getAmount());
             }
         });
         recyclerPendings.setAdapter(adapter);
@@ -99,7 +99,6 @@ public class PendingsFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
 
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(OrderList item);

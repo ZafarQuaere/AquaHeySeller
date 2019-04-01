@@ -41,11 +41,11 @@ public class MyJsonObjectRequest extends JsonObjectRequest {
         if(mContext.getResources().getBoolean(R.bool.read_from_local)){
             //here pick file from assets
             String fileName = null;
-            if(url.contains(AppConstant.loginUrl))
+            if(url.contains(AppConstant.URL_LOGIN))
             {
                 fileName = "login.txt";
             }
-            else if(url.contains(AppConstant.loginUrl))
+            else if(url.contains(AppConstant.URL_REGISTER))
             {
                 fileName = "register.txt";
             }
