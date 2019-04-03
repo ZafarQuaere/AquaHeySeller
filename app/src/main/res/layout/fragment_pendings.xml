@@ -23,10 +23,8 @@
 
     <TextView
         android:id="@+id/emptyTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        style="@style/EmptyTextview"
         android:visibility="gone"
-        android:text="@string/no_data_available" />
+        android:text="@string/no_pending_order" />
 
 </LinearLayout>

@@ -57,5 +57,7 @@
 
     <dimen name="order_cardview_margin">16dp</dimen>
 
+    <dimen name="list_empty_text_size">22sp</dimen>
+
 
 </resources>

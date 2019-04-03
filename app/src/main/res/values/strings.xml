@@ -95,7 +95,9 @@
     <string name="key_new_order_data">key_new_order_data</string>
     <string name="key_complete_order_data">key_complete_order_data</string>
     <string name="key_pending_order_data">key_pending_order_data</string>
-    <string name="no_data_available">No data available</string>
+    <string name="no_data_available">No data available.</string>
+    <string name="no_new_order_available">No Order available right now.</string>
+    <string name="no_pending_order">No Order is pending.</string>
 
 
     <!--  <string-array name="productTypeArray">

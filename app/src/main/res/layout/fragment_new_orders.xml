@@ -8,25 +8,23 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerNewOrders"
-        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="@dimen/_10dp"
         android:layout_marginRight="16dp"
-        android:paddingBottom="@dimen/_50dp"
-        app:layoutManager="LinearLayoutManager"
-        android:scrollbars="vertical"
         android:overScrollMode="never"
+        android:paddingBottom="@dimen/_50dp"
+        android:scrollbars="vertical"
+        android:visibility="gone"
+        app:layoutManager="LinearLayoutManager"
         tools:context=".ui.fragments.NewOrderFragment"
         tools:listitem="@layout/list_items" />
 
     <TextView
         android:id="@+id/emptyTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:visibility="gone"
-        android:text="@string/no_data_available" />
+        style="@style/EmptyTextview"
+        android:text="@string/no_new_order_available"
+        android:visibility="visible" />
 
 </LinearLayout>
