@@ -6,12 +6,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
+import com.aquaheyseller.network_call.response_model.home.Sales;
+import com.aquaheyseller.network_call.response_model.home.SalesData;
 import com.aquaheyseller.ui.presenters.operations.IFragHome;
 import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppController;
 import com.aquaheyseller.utils.AppLoaderFragment;
 import com.aquaheyseller.utils.LogUtils;
 import com.aquaheyseller.utils.Utils;
+import com.aquaheyseller.utils.parser.ParseManager;
 
 import org.json.JSONObject;
 
@@ -35,7 +38,12 @@ public class HomePresenter extends BaseFragmentPresenter {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("TodaySales Response ::" + response.toString());
-                mIFragHome.updateTodaySalesData(response.toString());
+                SalesData data = ParseManager.getInstance().fromJSON(response.toString(), SalesData.class);
+                if (data.getStatus().equals(AppConstant.SUCCESS)){
+                    mIFragHome.updateTodaySalesData(data.getData());
+                }else {
+                    mIFragHome.updateTodaySalesData(null);
+                }
             }
 
         }, new Response.ErrorListener() {
@@ -55,8 +63,13 @@ public class HomePresenter extends BaseFragmentPresenter {
             @Override
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("TotalSales Response ::" + response.toString());
+                SalesData data = ParseManager.getInstance().fromJSON(response.toString(), SalesData.class);
+                if (data.getStatus().equals(AppConstant.SUCCESS)){
+                    mIFragHome.updateTotalSalesData(data.getData());
+                }else {
+                    mIFragHome.updateTotalSalesData(null);
+                }
                 loader.dismiss();
-                mIFragHome.updateTotalSalesData(response.toString());
             }
 
         }, new Response.ErrorListener() {

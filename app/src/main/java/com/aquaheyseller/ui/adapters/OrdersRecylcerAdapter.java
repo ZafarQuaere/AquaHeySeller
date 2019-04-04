@@ -4,11 +4,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.response_model.orders.OrderList;
 import com.aquaheyseller.ui.fragments.PendingsFragment;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +37,7 @@ public class OrdersRecylcerAdapter extends RecyclerView.Adapter<OrdersRecylcerAd
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).getDeliverDate());
         holder.mContentView.setText(mValues.get(position).getAmount());
-
+        //Picasso.get().load(mValues.get(position).getImagePath()).into(holder.imgItem);
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,16 +56,18 @@ public class OrdersRecylcerAdapter extends RecyclerView.Adapter<OrdersRecylcerAd
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public OrderList mItem;
+        final View mView;
+        final TextView mIdView;
+        final TextView mContentView;
+        final ImageView imgItem;
+        OrderList mItem;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
             mContentView = (TextView) view.findViewById(R.id.content);
+            imgItem = (ImageView) view.findViewById(R.id.imgItem);
         }
 
         @Override

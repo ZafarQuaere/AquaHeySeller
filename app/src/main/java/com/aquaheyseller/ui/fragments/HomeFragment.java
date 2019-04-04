@@ -1,5 +1,6 @@
 package com.aquaheyseller.ui.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -8,8 +9,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aquaheyseller.R;
+import com.aquaheyseller.network_call.response_model.home.Sales;
 import com.aquaheyseller.ui.presenters.HomePresenter;
 import com.aquaheyseller.ui.presenters.operations.IFragHome;
+import com.aquaheyseller.utils.AppConstant;
+
+import java.util.List;
 
 public class HomeFragment extends BaseFragment<HomePresenter> implements IFragHome {
 
@@ -35,14 +40,26 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IFragHo
         return view;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
-    public void updateTodaySalesData(String todaySalesData) {
-
+    public void updateTodaySalesData(List<Sales> todaySalesData) {
+        if (todaySalesData != null) {
+            TextView textTodayAmount = (TextView) view.findViewById(R.id.textTodayAmount);
+            TextView textTodayUnit = (TextView) view.findViewById(R.id.textTodayUnit);
+            textTodayAmount.setText(todaySalesData.get(0).getTotalAmount());
+            textTodayUnit.setText(todaySalesData.get(0).getTotalUnit()+" "+getString(R.string.units));
+        }
     }
 
     @Override
-    public void updateTotalSalesData(String totalSalesData) {
-        TextView textTotalSalesAmount = (TextView) view.findViewById(R.id.textTotalSalesAmount);
-        textTotalSalesAmount.setText("");
+    public void updateTotalSalesData(List<Sales> data) {
+        if (data!= null){
+            TextView textTotalSalesAmount = (TextView) view.findViewById(R.id.textTotalSalesAmount);
+            textTotalSalesAmount.setText(getAmountandUnit(data));
+        }
+    }
+
+    private String getAmountandUnit(List<Sales> data) {
+        return AppConstant.RUPEES_SYMBOL+" "+data.get(0).getTotalAmount()+" Of "+data.get(0).getTotalUnit()+" "+getString(R.string.units);
     }
 }

@@ -81,6 +81,7 @@
                     android:text="@string/rupee_symbol" />
 
                 <TextView
+                    android:id="@+id/textTodayAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="200" />
@@ -92,6 +93,7 @@
                 android:background="@color/colorGrey" />
 
             <TextView
+                android:id="@+id/textTodayUnit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -180,7 +182,7 @@
                 android:layout_below="@+id/rlytBottomCircle1"
                 android:layout_marginTop="5dp"
                 android:paddingLeft="@dimen/_10dp"
-                android:text="TextView" />
+                android:text="All Rating" />
 
 
             <TextView
@@ -190,7 +192,7 @@
                 android:layout_below="@+id/rlytBottomCircle2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:text="TextView" />
+                android:text="Delivery Rating" />
 
 
             <TextView
@@ -201,7 +203,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="5dp"
                 android:paddingRight="@dimen/_10dp"
-                android:text="TextView" />
+                android:text="Quality" />
 
         </RelativeLayout>
     </RelativeLayout>

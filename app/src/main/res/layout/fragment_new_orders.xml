@@ -10,11 +10,9 @@
         android:id="@+id/recyclerNewOrders"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="@dimen/_10dp"
-        android:layout_marginRight="16dp"
-        android:overScrollMode="never"
         android:paddingBottom="@dimen/_50dp"
+        android:layout_marginTop="@dimen/_20dp"
+        android:overScrollMode="never"
         android:scrollbars="vertical"
         android:visibility="gone"
         app:layoutManager="LinearLayoutManager"
@@ -23,7 +21,7 @@
 
     <TextView
         android:id="@+id/emptyTextView"
-        style="@style/EmptyTextview"
+        style="@style/EmptyTextView"
         android:text="@string/no_new_order_available"
         android:visibility="visible" />
 

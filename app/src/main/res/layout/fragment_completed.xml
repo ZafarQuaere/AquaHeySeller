@@ -11,9 +11,7 @@
         android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="@dimen/_10dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginTop="@dimen/_20dp"
         android:paddingBottom="@dimen/_50dp"
         app:layoutManager="LinearLayoutManager"
         android:scrollbars="vertical"
@@ -23,7 +21,7 @@
 
     <TextView
         android:id="@+id/emptyTextView"
-        style="@style/EmptyTextview"
+        style="@style/EmptyTextView"
         android:visibility="gone"
         android:text="@string/no_data_available" />
 

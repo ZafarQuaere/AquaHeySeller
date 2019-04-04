@@ -110,20 +110,21 @@
     </style>
 
     <!-- Empty TextView -->
-    <style name="EmptyTextview">
+    <style name="EmptyTextView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/list_empty_text_size</item>
         <item name="android:textColor">@color/colorInputText</item>
-        <item name="android:paddingBottom">@dimen/_40dp</item>
+        <item name="android:layout_marginBottom">@dimen/_40dp</item>
     </style>
 
     <style name="positive">
         <item name="android:textColor">#336ce6</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+
 
 
 </resources>

@@ -12,10 +12,7 @@ import com.aquaheyseller.network_call.response_model.product_list.Data;
 import com.aquaheyseller.ui.fragments.ListingsFragment.OnListFragmentInteractionListener;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProductRecylcerAdapter extends RecyclerView.Adapter<ProductRecylcerAdapter.ViewHolder> {
 
@@ -59,13 +56,13 @@ public class ProductRecylcerAdapter extends RecyclerView.Adapter<ProductRecylcer
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
-        public final ImageView imgItem;
-        public Data mItem;
+        final View mView;
+        final TextView mIdView;
+        final TextView mContentView;
+        final ImageView imgItem;
+        Data mItem;
 
-        public ViewHolder(View view) {
+        ViewHolder(View view) {
             super(view);
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.item_number);
