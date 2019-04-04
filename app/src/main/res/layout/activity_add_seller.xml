@@ -36,33 +36,23 @@
                 android:gravity="center"
                 android:hint="@string/sellername"
                 android:inputType="text"
-                android:maxLength="35"/>
+                android:maxLength="35" />
 
 
             <EditText
                 android:id="@+id/editSellerMobile"
                 style="@style/NumberInputEdit"
+                android:layout_marginTop="@dimen/_20dp"
                 android:gravity="center"
                 android:hint="@string/enter_mobile_no"
-                android:layout_marginTop="@dimen/_20dp"
-                android:maxLength="10"/>
-
+                android:maxLength="10" />
 
             <Button
                 android:id="@+id/btnAddSeller"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/button_height"
-                android:layout_marginHorizontal="@dimen/_20dp"
+                style="@style/ButtonTextStyle"
                 android:layout_marginTop="@dimen/_30dp"
                 android:background="@drawable/btnsignin"
-                android:elevation="@dimen/_10dp"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:text="@string/add_seller"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
+                android:text="@string/add_seller" />
 
         </LinearLayout>
 

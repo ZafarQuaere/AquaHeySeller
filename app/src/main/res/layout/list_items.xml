@@ -26,21 +26,17 @@
 
             <TextView
                 android:id="@+id/item_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/RegularThemeTextview"
                 android:layout_margin="@dimen/_10dp"
                 android:layout_toRightOf="@+id/imgItem"
-                android:textAppearance="?attr/textAppearanceListItem"
                 tools:text="@string/save_address" />
 
             <TextView
                 android:id="@+id/content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/RegularThemeTextview"
                 android:layout_below="@+id/item_number"
                 android:layout_margin="@dimen/_10dp"
                 android:layout_toRightOf="@+id/imgItem"
-                android:textAppearance="?attr/textAppearanceListItem"
                 tools:text="@string/save_address" />
 
             <ImageButton
@@ -48,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ic_edit_black"/>
+                android:background="@drawable/ic_edit_black" />
 
         </RelativeLayout>
 

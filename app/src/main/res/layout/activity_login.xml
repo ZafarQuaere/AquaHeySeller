@@ -14,14 +14,14 @@
         android:layout_height="match_parent" />
 
 
-  <!--  <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lyHeader"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/_40dp"
-        android:elevation="@dimen/_10dp"
-        android:src="@drawable/icon_drops" />-->
+    <!--  <ImageView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/lyHeader"
+          android:layout_centerHorizontal="true"
+          android:layout_marginBottom="@dimen/_40dp"
+          android:elevation="@dimen/_10dp"
+          android:src="@drawable/icon_drops" />-->
 
 
     <LinearLayout
@@ -45,13 +45,13 @@
                 style="@style/NumberInputEdit"
                 android:gravity="center"
                 android:hint="@string/mobile_no"
-                android:maxLength="10"/>
+                android:maxLength="10" />
 
 
             <EditText
                 android:id="@+id/editPassword"
-                android:layout_marginTop="@dimen/_20dp"
                 style="@style/PasswordInputEdit"
+                android:layout_marginTop="@dimen/_20dp"
                 android:gravity="center"
                 android:hint="@string/password"
                 android:maxLength="20" />
@@ -59,45 +59,27 @@
 
             <Button
                 android:id="@+id/btnLogin"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/button_height"
-                android:layout_marginHorizontal="@dimen/_20dp"
+                style="@style/ButtonTextStyle"
                 android:layout_marginTop="@dimen/_30dp"
                 android:background="@drawable/btnsignin"
-                android:elevation="@dimen/_10dp"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
-                android:text="@string/login_label"
-                android:textAllCaps="false"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/regular_text"
-                android:textStyle="bold" />
+                android:text="@string/login_label" />
 
             <TextView
                 android:id="@+id/textForgetPswd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/RegularTextview"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_10dp"
                 android:padding="@dimen/_10dp"
                 android:text="@string/forgot_pswd"
-                android:textAlignment="center"
-                android:textColor="@color/colorWhite"
-                android:textSize="16sp" />
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btnAddSeller"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/button_height"
-                android:layout_marginHorizontal="@dimen/_20dp"
+                style="@style/ButtonTextStyle"
                 android:layout_marginTop="@dimen/_10dp"
                 android:background="@drawable/btnsignup"
-                android:elevation="@dimen/_10dp"
-                android:foreground="?attr/selectableItemBackgroundBorderless"
                 android:text="@string/add_seller"
-                android:textAllCaps="true"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/regular_text"
-                android:textStyle="bold" />
+                android:textAllCaps="true" />
         </LinearLayout>
 
     </LinearLayout>

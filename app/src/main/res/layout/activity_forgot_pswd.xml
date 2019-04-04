@@ -13,15 +13,12 @@
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/LargeTextview"
         android:layout_below="@+id/lyHeader"
         android:layout_marginTop="@dimen/_20dp"
         android:padding="@dimen/_10dp"
         android:text="@string/sit_back_and_relax_while_we_verify_your_mobile_number_and_send_otp"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhite"
-        android:textSize="20sp" />
+        android:textAlignment="center" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -36,26 +33,23 @@
 
     <EditText
         android:id="@+id/editMobile"
-        android:layout_width="310dp"
-        android:layout_height="@dimen/edit_field_height"
+        style="@style/NumberInputEdit"
         android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/_30dp"
+        android:layout_marginTop="@dimen/_30dp"
         android:background="@drawable/rectangle_bg"
-        android:ems="10"
         android:hint="@string/enter_registered_mobile_no"
-        android:inputType="number"
         android:maxLength="10"
         android:textAlignment="center" />
 
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="171dp"
-        android:layout_height="@dimen/button_height"
+        style="@style/ButtonTextStyle"
         android:layout_below="@+id/editMobile"
-        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="@dimen/_30dp"
         android:layout_marginTop="@dimen/_20dp"
         android:background="@drawable/btnsignin"
-        android:text="@string/submit"
-        android:textColor="@color/colorWhite" />
+        android:text="@string/submit" />
 
 </RelativeLayout>

@@ -21,8 +21,8 @@
 
         <EditText
             android:id="@+id/editAddress"
-            android:layout_marginTop="100dp"
             style="@style/TextInputEdit"
+            android:layout_marginTop="100dp"
             android:hint="@string/enter_address"
             android:inputType="textMultiLine"
             android:maxLines="2"
@@ -30,17 +30,17 @@
 
         <EditText
             android:id="@+id/editCity"
-            android:layout_marginTop="@dimen/_40dp"
             style="@style/TextInputEdit"
+            android:layout_marginTop="@dimen/_40dp"
             android:hint="@string/enter_city"
             android:inputType="textPersonName"
             android:textAlignment="center" />
 
         <EditText
             android:id="@+id/editState"
+            style="@style/TextInputEdit"
             android:layout_marginTop="@dimen/_40dp"
             android:background="@drawable/rectangle_bg"
-            style="@style/TextInputEdit"
             android:hint="@string/enter_state"
             android:inputType="textPersonName"
             android:textAlignment="center" />
@@ -56,14 +56,10 @@
 
         <Button
             android:id="@+id/btnSaveAddress"
-            android:layout_width="200dp"
-            android:layout_height="@dimen/button_height"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_40dp"
+            style="@style/ButtonTextStyle"
+            android:layout_marginTop="@dimen/_30dp"
             android:background="@drawable/btnsignin"
-            android:elevation="@dimen/_10dp"
-            android:text="@string/save_address"
-            android:textColor="@color/colorWhite" />
+            android:text="@string/save_address" />
     </LinearLayout>
 </LinearLayout>
 

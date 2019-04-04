@@ -12,16 +12,13 @@
         android:layout_alignParentTop="true" />
 
     <TextView
+        android:id="@+id/textView17"
+        style="@style/LargeTextview"
+        android:layout_below="@+id/lyHeader"
         android:layout_marginTop="@dimen/_20dp"
         android:paddingHorizontal="@dimen/_10dp"
-        android:layout_below="@+id/lyHeader"
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/enter_otp_below"
-        android:textAlignment="center"
-        android:textColor="@color/colorWhite"
-        android:textSize="@dimen/font_20sp" />
+        android:textAlignment="center" />
 
 
     <ImageView
@@ -37,35 +34,29 @@
 
     <EditText
         android:id="@+id/editOTP"
-        android:layout_width="310dp"
-        android:layout_height="@dimen/edit_field_height"
+        style="@style/NumberInputEdit"
         android:layout_centerInParent="true"
-        android:background="@drawable/rectangle_bg"
-        android:ems="10"
+        android:layout_marginHorizontal="@dimen/_20dp"
         android:hint="@string/enter_otp"
-        android:inputType="number"
-        android:maxLength="10"
+        android:maxLength="6"
         android:textAlignment="center" />
 
 
     <Button
         android:id="@+id/btnSubmit"
-        android:layout_width="171dp"
-        android:layout_height="@dimen/button_height"
+        style="@style/ButtonTextStyle"
         android:layout_below="@+id/editOTP"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/_20dp"
         android:background="@drawable/btnsignin"
-        android:text="@string/submit"
-        android:textColor="@color/colorWhite" />
-
+        android:text="@string/submit" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="invisible">
 
         <Button
             android:id="@+id/btnResendOTP"

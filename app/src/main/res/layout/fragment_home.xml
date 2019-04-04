@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorWhite"
     android:clickable="true"
     android:padding="@dimen/padding_home_screen">
@@ -10,37 +10,27 @@
 
     <TextView
         android:id="@+id/txtSalesLable"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/RegularThemeTextview"
         android:layout_marginLeft="@dimen/_20dp"
         android:layout_marginTop="@dimen/_40dp"
-        android:text="@string/sales"
-        android:textColor="@color/colorTextHome"
-        android:textSize="@dimen/font_20sp" />
+        android:text="@string/sales" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/RegularThemeTextview"
         android:layout_below="@+id/txtSalesLable"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="@dimen/_20dp"
         android:layout_marginTop="@dimen/_10dp"
-        android:text="@string/total_sales_this_week"
-        android:textColor="@color/colorTextHome"
-        android:textSize="@dimen/font_16sp" />
+        android:text="@string/total_sales_this_week" />
 
     <TextView
         android:id="@+id/textTotalSalesAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/RegularThemeTextview"
         android:layout_below="@+id/txtSalesLable"
         android:layout_alignParentRight="true"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/_10dp"
         android:layout_marginRight="@dimen/_20dp"
-        tools:text="5620"
-        android:textColor="@color/colorTextHome"
-        android:textSize="@dimen/font_16sp" />
+        tools:text="5620" />
 
     <!-- Week Sales  -->
     <RelativeLayout
@@ -60,11 +50,9 @@
 
             <TextView
                 android:id="@+id/textIconIceOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/RegularThemeTextview"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/todays_sale"
-                android:textSize="@dimen/font_16sp" />
+                android:text="@string/todays_sale" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -78,13 +66,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginRight="@dimen/_5dp"
-                    android:text="@string/rupee_symbol" />
+                    android:text="@string/rupee_symbol"
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/textTodayAmount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="200" />
+                    style="@style/RegularThemeTextview"
+                    android:text="200"
+                    android:textColor="@color/colorBlack" />
             </LinearLayout>
 
             <View
@@ -94,11 +83,11 @@
 
             <TextView
                 android:id="@+id/textTodayUnit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/RegularThemeTextview"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/_10dp"
-                android:text="5 Units" />
+                android:text="5 Units"
+                android:textColor="@color/colorBlack" />
         </LinearLayout>
 
     </RelativeLayout>
@@ -110,8 +99,7 @@
 
         <TextView
             android:id="@+id/txtServiceQuality"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/RegularThemeTextview"
             android:layout_marginLeft="@dimen/_10dp"
             android:text="@string/service_quality"
             android:textColor="@color/colorTextHome"
@@ -131,11 +119,11 @@
                 android:background="@drawable/circle_home_small">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/RegularThemeTextview"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/_10dp"
-                    android:text="3" />
+                    android:text="3"
+                    android:textColor="@color/colorBlack" />
 
             </RelativeLayout>
 
@@ -150,11 +138,11 @@
                 android:elevation="@dimen/_10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/RegularThemeTextview"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/_10dp"
-                    android:text="3" />
+                    android:text="3"
+                    android:textColor="@color/colorBlack" />
 
             </RelativeLayout>
 
@@ -167,43 +155,43 @@
                 android:elevation="@dimen/_10dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/RegularThemeTextview"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/_10dp"
-                    android:text="3" />
+                    android:text="3"
+                    android:textColor="@color/colorBlack" />
 
             </RelativeLayout>
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/RegularThemeTextview"
                 android:layout_below="@+id/rlytBottomCircle1"
                 android:layout_marginTop="5dp"
                 android:paddingLeft="@dimen/_10dp"
-                android:text="All Rating" />
+                android:text="All Rating"
+                android:textColor="@color/colorBlack" />
 
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/RegularThemeTextview"
                 android:layout_below="@+id/rlytBottomCircle2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:text="Delivery Rating" />
+                android:text="Delivery Rating"
+                android:textColor="@color/colorBlack" />
 
 
             <TextView
                 android:id="@+id/textView13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/RegularThemeTextview"
                 android:layout_below="@+id/rlytBottomCircle3"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="5dp"
                 android:paddingRight="@dimen/_10dp"
-                android:text="Quality" />
+                android:text="Quality"
+                android:textColor="@color/colorBlack" />
 
         </RelativeLayout>
     </RelativeLayout>

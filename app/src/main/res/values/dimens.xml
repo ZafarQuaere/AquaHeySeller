@@ -30,6 +30,9 @@
     <dimen name="_50dp">50dp</dimen>
 
     <dimen name="regular_text">14sp</dimen>
+    <dimen name="actionbar_title_text">16sp</dimen>
+    <dimen name="xx_large_text">24sp</dimen>
+    <dimen name="x_large_text">20sp</dimen>
 
     <dimen name="font_20sp">20sp</dimen>
     <dimen name="font_16sp">16sp</dimen>

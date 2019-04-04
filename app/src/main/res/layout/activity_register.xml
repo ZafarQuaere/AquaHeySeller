@@ -15,7 +15,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btnRegister"
         android:layout_below="@+id/lytHeader">
 
         <LinearLayout
@@ -27,14 +26,11 @@
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/LargeTextview"
                 android:layout_below="@+id/lyHeader"
+                android:layout_gravity="center"
                 android:padding="@dimen/_10dp"
-                android:text="@string/register_to_use_aqua_hey"
-                android:textAlignment="center"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/font_20sp" />
+                android:text="@string/register_to_use_aqua_hey" />
 
 
             <ImageView
@@ -49,90 +45,63 @@
 
             <EditText
                 android:id="@+id/editText"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edit_field_height"
-                android:background="@drawable/rectangle_bg"
+                style="@style/TextInputEdit"
                 android:drawableRight="@android:drawable/ic_menu_search"
                 android:drawablePadding="@dimen/_10dp"
-                android:elevation="@dimen/_10dp"
                 android:hint="@string/gst_no"
                 android:imeOptions="actionSearch"
-                android:inputType="textPersonName"
                 android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/editName"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edit_field_height"
+                style="@style/TextInputEdit"
                 android:layout_marginTop="@dimen/_20dp"
-                android:background="@drawable/rectangle_bg"
-                android:elevation="@dimen/_10dp"
                 android:hint="@string/name"
-                android:inputType="textPersonName"
                 android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/editMobile"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edit_field_height"
+                style="@style/NumberInputEdit"
                 android:layout_marginTop="@dimen/_20dp"
-                android:background="@drawable/rectangle_bg"
-                android:elevation="@dimen/_10dp"
-                android:ems="10"
                 android:hint="@string/mobile_no"
-                android:inputType="number"
                 android:maxLength="10"
                 android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/editEmailId"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edit_field_height"
+                style="@style/TextInputEdit"
                 android:layout_marginTop="@dimen/_20dp"
-                android:background="@drawable/rectangle_bg"
-                android:elevation="@dimen/_10dp"
-                android:ems="10"
                 android:hint="@string/email_id"
                 android:inputType="textEmailAddress"
                 android:textAlignment="center" />
 
             <EditText
                 android:id="@+id/editPassword"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edit_field_height"
+                style="@style/PasswordInputEdit"
                 android:layout_marginTop="@dimen/_20dp"
-                android:background="@drawable/rectangle_bg"
-                android:elevation="@dimen/_10dp"
-                android:ems="10"
                 android:hint="@string/password"
-                android:inputType="textPassword"
                 android:textAlignment="center" />
 
 
             <EditText
                 android:id="@+id/editConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edit_field_height"
+                style="@style/PasswordInputEdit"
                 android:layout_marginTop="@dimen/_20dp"
-                android:background="@drawable/rectangle_bg"
-                android:elevation="@dimen/_10dp"
-                android:ems="10"
                 android:hint="@string/confirm_pswd"
                 android:inputType="textPassword"
                 android:textAlignment="center" />
 
 
+            <Button
+                android:id="@+id/btnRegister"
+                style="@style/ButtonTextStyle"
+                android:layout_marginTop="@dimen/_30dp"
+                android:background="@drawable/btnsignin"
+                android:text="@string/signup_label" />
+
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_height"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/btnsignin"
-        android:elevation="@dimen/_10dp"
-        android:text="@string/signup_label"
-        android:textColor="@color/colorWhite" />
+
 </RelativeLayout>
 

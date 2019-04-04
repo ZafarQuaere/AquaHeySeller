@@ -10,8 +10,8 @@
 
     <TextView
         android:id="@+id/emptyTextView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        style="@style/EmptyTextView"
+        android:textColor="@color/colorBlack"
         android:gravity="center"
         android:text="This feature is under devleopment will be launched in next version"
         android:visibility="visible"/>

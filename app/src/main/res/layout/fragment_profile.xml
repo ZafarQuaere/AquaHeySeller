@@ -60,6 +60,7 @@
 
             <EditText
                 android:id="@+id/editPassword"
+                style="@style/PasswordInputEdit"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/edit_field_height"
                 android:layout_marginTop="@dimen/_20dp"
@@ -72,13 +73,10 @@
 
             <Button
                 android:id="@+id/btnSaveProfile"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/button_height"
+                style="@style/ButtonTextStyle"
                 android:layout_marginTop="@dimen/_20dp"
                 android:background="@drawable/btnsignin"
-                android:elevation="@dimen/_10dp"
-                android:text="@string/save_profile"
-                android:textColor="@color/colorWhite" />
+                android:text="@string/save_profile"/>
         </LinearLayout>
     </ScrollView>
 
