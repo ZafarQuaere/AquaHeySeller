@@ -45,7 +45,7 @@ public class ListingsPresenter extends BaseFragmentPresenter {
                     MyProductsData productsData = ParseManager.getInstance().fromJSON(response.toString(), MyProductsData.class);
                     if (productsData.getStatus().equals(AppConstant.SUCCESS)) {
                         LogUtils.DEBUG("ProductList Response ::" + productsData.getData().toString());
-                        mProductFrag.updateList(productsData.getData());
+                        mProductFrag.updateList(productsData);
                     }
                     /*if (status == AppConstant.SUCCESS) {
                         mProductFrag.updateList(array);

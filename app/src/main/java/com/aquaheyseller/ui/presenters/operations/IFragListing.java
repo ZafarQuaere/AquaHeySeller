@@ -1,7 +1,7 @@
 package com.aquaheyseller.ui.presenters.operations;
 
 
-import com.aquaheyseller.network_call.response_model.product_list.Data;
+import com.aquaheyseller.network_call.response_model.product_list.MyProductsData;
 
 public interface IFragListing {
 
@@ -9,5 +9,5 @@ public interface IFragListing {
     void onResponseFailure(String msg);
     void editItem();
 
-    void updateList(Data[] data);
+    void updateList(MyProductsData data);
 }

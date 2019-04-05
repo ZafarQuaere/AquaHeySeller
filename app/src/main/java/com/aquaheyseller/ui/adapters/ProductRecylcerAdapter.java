@@ -8,18 +8,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.network_call.response_model.product_list.Data;
+import com.aquaheyseller.network_call.response_model.product_list.ProductList;
 import com.aquaheyseller.ui.fragments.ListingsFragment.OnListFragmentInteractionListener;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class ProductRecylcerAdapter extends RecyclerView.Adapter<ProductRecylcerAdapter.ViewHolder> {
 
-    private final ArrayList<Data> mValues;
+    private final List<ProductList> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public ProductRecylcerAdapter(ArrayList<Data> items, OnListFragmentInteractionListener listener) {
+    public ProductRecylcerAdapter(List<ProductList> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -60,7 +60,7 @@ public class ProductRecylcerAdapter extends RecyclerView.Adapter<ProductRecylcer
         final TextView mIdView;
         final TextView mContentView;
         final ImageView imgItem;
-        Data mItem;
+        ProductList mItem;
 
         ViewHolder(View view) {
             super(view);

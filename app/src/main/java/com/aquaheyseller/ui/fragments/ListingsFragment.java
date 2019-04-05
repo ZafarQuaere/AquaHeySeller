@@ -3,23 +3,23 @@ package com.aquaheyseller.ui.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.aquaheyseller.R;
-import com.aquaheyseller.network_call.response_model.product_list.Data;
+import com.aquaheyseller.network_call.response_model.product_list.MyProductsData;
+import com.aquaheyseller.network_call.response_model.product_list.ProductList;
 import com.aquaheyseller.ui.adapters.ProductRecylcerAdapter;
 import com.aquaheyseller.ui.presenters.ListingsPresenter;
 import com.aquaheyseller.ui.presenters.operations.IFragListing;
+import com.aquaheyseller.utils.AppConstant;
 import com.aquaheyseller.utils.AppLoaderFragment;
 import com.aquaheyseller.utils.LogUtils;
-
-import java.util.ArrayList;
 
 public class ListingsFragment extends BaseFragment<ListingsPresenter> implements IFragListing {
 
@@ -27,6 +27,7 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
     private RecyclerView.LayoutManager layoutManager;
     private AppLoaderFragment loader;
     private Context mContext;
+    private TextView emptyTextView;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +59,8 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
         layoutManager = new LinearLayoutManager(getActivity());
         recylcerProducts.setLayoutManager(layoutManager);
         recylcerProducts.setItemAnimator(new DefaultItemAnimator());
+        emptyTextView = (TextView) view.findViewById(R.id.emptyTextView);
+
     }
 
 
@@ -77,30 +80,24 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
     }
 
     @Override
-    public void updateList(Data[] data) {
-        ArrayList<Data> productList = new ArrayList<>();
+    public void updateList(MyProductsData data) {
+        emptyTextView.setVisibility(data.getStatus().equals(AppConstant.SUCCESS)? View.GONE:View.VISIBLE);
+        recylcerProducts.setVisibility(data.getStatus().equals(AppConstant.SUCCESS)? View.VISIBLE:View.GONE);
+        if (data != null && data.getStatus().equals(AppConstant.SUCCESS)) {
+            ProductRecylcerAdapter adapter = new ProductRecylcerAdapter(data.getData(), new OnListFragmentInteractionListener() {
+                @Override
+                public void onListFragmentInteraction(ProductList item) {
+                    LogUtils.showToast(mContext, item.getPName());
+                }
+            });
+            recylcerProducts.setAdapter(adapter);
+        }else {
 
-        for (int i = 0; i < data.length; i++) {
-            productList.add(data[i]);
-          /*  try {
-                JSONObject object = data.getJSONObject(i);
-                Data productsData = ParseManager.getInstance().fromJSON(object.toString(), Data.class);
-                productList.add(productsData);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }*/
         }
-        ProductRecylcerAdapter adapter = new ProductRecylcerAdapter(productList, new OnListFragmentInteractionListener() {
-            @Override
-            public void onListFragmentInteraction(Data item) {
-                LogUtils.showToast(mContext,item.getPName());
-            }
-        });
-        recylcerProducts.setAdapter(adapter);
 
     }
 
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(Data item);
+        void onListFragmentInteraction(ProductList item);
     }
 }

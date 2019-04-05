@@ -13,4 +13,10 @@
         android:overScrollMode="never"
         tools:listitem="@layout/list_items"/>
 
+    <TextView
+        android:id="@+id/emptyTextView"
+        style="@style/EmptyTextView"
+        android:text="@string/no_product_added"
+        android:visibility="gone" />
+
 </RelativeLayout>

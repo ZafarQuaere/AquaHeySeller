@@ -1,24 +1,52 @@
 package com.aquaheyseller.network_call.response_model.product_list;
 
-public class Data {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
-    private String pName;
-
-    private String dealerId;
-
-    private String imagePath;
-
-    private String price;
-
-    private String IsBrand;
-
-    private String brandId;
-
-    private String rating;
-
+public class ProductList {
+    @SerializedName("id")
+    @Expose
     private String id;
-
+    @SerializedName("brandId")
+    @Expose
+    private String brandId;
+    @SerializedName("pName")
+    @Expose
+    private String pName;
+    @SerializedName("dealerId")
+    @Expose
+    private String dealerId;
+    @SerializedName("imagePath")
+    @Expose
+    private String imagePath;
+    @SerializedName("price")
+    @Expose
+    private String price;
+    @SerializedName("rating")
+    @Expose
+    private String rating;
+    @SerializedName("productType")
+    @Expose
     private String productType;
+    @SerializedName("IsBrand")
+    @Expose
+    private String isBrand;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(String brandId) {
+        this.brandId = brandId;
+    }
 
     public String getPName() {
         return pName;
@@ -52,20 +80,6 @@ public class Data {
         this.price = price;
     }
 
-    public String getIsBrand() {
-        return IsBrand;
-    }
-
-    public void setIsBrand(String IsBrand) {
-        this.IsBrand = IsBrand;
-    }
-
-    public String getBrandId() {
-        return brandId;
-    }
-
-    public void setBrandId(String brandId) { this.brandId = brandId; }
-
     public String getRating() {
         return rating;
     }
@@ -74,19 +88,19 @@ public class Data {
         this.rating = rating;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getProductType() {
         return productType;
     }
 
     public void setProductType(String productType) {
         this.productType = productType;
+    }
+
+    public String getIsBrand() {
+        return isBrand;
+    }
+
+    public void setIsBrand(String isBrand) {
+        this.isBrand = isBrand;
     }
 }

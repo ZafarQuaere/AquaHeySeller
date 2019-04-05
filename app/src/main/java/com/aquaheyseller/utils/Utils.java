@@ -337,6 +337,7 @@ public class Utils {
     }
 
     public static String getDealerId(Context mContext) {
+        //return "1";
         String loginStringData = getLoginData(mContext);
         String dealerId = "";
         LoginPojo loginData = ParseManager.getInstance().fromJSON(loginStringData,LoginPojo.class);
