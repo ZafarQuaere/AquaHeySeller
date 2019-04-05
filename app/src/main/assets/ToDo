@@ -1,5 +1,6 @@
-1) Orders Empty view implementation
+//TODO
+1) Orders Empty view implementation :done
 2) Sign Up lat long value test.
-3) Get dealerId utils method.
-4) Orders data management (New, Pending, completed)
+3) Get dealerId utils method. : done
+4) Orders data management (New, Pending, completed) : done
 5) Order item row creation with values from response.

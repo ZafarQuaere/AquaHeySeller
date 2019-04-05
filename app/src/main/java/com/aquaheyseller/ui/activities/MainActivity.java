@@ -19,6 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.MyJsonObjectRequest;
+import com.aquaheyseller.ui.fragments.HelpNFaqFragment;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
@@ -194,6 +195,10 @@ public class MainActivity extends BaseActivity<MainPresenter>
         Utils.shareApp(MainActivity.this);
     }
 
+    public void helpNFaqClick(View view) {
+        getPresenter().moveToFragment(HelpNFaqFragment.class.getSimpleName());
+        closeDrawer();
+    }
 
     public void callNewOrderApi() {
         /*final AppLoaderFragment loader = AppLoaderFragment.getInstance(mContext);
@@ -220,8 +225,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
     }
 
     public void callPendingOrderApi() {
-       /* final AppLoaderFragment loader = AppLoaderFragment.getInstance(mContext);
-        loader.show();*/
+
         String url = URL_BASE + URL_ORDERS + Utils.getDealerId(mContext) + URL_ORDER_STATUS + ORDER_STATUS_PENDING;
         LogUtils.DEBUG("URL : " + url);
         MyJsonObjectRequest objectRequest = new MyJsonObjectRequest(mContext, Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -229,7 +233,7 @@ public class MainActivity extends BaseActivity<MainPresenter>
             public void onResponse(JSONObject response) {
 
                 LogUtils.DEBUG("PendingOrder Response ::" + response.toString());
-               // loader.dismiss();
+
                 Utils.savePendingOrderData(mContext, response.toString());
 
             }
@@ -238,7 +242,6 @@ public class MainActivity extends BaseActivity<MainPresenter>
             @Override
             public void onErrorResponse(VolleyError error) {
                 LogUtils.DEBUG("Pending Error ::" + error.getMessage());
-               // loader.dismiss();
             }
         });
         AppController.getInstance().addToRequestQueue(objectRequest, "Pending");
@@ -270,4 +273,6 @@ public class MainActivity extends BaseActivity<MainPresenter>
         AppController.getInstance().addToRequestQueue(objectRequest, "CompletedOrder");
 
     }
+
+
 }

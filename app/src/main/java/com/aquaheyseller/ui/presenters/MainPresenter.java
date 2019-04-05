@@ -9,6 +9,7 @@ import com.aquaheyseller.R;
 import com.aquaheyseller.ui.activities.ForgetPswdActivity;
 import com.aquaheyseller.ui.activities.LoginActivity;
 import com.aquaheyseller.ui.fragments.FragmentProfile;
+import com.aquaheyseller.ui.fragments.HelpNFaqFragment;
 import com.aquaheyseller.ui.fragments.HomeFragment;
 import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
@@ -53,6 +54,10 @@ public class MainPresenter extends BasePresenter {
                 Utils.moveToFragment(mContext, new FragmentProfile(), FragmentProfile.class.getSimpleName(), null);
                 Utils.updateActionBar(mContext, FragmentProfile.class.getSimpleName(),mContext.getString(R.string.my_profile),null,null);
                 break;
+            case "HelpNFaqFragment":
+                Utils.moveToFragment(mContext, new HelpNFaqFragment(), HelpNFaqFragment.class.getSimpleName(), null);
+                Utils.updateActionBar(mContext, HelpNFaqFragment.class.getSimpleName(),mContext.getString(R.string.help_faq),null,null);
+                break;
         }
         //LogUtils.showToast(mContext, fragName);
     }
@@ -94,6 +99,8 @@ public class MainPresenter extends BasePresenter {
             Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.payments), null, null);
         } else if (baseFragment.getClass().getSimpleName().contains("AddressData")) {
             Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.save_address), null, null);
+        }else if (baseFragment.getClass().getSimpleName().contains("Help")) {
+            Utils.updateActionBar(mContext, baseFragment.getClass().getSimpleName(), mContext.getString(R.string.help_faq), null, null);
         }
     }
 }

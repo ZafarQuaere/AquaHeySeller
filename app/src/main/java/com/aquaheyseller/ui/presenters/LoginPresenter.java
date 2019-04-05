@@ -69,14 +69,13 @@ public class LoginPresenter extends BasePresenter {
                 LoginPojo loginData = ParseManager.getInstance().fromJSON(response.toString(),LoginPojo.class);
                 try {
                     if (loginData.getStatus().equals(AppConstant.SUCCESS)){
-                        loader.dismiss();
                         Utils.setLoggedIn(mContext, true);
                         Utils.saveLoginData(mContext,response.toString());
                         mLogin.doLogin();
                     }else {
                         LogUtils.showErrorDialog(mContext, mContext.getString(R.string.ok), loginData.getMessage());
-                        loader.dismiss();
                     }
+                    loader.dismiss();
                 } catch (Exception e) {
                     loader.dismiss();
                     e.printStackTrace();
@@ -90,7 +89,6 @@ public class LoginPresenter extends BasePresenter {
             @Override
             public void onErrorResponse(VolleyError error) {
                 loader.dismiss();
-
                 LogUtils.DEBUG("Login Error ::" + error.getMessage());
             }
         });

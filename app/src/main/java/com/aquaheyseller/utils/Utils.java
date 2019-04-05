@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.aquaheyseller.BuildConfig;
 import com.aquaheyseller.R;
+import com.aquaheyseller.network_call.response_model.login.LoginPojo;
 import com.aquaheyseller.ui.activities.AddSellerActivity;
 import com.aquaheyseller.ui.activities.AddSellerAddressActivity;
 import com.aquaheyseller.ui.activities.EnterNewPswdActivity;
@@ -35,6 +36,7 @@ import com.aquaheyseller.ui.fragments.ListingsFragment;
 import com.aquaheyseller.ui.fragments.OrdersFragment;
 import com.aquaheyseller.ui.fragments.PaymentsFragment;
 import com.aquaheyseller.ui.interfaces.DialogButtonClick;
+import com.aquaheyseller.utils.parser.ParseManager;
 import com.aquaheyseller.utils.storage.AppSharedPrefs;
 
 import java.io.BufferedReader;
@@ -335,8 +337,13 @@ public class Utils {
     }
 
     public static String getDealerId(Context mContext) {
-        String loginData = getLoginData(mContext);
-        return "1";
+        String loginStringData = getLoginData(mContext);
+        String dealerId = "";
+        LoginPojo loginData = ParseManager.getInstance().fromJSON(loginStringData,LoginPojo.class);
+        if (loginData != null ){
+            return loginData.getData().getDealerId();
+        }
+        return dealerId;
     }
 
     public static void saveLoginData(Context mContext, String data) {

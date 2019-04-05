@@ -46,7 +46,7 @@
     <string name="listings">Listings</string>
     <string name="payments">Payments</string>
     <string name="share">Share App</string>
-    <string name="help_faq">Help &amp; FAQ</string>
+    <string name="help_faq">Help &amp; About Us</string>
     <string name="send_feedback">Feedback</string>
     <string name="logout">Logout</string>
     <string name="ok">Ok</string>
@@ -100,6 +100,10 @@
     <string name="no_new_order_available">No Order available right now.</string>
     <string name="no_pending_order">No Order is pending.</string>
     <string name="units">Units</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="contact_us">Contact Us</string>
 
 
     <!--  <string-array name="productTypeArray">

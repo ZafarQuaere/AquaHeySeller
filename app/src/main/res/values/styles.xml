@@ -147,7 +147,13 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:textStyle">bold</item>
     </style>
-
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/regular_text"
+    android:gravity="center_vertical"
+    android:paddingVertical="@dimen/nav_header_vertical_spacing"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+    android:textColor="@color/"
     <!-- Empty TextView -->
     <style name="EmptyTextView">
         <item name="android:layout_width">match_parent</item>
@@ -159,7 +165,21 @@
         <item name="android:layout_marginBottom">@dimen/_40dp</item>
     </style>
 
-    <!-- Actionbar Title TextView -->
+    <!-- Empty TextView -->
+    <style name="NavigationDrawerText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">@dimen/nav_header_vertical_spacing</item>
+        <item name="android:paddingBottom">@dimen/nav_header_vertical_spacing</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="android:textSize">@dimen/regular_text</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:drawablePadding">@dimen/drawable_padding</item>
+    </style>
+
+    <!-- Button Text -->
     <style name="ButtonTextStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/button_height</item>
