@@ -5,13 +5,18 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.aquaheyseller.R;
+import com.aquaheyseller.network_call.response_model.login.Data;
 import com.aquaheyseller.ui.presenters.ProfilePresenter;
 import com.aquaheyseller.ui.presenters.operations.IFragProfile;
 
 public class FragmentProfile extends BaseFragment<ProfilePresenter> implements IFragProfile {
 
+
+    private View view;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,14 +31,21 @@ public class FragmentProfile extends BaseFragment<ProfilePresenter> implements I
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
+         view = inflater.inflate(R.layout.fragment_profile, container, false);
+        getPresenter().updateUI();
         return view;
     }
 
     @Override
-    public void addProduct() {
-
+    public void updateUI(Data data) {
+        if (data != null){
+            EditText editName = (EditText)view.findViewById(R.id.editName);
+            EditText editMobile = (EditText)view.findViewById(R.id.editMobile);
+            EditText editEmailId = (EditText)view.findViewById(R.id.editEmailId);
+            editName.setText(data.getName());
+            editMobile.setText(data.getMobile());
+            editEmailId.setText(data.getEmail());
+        }
     }
 
     @Override
