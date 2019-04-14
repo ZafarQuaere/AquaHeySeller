@@ -95,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:onClick="expandMyAccount"
                     android:orientation="horizontal"
-                    android:paddingVertical="@dimen/nav_header_vertical_spacing">
+                    android:paddingVertical="@dimen/_5dp">
 
                     <TextView
                         android:id="@+id/textMyAcocunt"
@@ -108,6 +108,7 @@
                         android:id="@+id/iconMyAccountExpand"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginEnd="@dimen/_5dp"
                         android:background="@drawable/ic_plus" />
