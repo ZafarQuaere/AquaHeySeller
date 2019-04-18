@@ -7,6 +7,6 @@
     android:indeterminateDrawable="@drawable/progress_bg"
     android:minHeight="50dp"
     android:minWidth="50dp"
-    tools:context="com.app.aquahey.purepani.fragment.ProgressFragment"/>
+    tools:context="com.aquaheyseller.ui.fragments.ProgressFragment"/>
 
 
