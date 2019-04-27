@@ -69,6 +69,7 @@ public class MainPresenter extends BasePresenter {
                     public void onOkClick() {
                         AppSharedPrefs prefs = AppSharedPrefs.getInstance(mContext);
                         prefs.clear(mContext.getString(R.string.key_logged_in));
+                        Utils.setLoggedIn(mContext, false);
                         mContext.startActivity(new Intent(mContext, LoginActivity.class));
                         LogUtils.showToast(mContext, mContext.getString(R.string.you_are_sucessfully_logout));
                         ((Activity) mContext).finish();

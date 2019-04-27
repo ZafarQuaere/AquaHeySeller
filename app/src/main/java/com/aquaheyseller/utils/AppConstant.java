@@ -11,7 +11,7 @@ public class AppConstant {
     public static int SPLASH_TIME_OUT = 2000;
     public static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";
     public static final String TAG = "AquaHey";
-    public static final String RUPEES_SYMBOL = "₹";
+    public static final String RUPEES_SYMBOL = "₹ ";
     public static final String ORDER_STATUS_NEW = "2";
     public static final String ORDER_STATUS_COMPLETED = "1";
     public static final String ORDER_STATUS_PENDING = "0";

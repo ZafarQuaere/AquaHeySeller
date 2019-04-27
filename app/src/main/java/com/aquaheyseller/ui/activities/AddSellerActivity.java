@@ -47,15 +47,15 @@ public class AddSellerActivity extends BaseActivity<AddSellerPresenter> implemen
     @Override
     public void callApi(String dName, String mobile) {
        // startActivity(new Intent(AddSellerActivity.this, RegisterActivity.class));
-        //openProgressDialog();
         getPresenter().callAddSellerApi(dName, mobile);
 
     }
 
     @Override
-    public void addSeller() {
-        // hideProgressDialog();
-        startActivity(new Intent(AddSellerActivity.this, RegisterActivity.class));
+    public void addSeller(String mobile) {
+        Intent intent = new Intent(AddSellerActivity.this, RegisterActivity.class);
+        intent.putExtra("mobile",mobile);
+        startActivity(intent);
         finish();
     }
 

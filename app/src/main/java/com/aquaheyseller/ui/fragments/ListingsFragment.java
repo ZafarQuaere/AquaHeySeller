@@ -84,7 +84,7 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
         emptyTextView.setVisibility(data.getStatus().equals(AppConstant.SUCCESS)? View.GONE:View.VISIBLE);
         recylcerProducts.setVisibility(data.getStatus().equals(AppConstant.SUCCESS)? View.VISIBLE:View.GONE);
         if (data != null && data.getStatus().equals(AppConstant.SUCCESS)) {
-            ProductRecylcerAdapter adapter = new ProductRecylcerAdapter(data.getData(), new OnListFragmentInteractionListener() {
+            ProductRecylcerAdapter adapter = new ProductRecylcerAdapter(mContext,data.getData(), new OnListFragmentInteractionListener() {
                 @Override
                 public void onListFragmentInteraction(ProductList item) {
                     LogUtils.showToast(mContext, item.getPName());
