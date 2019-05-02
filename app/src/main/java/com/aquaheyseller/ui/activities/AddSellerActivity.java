@@ -44,6 +44,11 @@ public class AddSellerActivity extends BaseActivity<AddSellerPresenter> implemen
                 editSellerMobile.getText().toString().trim());
     }
 
+    /**
+     *
+     * @param dName
+     * @param mobile
+     */
     @Override
     public void callApi(String dName, String mobile) {
        // startActivity(new Intent(AddSellerActivity.this, RegisterActivity.class));
@@ -51,6 +56,9 @@ public class AddSellerActivity extends BaseActivity<AddSellerPresenter> implemen
 
     }
 
+    /**
+     * @param mobile
+     */
     @Override
     public void addSeller(String mobile) {
         Intent intent = new Intent(AddSellerActivity.this, RegisterActivity.class);

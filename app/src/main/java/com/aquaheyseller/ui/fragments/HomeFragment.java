@@ -46,7 +46,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IFragHo
         if (todaySalesData != null) {
             TextView textTodayAmount = (TextView) view.findViewById(R.id.textTodayAmount);
             TextView textTodayUnit = (TextView) view.findViewById(R.id.textTodayUnit);
-            textTodayAmount.setText(todaySalesData.get(0).getTotalAmount());
+            textTodayAmount.setText(todaySalesData.get(0).getTotalAmount()==null ? "0" : todaySalesData.get(0).getTotalAmount());
             textTodayUnit.setText(todaySalesData.get(0).getTotalUnit()+" "+getString(R.string.units));
         }
     }
@@ -60,6 +60,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements IFragHo
     }
 
     private String getAmountandUnit(List<Sales> data) {
-        return AppConstant.RUPEES_SYMBOL+" "+data.get(0).getTotalAmount()+" Of "+data.get(0).getTotalUnit()+" "+getString(R.string.units);
+        String totalAmount = "";
+        if (data.get(0).getTotalAmount() == null || data.get(0).getTotalAmount() == "0"){
+            totalAmount = "0";
+        }
+        return AppConstant.RUPEES_SYMBOL+" "+totalAmount+" Of "+data.get(0).getTotalUnit()+" "+getString(R.string.units);
     }
 }
