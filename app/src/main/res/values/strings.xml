@@ -105,7 +105,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="contact_us">Contact Us</string>
     <string name="no_product_added">No Product is added yet.</string>
+    <string name="dealerId">Dealer ID</string>
+    <string name="price">Price</string>
 
+    <string name="website_link"><a href="http://aquahey.com/website/index.html"> www.aquahey.com</a></string>
+    <string name="fb_link"><a href="https://www.facebook.com/AquaHeyApp/?modal=admin_todo_tour"> facebook.com/aquahey</a></string>
+    <string name="insta_link"><a href="https://www.instagram.com/aquaheyapp/"> instagram.com/aquahey</a></string>
+    <string name="text_visit_our_website">Visit Our Website : </string>
+    <string name="text_like_on_fb">Like Us on Facebook :</string>
+    <string name="text_follow_us_on_insta">Follow Us on Instagram :</string>
 
     <!--  <string-array name="productTypeArray">
           <item>Product Type</item>

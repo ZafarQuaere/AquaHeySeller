@@ -1,18 +1,21 @@
 package com.aquaheyseller.ui.fragments;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.aquaheyseller.R;
+import com.aquaheyseller.ui.presenters.HelpNAboutPresenter;
+import com.aquaheyseller.ui.presenters.operations.IHelpAbout;
 
 
-public class HelpNFaqFragment extends Fragment {
+public class HelpNFaqFragment extends BaseFragment<HelpNAboutPresenter> implements IHelpAbout {
 
+    private View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -20,12 +23,25 @@ public class HelpNFaqFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_help_nfaq, container, false);
+    protected HelpNAboutPresenter initPresenter() {
+        return new HelpNAboutPresenter(getActivity(), this);
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_help_nfaq, container, false);
+        initUi();
+        return view;
+    }
+
+    private void initUi() {
+        TextView textWebsite = (TextView) view.findViewById(R.id.textWebsite);
+        TextView text_fb_link = (TextView) view.findViewById(R.id.text_fb_link);
+        TextView text_insta_link = (TextView) view.findViewById(R.id.text_insta_link);
+        textWebsite.setMovementMethod(LinkMovementMethod.getInstance());
+        text_fb_link.setMovementMethod(LinkMovementMethod.getInstance());
+        text_insta_link.setMovementMethod(LinkMovementMethod.getInstance());
+    }
 
 
     @Override
@@ -41,4 +57,8 @@ public class HelpNFaqFragment extends Fragment {
     }
 
 
+    @Override
+    public void onWebsiteClick() {
+
+    }
 }

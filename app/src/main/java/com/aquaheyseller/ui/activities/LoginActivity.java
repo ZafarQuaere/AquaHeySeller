@@ -43,6 +43,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         } else {
             initUI();
         }
+
     }
 
     private void initUI() {

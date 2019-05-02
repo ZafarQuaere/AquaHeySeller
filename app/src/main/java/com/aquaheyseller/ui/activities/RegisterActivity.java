@@ -17,6 +17,8 @@ import com.aquaheyseller.utils.Utils;
 public class RegisterActivity extends BaseActivity<RegisterPresenter> implements IRegister {
 
     private Context mContext;
+    private String mobile;
+    private EditText editMobile;
 
     @Override
     protected RegisterPresenter initPresenter() {
@@ -38,11 +40,14 @@ public class RegisterActivity extends BaseActivity<RegisterPresenter> implements
             }
         });
 
+         mobile = getIntent().getStringExtra("mobile");
+         editMobile = (EditText) findViewById(R.id.editMobile);
+         editMobile.setText(mobile != null ? mobile : "");
     }
 
     private void validateFields() {
         EditText editName = (EditText) findViewById(R.id.editName);
-        EditText editMobile = (EditText) findViewById(R.id.editMobile);
+
         EditText editEmailId = (EditText) findViewById(R.id.editEmailId);
         EditText editPassword = (EditText) findViewById(R.id.editPassword);
         EditText editConfirmPassword = (EditText) findViewById(R.id.editConfirmPassword);

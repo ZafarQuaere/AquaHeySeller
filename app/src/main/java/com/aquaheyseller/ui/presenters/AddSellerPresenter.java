@@ -44,7 +44,7 @@ public class AddSellerPresenter extends BasePresenter {
         }
     }
 
-    public void callAddSellerApi(String dName, String mobile) {
+    public void callAddSellerApi(String dName, final String mobile) {
         loader.show();
         JSONObject requestObject = new JSONObject();
         try {
@@ -64,7 +64,7 @@ public class AddSellerPresenter extends BasePresenter {
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("AddSeller Response ::" + response.toString());
                 loader.dismiss();
-                mSeller.addSeller();
+                mSeller.addSeller(mobile);
             }
 
         }, new Response.ErrorListener() {

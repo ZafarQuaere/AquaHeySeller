@@ -1,5 +1,6 @@
 package com.aquaheyseller.ui.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.aquaheyseller.R;
 import com.aquaheyseller.network_call.response_model.product_list.ProductList;
 import com.aquaheyseller.ui.fragments.ListingsFragment.OnListFragmentInteractionListener;
+import com.aquaheyseller.utils.AppConstant;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,10 +20,12 @@ public class ProductRecylcerAdapter extends RecyclerView.Adapter<ProductRecylcer
 
     private final List<ProductList> mValues;
     private final OnListFragmentInteractionListener mListener;
+    private Context mContext;
 
-    public ProductRecylcerAdapter(List<ProductList> items, OnListFragmentInteractionListener listener) {
+    public ProductRecylcerAdapter(Context context, List<ProductList> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
+        mContext = context;
     }
 
     @Override
@@ -35,7 +39,7 @@ public class ProductRecylcerAdapter extends RecyclerView.Adapter<ProductRecylcer
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).getPName());
-        holder.mContentView.setText(mValues.get(position).getPrice());
+        holder.mContentView.setText(mContext.getString(R.string.price)+": "+AppConstant.RUPEES_SYMBOL+mValues.get(position).getPrice());
         Picasso.get().load(mValues.get(position).getImagePath()).into(holder.imgItem);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {

@@ -12,7 +12,8 @@
         android:id="@+id/txtSalesLable"
         style="@style/RegularThemeTextview"
         android:layout_marginLeft="@dimen/_20dp"
-        android:layout_marginTop="@dimen/_40dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/font_20sp"
         android:text="@string/sales" />
 
     <TextView
@@ -93,6 +94,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
