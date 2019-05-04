@@ -40,20 +40,17 @@ public class ListingsPresenter extends BaseFragmentPresenter {
             public void onResponse(JSONObject response) {
                 LogUtils.DEBUG("ProductList Response ::" + response.toString());
                 int status = response.optInt("status");
-                try {
-                    JSONArray array = response.getJSONArray("data");
-                    MyProductsData productsData = ParseManager.getInstance().fromJSON(response.toString(), MyProductsData.class);
-                    if (productsData.getStatus().equals(AppConstant.SUCCESS)) {
+                if (status == AppConstant.SUCCESS) {
+                    try {
+                        MyProductsData productsData = ParseManager.getInstance().fromJSON(response.toString(), MyProductsData.class);
                         LogUtils.DEBUG("ProductList Response ::" + productsData.getData().toString());
                         mProductFrag.updateList(productsData);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    /*if (status == AppConstant.SUCCESS) {
-                        mProductFrag.updateList(array);
-                    } */else {
-                        LogUtils.showToast(mContext, "NO Data to show..");
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                }else {
+                    mProductFrag.updateList(null);
                 }
                 loader.dismiss();
 

@@ -62,7 +62,7 @@ public class AddressPresenter extends BasePresenter {
         loader.show();
         JSONObject requestObject = new JSONObject();
         try {
-            requestObject.put("userId", "20");
+            requestObject.put("userId", Utils.getUserId(mContext));
             requestObject.put("addressOne", addressData.getAddress());
             requestObject.put("city", addressData.getCity());
             requestObject.put("state", addressData.getState());

@@ -81,13 +81,13 @@ public class ListingsFragment extends BaseFragment<ListingsPresenter> implements
 
     @Override
     public void updateList(MyProductsData data) {
-        emptyTextView.setVisibility(data.getStatus().equals(AppConstant.SUCCESS)? View.GONE:View.VISIBLE);
-        recylcerProducts.setVisibility(data.getStatus().equals(AppConstant.SUCCESS)? View.VISIBLE:View.GONE);
+        emptyTextView.setVisibility(data == null? View.VISIBLE:View.GONE);
+        recylcerProducts.setVisibility(data == null? View.GONE:View.VISIBLE);
         if (data != null && data.getStatus().equals(AppConstant.SUCCESS)) {
             ProductRecylcerAdapter adapter = new ProductRecylcerAdapter(mContext,data.getData(), new OnListFragmentInteractionListener() {
                 @Override
                 public void onListFragmentInteraction(ProductList item) {
-                    LogUtils.showToast(mContext, item.getPName());
+                   // LogUtils.showToast(mContext, item.getPName());
                 }
             });
             recylcerProducts.setAdapter(adapter);

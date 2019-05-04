@@ -25,9 +25,15 @@ Api name : Forgot Password
 
 
 
+1)Insert dealer , failure case.. No status is coming
+2)What is the userId in address api, is it Id from login response ? Plz confirm
+
+
 URL : http://www.aquahey.com/insert-dealer
 Request Body ::{"dName":"My Aqua","mobile":"7834908329","brandIds":"","rating":"","addressId":""}
-AddSeller Response ::{"message":"Mobile Number Already Ragistered","totalItem":""}
+AddSeller Response ::
+Success :: {"success":1,"id":0,"token":"","uid":5}
+Failure :: {"message":"Mobile Number Already Ragistered","status":""}
 
 Note : Response format need to have one more field of success : 0
 ===============================================================================
@@ -39,13 +45,15 @@ Note : What is the use of token, uid & id ? difference in id & uid.
 ==========================================================================================================
 url : http://www.aquahey.com/signup
 Request Body ::{"name":"Mera Paani","email":"zafima20@gmail.com","password":"123456","mobile":"9870273428","userType":1,"dealerId":7}
-Register Response ::{"message":"Mobile Number Already Ragistered","totalItem":""}
+Register Response ::
+Success :: {"message":"Ragister Done","status":1,"data":{"id":"4","name":"Zafar22","password":"e552b64969de0305919e367fd9783e388c8c4b8244e8172a6717a09a974230d9",
+			"mobile":"9988776655","email":"zafima20@gmail.com","token":"No Available","userType":"1","dealerId":"22"}}
+Failure :: {"message":"Mobile Number Already Ragistered","status":0}
 
-Note : Response format need to have one more field of success : 0
 ============================================================================================
 url : http://www.aquahey.com/signup
 Request Body ::{"name":"Mera Paani","email":"zafima20@gmail.com","password":"123456","mobile":"9870273428","userType":1,"dealerId":7}
-Register Response :: {"success":1,"totalItem":0,"resultArray":{"id":"20","name":"My Store","password":"e552b64969de0305919e367fd9783e388c8c4b8244e8172a6717a09a974230d9",
+Register Response :: "success":1,"totalItem":0,"resultArray":{"id":"20","name":"My Store","password":"e552b64969de0305919e367fd9783e388c8c4b8244e8172a6717a09a974230d9",
 "mobile":"9870273428","email":"zafima20@gmail.com","token":"No Available","userType":"1","dealerId":"7"}}
 
 Note :
@@ -63,23 +71,28 @@ Login Response ::{"message":"Mobile number or Password Wrong.","totalItem":""}
 
 Note : Response format need to have one more field of success : 0
 ===============================================================================================================
-URL :  http://www.aquahey.com/insert-dealear-addressData
+URL :  http://www.aquahey.com/insert-dealear-address
 Request Body ::{"userId":"20","addressOne":"Karimganj, Road No 2","city":"Bihar","state":"Gaya","pincode":"823001","latitude":"256535","longitude":"256535"}
 Address Response ::{"success":1,"id":6,"token":""}
+Now it is showing HTML Page.
+
 
  Note : What is the use of id & token ?
 ====================================================================================================================================================
-URL : http://www.aquahey.com/insert-dealear-addressData
+URL : http://www.aquahey.com/insert-dealear-address
 Request Body ::{"userId":"20","addressOne":"Karimganj, Road No 2, Gali No 9","city":"Bihar","state":"Gaya","pincode":"823001","latitude":"256535","longitude":"256535"}
 Address Response ::{"success":1,"id":7,"token":""}
 
 Note :
 ================================================================================================================================================================
-url : http://www.aquahey.com/mobile-verify?mobile=9870273428
-ForgotPassword Response ::{"mobile":"9870273428"}
+AquaHey url : http://www.aquahey.com/today-sales?dealerId=1
+D/A  >> URL : http://www.aquahey.com/total-sales?dealerId=1
 
-status
-NOTE : What is this api is doing ?
+TodaySales Response ::{"message":" Done","status":1,"data":[{"totalAmount":null,"totalUnit":"0"}]}
+TotalSales Response ::{"message":" Done","status":1,"data":[{"totalAmount":null,"totalUnit":"0"}]}
+There is no failure case in this api..
+
+
 =====================================================================================================================================================
 url : http://www.aquahey.com/otp_service?mobile=9870273428
 ForgotPassword Response ::{"total_sms":1,"duplicates_removed":0,"optedout_removed":0,"invalid_removed":0,"total_sent":1,"credits_deducted":1,"user_id":"9107",

@@ -336,9 +336,20 @@ public class Utils {
         return location;
     }
 
-    public static String getDealerId(Context mContext) {
+    public static String getUserId(Context mContext) {
         //return "1";
         String loginStringData = getLoginData(mContext);
+        String dealerId = "";
+        LoginPojo loginData = ParseManager.getInstance().fromJSON(loginStringData,LoginPojo.class);
+        if (loginData != null ){
+            return loginData.getData().getId();
+        }
+        return dealerId;
+    }
+
+    public static String getDealerId(Context mContext) {
+        //return "111";
+       String loginStringData = getLoginData(mContext);
         String dealerId = "";
         LoginPojo loginData = ParseManager.getInstance().fromJSON(loginStringData,LoginPojo.class);
         if (loginData != null ){
