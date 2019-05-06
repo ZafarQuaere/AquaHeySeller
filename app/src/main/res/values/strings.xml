@@ -3,11 +3,8 @@
     <string name="aqua_hey">AquaHey!</string>
     <string name="key_shared_prefs">key_shared_prefs</string>
     <string name="key_logged_in">key_logged_in</string>
-    <string name="dialog_log_out_btn_yes_text">YES</string>
-    <string name="dialog_log_out_btn_no_text">NO</string>
     <string name="login_label">Login</string>
     <string name="signup_label">Sign Up</string>
-    <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="forgot_pswd">Forgot Password</string>
     <string name="register_to_use_aqua_hey">Register to Use AquaHey!</string>
@@ -20,18 +17,12 @@
     <string name="please_enter_seller_name">Please enter  Seller/Business name</string>
     <string name="please_enter_password">Please enter password</string>
     <string name="password_must_have_atleast_6_character">Password must have atleast 6 character</string>
-    <string name="nav_home">Home</string>
-    <string name="nav_photos">Photos</string>
-    <string name="nav_about_us">About Us</string>
-    <string name="privacy_policy">Privacy Policy</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
     <string name="nav_header_desc">Nav Header</string>
     <string name="nav_header_title">Aqua Hey</string>
     <string name="nav_header_subtitle">AquaHey! India</string>
-    <string name="action_settings">settings</string>
     <string name="key_serializable">key_serializable</string>
-    <string name="sit_back_and_relax_while_we_verify_your_mobile_number"><![CDATA[Sit back & Relax! While we verify your mobile number]]></string>
     <string name="sit_back_and_relax_while_we_verify_your_mobile_number_and_send_otp"><![CDATA[Sit back & Relax! While we verify your mobile number and Send you OTP]]></string>
     <string name="enter_otp_below">(Enter the OTP below in case we fail to detect the SMS automatically)</string>
     <string name="submit">Submit</string>
@@ -77,8 +68,6 @@
     <string name="item_list">Item List</string>
     <string name="my_account">My Account</string>
     <string name="register">Register</string>
-    <string name="history">History</string>
-    <string name="transactions">Transaction</string>
     <string name="my_profile">My Profile</string>
     <string name="sales">Sales</string>
     <string name="total_sales_this_week">Total Sales this week</string>
@@ -102,7 +91,6 @@
     <string name="units">Units</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="contact_us">Contact Us</string>
     <string name="no_product_added">No Product is added yet.</string>
     <string name="dealerId">Dealer ID</string>
