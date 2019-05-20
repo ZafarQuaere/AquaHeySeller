@@ -76,6 +76,7 @@ public class HomePresenter extends BaseFragmentPresenter {
             @Override
             public void onErrorResponse(VolleyError error) {
                 LogUtils.DEBUG("TotalSales Error ::" + error.getMessage());
+                loader.dismiss();
             }
         });
         AppController.getInstance().addToRequestQueue(objectRequest, "TotalSales");
